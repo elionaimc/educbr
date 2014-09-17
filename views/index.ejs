@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="pt-BR"  class="no-js">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>
+            eduCase :: Applying case-based reasoning to pedagogical advising
+        </title>
+		<link
+			href='http://fonts.googleapis.com/css?family=Roboto:400,900'
+			rel='stylesheet'
+			type='text/css'>
+        <link
+            href="/public/css/foundation.css"
+            rel="stylesheet" />
+        <link
+            href="/public/css/app.css"
+            rel="stylesheet" />
+        <script
+            src="/public/js/modernizr.js">
+        </script>
+    </head>
+    <body>
+        <div id="container">
+            <div id="header">
+                <img
+                    src="public/img/logo.png"
+                    alt="Edu.Case - Sistema Especialista Aplicado ao Aconselhamento Pedagógico
+                    Utilizando Raciocínio Baseado em Casos"
+					class="left"/>
+                <img
+                    src="public/img/ifrn.jpg"
+                    alt="IFRN"
+					class="right hide-for-small-only"/>
+            </div>
+				<!-- top site and general menu -->
+			        <div id="menu">
+						<nav class="top-bar" data-topbar data-options="custom_back_text:true; back_text:←;">
+						        <ul class="title-area">
+						            <li class="name">
+						            </li>
+						            <li class="toggle-topbar menu-icon">
+						                <a href="#"">MENU</a>
+						            </li>
+						        </ul>
+						        <section class="top-bar-section">
+						            <ul class="left">
+						                <li>
+						                    <a href="/index" class="active">Inicial</a>
+						                </li>
+						                <li>
+						                    <a href="/quem">Conheça</a>
+						                </li>
+						                <li class="has-dropdown">
+						                    <a href="/sobre">Sobre</a>
+						                    <ul class="dropdown">
+						                        <li><a href="/sobre#projeto">Este Projeto</a></li>
+						                        <li><a href="/sobre#RBC">O que é RBC?</a></li>
+						                    </ul>
+						                </li>
+						                <li>
+						                    <a href="/contato">Contato</a>
+						                </li>
+						            </ul>
+						        </section>
+						    </nav>
+			    </div>
+				<!-- end top -->
+            <div id="principal"  class="row bg">
+                <h1 class="title"> Atendimento Pedagógico </h1>
+				<div class="small-12 large-8" id="form">
+				    <form
+				        class="row"
+				        method="post"
+				        action="/manage/aluno/search"
+				    >
+				        <section class="large-12 panel no-border">
+				            <div class="row">
+					            <div class="columns small-12 large-6">
+						            <div class="row collapse">
+						                <div class="small-5 column">
+						                    <label class="prefix"
+						                        for="data">
+						                        Data
+						                    </label>
+						                </div>
+						                <div class="small-7 column">
+						                    <input
+						                        type="text"
+						                        id="data"
+						                        name="data"
+				                                maxlength="10"
+				                                placeholder="00/00/0000" />
+						                </div>
+						            </div>
+					            </div>
+					            <div class="small-12 large-6 columns">
+						            <div class="row collapse">
+						                <div class="small-5 column">
+						                    <label
+						                        class="prefix"
+						                        for="sexo">
+						                        Sexo
+						                    </label>
+						                </div>
+						                <div class="small-7 column">
+						                    <input
+						                        type="text"
+						                        id="sexo"
+						                        name="sexo"
+						                        class="small-12"
+						                        placeholder="SELECIONE" />
+						                </div>
+						            </div>
+					            </div>
+				            </div>
+				            <div class="row">
+					            <div class="columns small-12 large-6">
+						            <div class="row collapse">
+						                <div class="small-5 column">
+						                    <label
+												class="prefix"
+												for="matricula">
+						                        Matrícula
+						                    </label>
+						                </div>
+						                <div class="small-7 column">
+						                    <input
+						                        type="text"
+												id="matricula"
+				                                maxlength="128"
+						                        name="matricula"
+						                    />
+						                </div>
+						            </div>
+					            </div>
+					            <div class="columns small-12 large-6">
+						            <div class="row collapse">
+						                <div class="small-5 column">
+						                    <label
+												class="prefix"
+												for="telefone">
+						                        Telefone
+						                    </label>
+						                </div>
+						                <div class="small-7 column">
+						                    <input
+						                        type="text"
+						                        maxlength="15"
+												id="telefone"
+						                        name="telefone"
+						                        placeholder="(84)0000-0000"
+						                    />
+						                </div>
+						            </div>
+					            </div>
+				            </div>
+				            <div class="row collapse">
+				                <div class="small-3 columns">
+				                    <label class="prefix"
+				                        for="nome">
+				                        Nome
+				                    </label>
+				                </div>
+				                <div class="small-9 columns end">
+				                    <input
+				                        type="text"
+				                        id="nome"
+				                        name="nome"
+				                        min="5"
+				                        maxlength="128"
+										placeholder="Nome Completo do Aluno" />
+				                </div>
+				            </div>
+				            <div class="row collapse">
+				                <div class="small-3 columns">
+				                    <label class="prefix"
+				                        for="email">
+				                        Email
+				                    </label>
+				                </div>
+				                <div class="small-9 columns end">
+				                    <input
+				                        type="email"
+				                        id="email"
+				                        name="email"
+				                        min="5"
+				                        maxlength="128"
+										placeholder="email@ifrn.edu.br" />
+				                </div>
+				            </div>
+				            <div class="row">
+					            <div class="columns small-12 large-7">
+						            <div class="row collapse">
+						                <div class="small-3 column">
+						                    <label
+												class="prefix"
+												for="curso">
+						                        Curso
+						                    </label>
+						                </div>
+						                <div class="small-9 column">
+						                    <select
+						                        id="curso"
+						                        name="curso">
+												<option value="">
+													Integrado em Administração
+												</option>
+												<option value="">
+													Integrado em Informática para Internet
+												</option>
+												<option value="">
+													Integrado em Manutenção e Suporte em Informática
+												</option>
+												<option value="">
+													Integrado em Informática (generalista)
+												</option>
+												<option value="">
+													Superior - TADS
+												</option>
+												<option value="">
+													Superior - REDES
+												</option>
+												<option value="">
+													Superior - GESTÃO PÚBLICA
+												</option>
+												<option value="">
+													Superior - COMEX
+												</option>
+											</select>
+						                </div>
+						            </div>
+					            </div>
+					            <div class="columns small-12 large-5">
+						            <div class="row collapse">
+						                <div class="small-5 column">
+						                    <label
+												class="prefix"
+												for="periodo">
+						                        Período
+						                    </label>
+						                </div>
+						                <div class="small-7 column">
+						                    <select
+						                        id="periodo"
+						                        name="periodo">
+												<option value="1">
+													1º Período/Ano
+												</option>
+												<option value="2">
+													2º Período/Ano
+												</option>
+												<option value="3">
+													3º Período/Ano
+												</option>
+												<option value="4">
+													4º Período/Ano
+												</option>
+												<option value="5">
+													5º Período/Ano
+												</option>
+												<option value="6">
+													6º Período/Ano
+												</option>
+											</select>
+						                </div>
+						            </div>
+					            </div>
+				            </div>
+				            <div class="row collapse">
+				                <div class="small-3 columns">
+				                    <label class="prefix"
+				                        for="contexto">
+				                        Contexto
+				                    </label>
+				                </div>
+				                <div class="small-9 columns end">
+				                    <textarea
+				                        id="contexto"
+				                        name="contexto"
+	                        			rows="5"
+										placeholder="Descreva o máximo de informações a respeito da situação do aluno. Evite colocar informações que o identifique ou a outras pessoas. Faça comentários ou observações relevantes sobre o atendimento."></textarea>
+				                </div>
+				            </div>
+				            <div class="row collapse">
+				                <div class="small-3 columns">
+				                    <label class="prefix"
+				                        for="notas">
+				                        Dados Seguros
+				                    </label>
+				                </div>
+				                <div class="small-9 columns end">
+				                    <textarea
+				                        id="notas"
+				                        name="notas"
+	                        			rows="5"
+										placeholder="Aqui você pode inserir informações sigilosas, tais como nome, grau de parentesco, contatos..."></textarea>
+				                </div>
+				            </div>
+							
+							
+							
+							
+				            
+				            
+				            <div class="row">
+				                <div class="small-12 column centered">
+				                    <button
+				                        type="submit"
+				                        class="success button small">
+				                        ENCAMINHAMENTOS
+				                    </button>
+				                </div>
+				            </div>
+				        </section>
+				    </form>
+				</div>
+            </div>
+            <footer>
+				<p>Trabalho de Conclusão de Curso - 2014.1 - IFRN - Diretoria Educacional de Gestão e Informática</>
+            </footer>
+        </div>
+    <script src="/public/js/jquery.min.js"></script>
+    <script src="/public/js/foundation.min.js"></script>
+    <script>
+        $(document).ready(function() {
+              $(document).foundation();
+        });
+    </script>
+    <script src="/public/js/angular.min.js"></script>
+    </body>
+</html>

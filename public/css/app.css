@@ -1,0 +1,457 @@
+@charset "utf-8";
+/* CSS Document
+*  Last update: 17/09/2014
+*  Author: Elionai Moura <eli.embits@gmail.com>
+*/
+
+body{
+    background:#dee1e1;
+    font-size:0.7125rem;
+    font-family:'Roboto';
+    font-weight:300;
+}
+
+p{
+	font-size:0.95rem;
+    font-family:'Roboto';
+    font-weight:300;
+}
+
+h1, h2, h3, h4, h5, h6{
+    font-family:'Roboto';
+    font-weight:300;
+}
+
+label{
+	padding-left:10px;
+	text-align:justify;
+	font-weight:900;
+	text-transform:uppercase;
+}
+
+label.prefix{
+	text-align:justify;
+}
+
+dt{
+    font-family:'Roboto';
+}
+
+dd{
+	margin-left:1rem;
+}
+
+table{
+	border:0;
+	border-collapse: collapse;
+}
+
+table thead tr th,
+table tbody tr td {
+    font-size: 0.83rem;
+	border:1px solid #666;
+}
+
+table thead tr th,
+.ng-table th.sortable.sort-desc,
+.ng-table th.sortable.sort-asc{
+    color: #fff;
+    font-weight: 300;
+    font-size: 1rem;
+    background-color:#008cba;
+}
+
+table tfoot tr td{
+	background:#fafafa;
+	border:1px solid #fafafa;
+}
+
+.has-tip {
+    border-bottom: 0 !important;
+    color: #333;
+    cursor: pointer;
+    font-weight: normal;
+}
+
+.tooltip{
+    background:#333;
+    padding: 5px 20px;
+    color: white;
+    border-radius: 5px;
+    border-bottom: solid 0px #fff !important;
+}
+
+.tooltip > .nub {
+    display: none;
+}
+
+.darkolive, .orange, .blue, .red{
+    font-size: 1.1rem;
+    margin:5px;
+    padding:0;
+}
+
+.darkolive:focus, .orange:focus, .blue:focus, .red:focus,
+.darkolive:hover, .orange:hover, .blue:hover, .red:hover{
+    background:transparent !important;
+    color:#666;
+}
+
+.darkolive{
+	color: #6f8442;
+}
+
+.orange{
+	color: #f08a24;
+}
+
+.blue{
+	color: #008cba;
+}
+
+.red{
+	color: #c6180a;
+}
+
+.darkgrey{
+	background: #333;
+}
+
+.alert-box{
+	margin-bottom:0;
+	font-size:0.95rem;
+}
+
+.panel{
+	background:transparent;
+	padding-bottom:5px;
+}
+
+.slider{
+	margin-top:15px;
+}
+
+.no-border{
+	border:0;
+}
+
+.no-padding{
+	padding:0;
+}
+
+.no-margin{
+	margin:0;
+}
+
+.ralign{
+	text-align:right;!important
+}
+
+.mainsection{
+	border-left:1px solid #ddd;
+}
+
+.sidebar{
+	border-right:1px solid #ddd;
+}
+
+.bg{
+    background:#f3f3f3 url(/public/img/bg.png) no-repeat bottom right;
+}
+
+.strong{
+    font-weight:bold;
+}
+
+.centered{
+	margin:0 auto;
+	text-align:center;
+}
+
+.fa.large{
+	font-size: 1.5rem;
+}
+
+.title{
+    font-size:1.8rem;
+	line-height:3rem;
+	text-transform:none;
+	margin-bottom:0;
+	padding-left:20px;
+	border-bottom:3px solid #9d0b00;
+}
+
+div.error{
+	margin-bottom:1rem;
+}
+
+div.error input, div.error select, div.error textarea{
+	color: #c6180a;
+	border:1px solid #9d0b00;
+}
+
+label.error{
+	color:#fff;
+	background: #c6180a;
+	border:1px solid #9d0b00;
+}
+
+#container{
+	min-width:100%;
+	min-height:100%;
+	overflow:auto;
+    margin:0;
+    position:relative;
+    padding-bottom:30px;
+}
+
+#container #header{
+	background:#68b92c;
+	border-top:3px solid #9d0b00;
+	padding:10px;
+	height:120px;
+}
+
+#container #form {
+	padding:0 15px;
+}
+
+#container footer{
+    background:#68b92c;
+	border-top:3px solid #232323;
+    position:absolute;
+    text-align:center;
+    font-weight:400;
+    padding:5px;
+    margin:0 auto;
+    bottom:0px;
+    width:100%;
+    min-height:30px;
+}
+
+#container footer p{
+    font-size:0.8125rem;
+    padding:0;
+    margin:0;
+	color:white;
+}
+
+#container footer p a{
+    color:#fefefe;
+    font-weight:bold;
+}
+/*----------------------------------------------------------------------------*/
+
+/*******************************************************************************
+                      jQuery Select2() Styles
+*******************************************************************************/
+.select2-results, .select2-chosen{
+	font-weight:300;
+	font-size:0.9rem;
+}
+
+.select2-search-choice div{
+    color:#333;
+    padding:3px 5px 5px 0;
+}
+/*----------------------------------------------------------------------------*/
+
+/*******************************************************************************
+                      jQuery Ui MultiDatePicker Styles
+*******************************************************************************/
+
+.ui-widget{
+	font-family:'Roboto';
+	font-size:1rem;
+}
+
+.ui-widget-header{
+	border:0;
+}
+.ui-datepicker{
+    width:290px;
+}
+
+.ui-datepicker-header{
+	background:#008cba;
+    font-weight:400;
+    display:block;
+}
+
+.ui-datepicker thead tr th{
+	background:#fafafa;!important;
+}
+
+.ui-datepicker-calendar th span{
+    color:#008cba;
+}
+
+.ui-datepicker-unselectable span,
+.ui-state-disabled span{
+	display:none;
+}
+
+td.ui-datepicker-other-month,
+td.ui-datepicker-unselectable,
+td.ui-state-disabled,
+td.ui-datepicker-other-month:hover,
+td.ui-datepicker-unselectable:hover,
+td.ui-state-disabled:hover{
+	background:#fff;
+}
+
+.ui-state-disabled, 
+.ui-widget-content .ui-state-disabled, 
+.ui-widget-header .ui-state-disabled {
+    opacity: 0.1;
+    padding:0px;
+}
+
+.ui-datepicker table {
+    border-collapse: separate;
+    font-size: 0.9em;
+}
+
+.ui-datepicker-calendar td a{
+	color:white;
+}
+
+.ui-datepicker-prev{
+    background:transparent url(../img/back.png) no-repeat center center;
+}
+
+.ui-datepicker-prev:hover{
+    background:transparent url(../img/back.png) no-repeat center center;
+    padding:0;
+    margin:0;
+    border:0;
+}
+
+.ui-datepicker-next{
+    background:transparent url(../img/next.png) no-repeat center center;
+}
+
+.ui-datepicker-next:hover{
+    background:transparent url(../img/next.png) no-repeat center center;
+    padding:0;
+    margin:0;
+    border:0;
+}
+
+.ui-datepicker-title{
+	text-align:center;
+}
+
+.ui-datepicker-calendar .ui-state-active, 
+.ui-datepicker-calendar .ui-state-default{
+    background:#008cba;
+    border:0;
+    color:#fff;
+    text-align:center;
+}
+
+.ui-datepicker-calendar  .ui-state-highlight{
+	border:0;
+	color:#fff;
+}
+
+.ui-datepicker-calendar .ui-state-highlight a{
+    background:#272727;
+    color:#fff;
+}
+
+table.ui-datepicker-calendar {
+	border-collapse: separate;
+}
+.ui-datepicker-calendar td {
+	border: 1px solid transparent;
+}
+
+.ui-datepicker-header select {
+  -webkit-appearance: none !important;
+  background-color: #9d0b00;
+  background-position: 100% center;
+  background-repeat: no-repeat;
+  border: 1px solid #9d0b00;
+  padding:0.1rem 0.5rem;
+  font-size: 0.875rem;
+  color: #fafafa;
+  line-height: normal;
+  border-radius: 0;
+  height: 1.8125rem;
+}
+
+/*----------------------------------------------------------------------------*/
+
+/*******************************************************************************
+                      jQuery Ui ButtonSet Styles
+*******************************************************************************/
+input[type="checkbox"] + label, input[type="radio"] + label {
+	margin:2px -2px;
+	padding:5px 10px;
+    font-weight:300;
+    font-size:0.85rem;
+}
+
+/*----------------------------------------------------------------------------*/
+
+/*******************************************************************************
+                      jQuery TooltipSY Styles
+*******************************************************************************/
+.tooltipsy{
+    background: #333;
+    padding: 10px 20px;
+    color: white;
+    border-radius: 20px;
+    box-shadow: 0 0 7px #333;
+    letter-spacing: 1px;
+    margin-bottom:-5px;
+}
+
+.tooltipsy:after {
+	content: '';
+	position: absolute;
+	border: 10px solid transparent;
+	border-left-color: #333;
+	bottom: -15px;
+	right: 40px;
+	z-index: -1;
+}
+/*----------------------------------------------------------------------------*/
+/*******************************************************************************
+                      Pagination Styles
+*******************************************************************************/
+ul.pagination li.unavailable a {
+    color: #999999;
+    cursor: default;
+}
+
+ul.pagination li a {
+    border-radius: 3px;
+    color: #232323;
+    display: block;
+    padding: 0.0625rem 0.625rem;
+    font-family: 'Roboto';
+    font-weight: 300;
+}
+
+ul.pagination li a:hover {
+    background:#9d0b00;
+}
+
+.ng-table-counts{
+	display:none;
+	visibility:none;
+}
+
+ul.pagination li.ng-scope{
+	display:inline-block;
+	margin-bottom:20px;
+}
+
+ul.pagination li.ng-scope.disabled a:hover{
+	background-color:#fcfcfc;
+	cursor:default;
+}
+
+
