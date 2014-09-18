@@ -1,5 +1,5 @@
 {
-    "name": "edu-case",
+    "name": "educase",
     "description": "Psycho-pedagogical advising system using CBR AI",
     "private": false,
     "version": "0.0.1",
@@ -7,6 +7,16 @@
         "name": "Elionai Moura",
         "email": "eli.embits@gmail.com"
     },
+  "contributors": [
+    {
+      "name": "José Antonio da Cunha",
+      "email": "jose.cunha@ifrn.edu.br"
+    },
+    {
+      "name": "Erica Luana Galvão Torres Gomes",
+      "email": "erica.torres@ifrn.edu.br"
+    }
+  ],
   "keywords": [
     "edu-case",
     "artificial intelligence",
@@ -27,6 +37,8 @@
     },
     "dependencies": {
         "express": "3.4.7",
-        "ejs": "0.8.5"
+		"express-load": "1.1.8",
+        "ejs": "0.8.5",
+		"mongoose": "3.8.4"
     }
 }

@@ -1,0 +1,1099 @@
+			<% include ../header %>
+			<div id="principal"  class="row bg">
+                <h1 class="title"> Atendimento Pedagógico
+				<small class="right">
+					Olá, <%- usuario.email %> 
+					<a href="/sair">sair</a>
+				</small>
+			</h1>
+				<div class="small-10 centered" id="form">
+				    <form
+				        class="row"
+				        method="post"
+				        action="/recuperar"
+				    >
+				        <section class="large-12 panel no-border">
+							<fieldset>
+							<legend>Informações pessoais do aluno</legend>
+				            <div class="row">
+					            <div class="columns small-12 large-6">
+						            <div class="row collapse">
+						                <div class="small-5 column">
+						                    <label class="prefix"
+						                        for="data">
+						                        Data
+						                    </label>
+						                </div>
+						                <div class="small-7 column">
+						                    <input
+						                        type="text"
+						                        id="data"
+						                        name="data"
+				                                maxlength="10"
+				                                placeholder="00/00/0000" />
+						                </div>
+						            </div>
+					            </div>
+					            <div class="small-12 large-6 columns">
+						            <div class="row collapse">
+						                <div class="small-5 column">
+						                    <label
+						                        class="prefix"
+						                        for="sexo">
+						                        Sexo
+						                    </label>
+						                </div>
+						                <div class="small-7 column">
+						                    <select
+						                        id="sexo"
+						                        name="sexo"
+						                        class="small-12">
+												<option value="0">
+													FEMININO
+												</option>
+												<option value="1">
+													MASCULINO
+												</option>
+											</select>
+						                </div>
+						            </div>
+					            </div>
+				            </div>
+				            <div class="row">
+					            <div class="columns small-12 large-6">
+						            <div class="row collapse">
+						                <div class="small-5 column">
+						                    <label
+												class="prefix"
+												for="matricula">
+						                        Matrícula
+						                    </label>
+						                </div>
+						                <div class="small-7 column">
+						                    <input
+						                        type="text"
+												id="matricula"
+				                                maxlength="128"
+						                        name="matricula"
+						                    />
+						                </div>
+						            </div>
+					            </div>
+					            <div class="columns small-12 large-6">
+						            <div class="row collapse">
+						                <div class="small-5 column">
+						                    <label
+												class="prefix"
+												for="telefone">
+						                        Telefone
+						                    </label>
+						                </div>
+						                <div class="small-7 column">
+						                    <input
+						                        type="text"
+						                        maxlength="15"
+												id="telefone"
+						                        name="telefone"
+						                        placeholder="(84)0000-0000"
+						                    />
+						                </div>
+						            </div>
+					            </div>
+				            </div>
+				            <div class="row collapse">
+				                <div class="small-3 columns">
+				                    <label class="prefix"
+				                        for="nome">
+				                        Nome
+				                    </label>
+				                </div>
+				                <div class="small-9 columns end">
+				                    <input
+				                        type="text"
+				                        id="nome"
+				                        name="nome"
+				                        min="5"
+				                        maxlength="128"
+										placeholder="Nome Completo do Aluno" />
+				                </div>
+				            </div>
+				            <div class="row collapse">
+				                <div class="small-3 columns">
+				                    <label class="prefix"
+				                        for="email">
+				                        Email
+				                    </label>
+				                </div>
+				                <div class="small-9 columns end">
+				                    <input
+				                        type="email"
+				                        id="email"
+				                        name="email"
+				                        min="5"
+				                        maxlength="128"
+										placeholder="email@ifrn.edu.br" />
+				                </div>
+				            </div>
+				            <div class="row">
+					            <div class="columns small-12 large-7">
+						            <div class="row collapse">
+						                <div class="small-3 column">
+						                    <label
+												class="prefix"
+												for="curso">
+						                        Curso
+						                    </label>
+						                </div>
+						                <div class="small-9 column">
+						                    <select
+						                        id="curso"
+						                        name="curso"
+												style="width:100%">
+												<option value="">
+													Integrado em Administração
+												</option>
+												<option value="">
+													Integrado em Informática para Internet
+												</option>
+												<option value="">
+													Integrado em Manutenção e Suporte em Informática
+												</option>
+												<option value="">
+													Integrado em Informática (generalista)
+												</option>
+												<option value="">
+													Superior - TADS
+												</option>
+												<option value="">
+													Superior - REDES
+												</option>
+												<option value="">
+													Superior - GESTÃO PÚBLICA
+												</option>
+												<option value="">
+													Superior - COMEX
+												</option>
+											</select>
+						                </div>
+						            </div>
+					            </div>
+					            <div class="columns small-12 large-5">
+						            <div class="row collapse">
+						                <div class="small-5 column">
+						                    <label
+												class="prefix"
+												for="periodo">
+						                        Período
+						                    </label>
+						                </div>
+						                <div class="small-7 column">
+						                    <select
+						                        id="periodo"
+						                        name="periodo"
+												style="width:100%">
+												<option value="1">
+													1º Período/Ano
+												</option>
+												<option value="2">
+													2º Período/Ano
+												</option>
+												<option value="3">
+													3º Período/Ano
+												</option>
+												<option value="4">
+													4º Período/Ano
+												</option>
+												<option value="5">
+													5º Período/Ano
+												</option>
+												<option value="6">
+													6º Período/Ano
+												</option>
+											</select>
+						                </div>
+						            </div>
+					            </div>
+				            </div>
+							<div><br/></div>
+				            <div class="row collapse">
+				                <div class="small-3 columns">
+				                    <label class="prefix"
+				                        for="notas">
+				                        Dados Seguros
+				                    </label>
+				                </div>
+				                <div class="small-9 columns end">
+				                    <textarea
+				                        id="notas"
+				                        name="notas"
+	                        			rows="5"
+										placeholder="Aqui você pode inserir informações sigilosas, que tenham relação ao caso apresentado, tais como dados do responsável, grau de parentesco, contatos..."></textarea>
+				                </div>
+				            </div>
+							</fieldset>
+							<fieldset>
+							<legend>
+								Demandas do atendimento
+							</legend>
+		                    <div>
+		                        <div class="buttonset left columns large-2 no-padding">
+		                            <input
+		                                type="radio"
+		                                id="do_extras"
+		                                name="extra_adjournment"
+		                                value="true"
+		                                ng-click="avoid('total_extra')"
+		                                ng-model="show_total_extra"/>
+		                            <label
+		                                for="do_extras"
+		                                class="inline">
+		                                Sim
+		                            </label>
+		                            <input
+		                                type="radio"
+		                                id="no_extras"
+		                                name="extra_adjournment"
+		                                value="false"
+		                                checked="checked"
+		                                ng-click="avoid('total_extra')"
+		                                ng-model="show_total_extra"/>
+		                            <label
+		                                for="no_extras"
+		                                class="inline">
+		                                Não
+		                            </label>
+		                        </div>
+		                        <div class="columns large-10 left no-padding ">
+		                            <label class="left inline">Dificuldade de aprendizagem em disciplina</label>
+		                        </div>
+							</div>
+		                    <div>
+		                        <div class="buttonset left columns large-2 no-padding">
+		                            <input
+		                                type="radio"
+		                                id="do_extras"
+		                                name="extra_adjournment"
+		                                value="true"
+		                                ng-click="avoid('total_extra')"
+		                                ng-model="show_total_extra"/>
+		                            <label
+		                                for="do_extras"
+		                                class="inline">
+		                                Sim
+		                            </label>
+		                            <input
+		                                type="radio"
+		                                id="no_extras"
+		                                name="extra_adjournment"
+		                                value="false"
+		                                checked="checked"
+		                                ng-click="avoid('total_extra')"
+		                                ng-model="show_total_extra"/>
+		                            <label
+		                                for="no_extras"
+		                                class="inline">
+		                                Não
+		                            </label>
+		                        </div>
+		                        <div class="columns large-10 left no-padding ">
+		                            <label class="left inline">Necessidade de orientação pedagógica</label>
+		                        </div>
+							</div>
+		                    <div>
+		                        <div class="buttonset left columns large-2 no-padding">
+		                            <input
+		                                type="radio"
+		                                id="do_extras"
+		                                name="extra_adjournment"
+		                                value="true"
+		                                ng-click="avoid('total_extra')"
+		                                ng-model="show_total_extra"/>
+		                            <label
+		                                for="do_extras"
+		                                class="inline">
+		                                Sim
+		                            </label>
+		                            <input
+		                                type="radio"
+		                                id="no_extras"
+		                                name="extra_adjournment"
+		                                value="false"
+		                                checked="checked"
+		                                ng-click="avoid('total_extra')"
+		                                ng-model="show_total_extra"/>
+		                            <label
+		                                for="no_extras"
+		                                class="inline">
+		                                Não
+		                            </label>
+		                        </div>
+		                        <div class="columns large-10 left no-padding ">
+		                            <label class="left inline">Muitas faltas</label>
+		                        </div>
+							</div>
+		                    <div>
+		                        <div class="buttonset left columns large-2 no-padding">
+		                            <input
+		                                type="radio"
+		                                id="do_extras"
+		                                name="extra_adjournment"
+		                                value="true"
+		                                ng-click="avoid('total_extra')"
+		                                ng-model="show_total_extra"/>
+		                            <label
+		                                for="do_extras"
+		                                class="inline">
+		                                Sim
+		                            </label>
+		                            <input
+		                                type="radio"
+		                                id="no_extras"
+		                                name="extra_adjournment"
+		                                value="false"
+		                                checked="checked"
+		                                ng-click="avoid('total_extra')"
+		                                ng-model="show_total_extra"/>
+		                            <label
+		                                for="no_extras"
+		                                class="inline">
+		                                Não
+		                            </label>
+		                        </div>
+		                        <div class="columns large-10 left no-padding ">
+		                            <label class="left inline">Atrasos constantes</label>
+		                        </div>
+							</div>
+		                    <div>
+		                        <div class="buttonset left columns large-2 no-padding">
+		                            <input
+		                                type="radio"
+		                                id="do_extras"
+		                                name="extra_adjournment"
+		                                value="true"
+		                                ng-click="avoid('total_extra')"
+		                                ng-model="show_total_extra"/>
+		                            <label
+		                                for="do_extras"
+		                                class="inline">
+		                                Sim
+		                            </label>
+		                            <input
+		                                type="radio"
+		                                id="no_extras"
+		                                name="extra_adjournment"
+		                                value="false"
+		                                checked="checked"
+		                                ng-click="avoid('total_extra')"
+		                                ng-model="show_total_extra"/>
+		                            <label
+		                                for="no_extras"
+		                                class="inline">
+		                                Não
+		                            </label>
+		                        </div>
+		                        <div class="columns large-10 left no-padding ">
+		                            <label class="left inline">Desequilíbrio ou problema de ordem psicológica</label>
+		                        </div>
+							</div>
+		                    <div>
+		                        <div class="buttonset left columns large-2 no-padding">
+		                            <input
+		                                type="radio"
+		                                id="do_extras"
+		                                name="extra_adjournment"
+		                                value="true"
+		                                ng-click="avoid('total_extra')"
+		                                ng-model="show_total_extra"/>
+		                            <label
+		                                for="do_extras"
+		                                class="inline">
+		                                Sim
+		                            </label>
+		                            <input
+		                                type="radio"
+		                                id="no_extras"
+		                                name="extra_adjournment"
+		                                value="false"
+		                                checked="checked"
+		                                ng-click="avoid('total_extra')"
+		                                ng-model="show_total_extra"/>
+		                            <label
+		                                for="no_extras"
+		                                class="inline">
+		                                Não
+		                            </label>
+		                        </div>
+		                        <div class="columns large-10 left no-padding ">
+		                            <label class="left inline">Desotivação por baixo rendimento</label>
+		                        </div>
+							</div>
+		                    <div>
+		                        <div class="buttonset left columns large-2 no-padding">
+		                            <input
+		                                type="radio"
+		                                id="do_extras"
+		                                name="extra_adjournment"
+		                                value="true"
+		                                ng-click="avoid('total_extra')"
+		                                ng-model="show_total_extra"/>
+		                            <label
+		                                for="do_extras"
+		                                class="inline">
+		                                Sim
+		                            </label>
+		                            <input
+		                                type="radio"
+		                                id="no_extras"
+		                                name="extra_adjournment"
+		                                value="false"
+		                                checked="checked"
+		                                ng-click="avoid('total_extra')"
+		                                ng-model="show_total_extra"/>
+		                            <label
+		                                for="no_extras"
+		                                class="inline">
+		                                Não
+		                            </label>
+		                        </div>
+		                        <div class="columns large-10 left no-padding ">
+		                            <label class="left inline">Desmotivação pela opção do curso</label>
+		                        </div>
+							</div>
+		                    <div>
+		                        <div class="buttonset left columns large-2 no-padding">
+		                            <input
+		                                type="radio"
+		                                id="do_extras"
+		                                name="extra_adjournment"
+		                                value="true"
+		                                ng-click="avoid('total_extra')"
+		                                ng-model="show_total_extra"/>
+		                            <label
+		                                for="do_extras"
+		                                class="inline">
+		                                Sim
+		                            </label>
+		                            <input
+		                                type="radio"
+		                                id="no_extras"
+		                                name="extra_adjournment"
+		                                value="false"
+		                                checked="checked"
+		                                ng-click="avoid('total_extra')"
+		                                ng-model="show_total_extra"/>
+		                            <label
+		                                for="no_extras"
+		                                class="inline">
+		                                Não
+		                            </label>
+		                        </div>
+		                        <div class="columns large-10 left no-padding ">
+		                            <label class="left inline">Conflito com relação a opção sexual</label>
+		                        </div>
+							</div>
+		                    <div>
+		                        <div class="buttonset left columns large-2 no-padding">
+		                            <input
+		                                type="radio"
+		                                id="do_extras"
+		                                name="extra_adjournment"
+		                                value="true"
+		                                ng-click="avoid('total_extra')"
+		                                ng-model="show_total_extra"/>
+		                            <label
+		                                for="do_extras"
+		                                class="inline">
+		                                Sim
+		                            </label>
+		                            <input
+		                                type="radio"
+		                                id="no_extras"
+		                                name="extra_adjournment"
+		                                value="false"
+		                                checked="checked"
+		                                ng-click="avoid('total_extra')"
+		                                ng-model="show_total_extra"/>
+		                            <label
+		                                for="no_extras"
+		                                class="inline">
+		                                Não
+		                            </label>
+		                        </div>
+		                        <div class="columns large-10 left no-padding ">
+		                            <label class="left inline">Conflito relacionado a situações afetivas, sexuais ou de relacionamento</label>
+		                        </div>
+							</div>
+		                    <div>
+		                        <div class="buttonset left columns large-2 no-padding">
+		                            <input
+		                                type="radio"
+		                                id="do_extras"
+		                                name="extra_adjournment"
+		                                value="true"
+		                                ng-click="avoid('total_extra')"
+		                                ng-model="show_total_extra"/>
+		                            <label
+		                                for="do_extras"
+		                                class="inline">
+		                                Sim
+		                            </label>
+		                            <input
+		                                type="radio"
+		                                id="no_extras"
+		                                name="extra_adjournment"
+		                                value="false"
+		                                checked="checked"
+		                                ng-click="avoid('total_extra')"
+		                                ng-model="show_total_extra"/>
+		                            <label
+		                                for="no_extras"
+		                                class="inline">
+		                                Não
+		                            </label>
+		                        </div>
+		                        <div class="columns large-10 left no-padding ">
+		                            <label class="left inline">Bulling</label>
+		                        </div>
+							</div>
+		                    <div>
+		                        <div class="buttonset left columns large-2 no-padding">
+		                            <input
+		                                type="radio"
+		                                id="do_extras"
+		                                name="extra_adjournment"
+		                                value="true"
+		                                ng-click="avoid('total_extra')"
+		                                ng-model="show_total_extra"/>
+		                            <label
+		                                for="do_extras"
+		                                class="inline">
+		                                Sim
+		                            </label>
+		                            <input
+		                                type="radio"
+		                                id="no_extras"
+		                                name="extra_adjournment"
+		                                value="false"
+		                                checked="checked"
+		                                ng-click="avoid('total_extra')"
+		                                ng-model="show_total_extra"/>
+		                            <label
+		                                for="no_extras"
+		                                class="inline">
+		                                Não
+		                            </label>
+		                        </div>
+		                        <div class="columns large-10 left no-padding ">
+		                            <label class="left inline">Situações relacionadas à timidez</label>
+		                        </div>
+							</div>
+		                    <div>
+		                        <div class="buttonset left columns large-2 no-padding">
+		                            <input
+		                                type="radio"
+		                                id="do_extras"
+		                                name="extra_adjournment"
+		                                value="true"
+		                                ng-click="avoid('total_extra')"
+		                                ng-model="show_total_extra"/>
+		                            <label
+		                                for="do_extras"
+		                                class="inline">
+		                                Sim
+		                            </label>
+		                            <input
+		                                type="radio"
+		                                id="no_extras"
+		                                name="extra_adjournment"
+		                                value="false"
+		                                checked="checked"
+		                                ng-click="avoid('total_extra')"
+		                                ng-model="show_total_extra"/>
+		                            <label
+		                                for="no_extras"
+		                                class="inline">
+		                                Não
+		                            </label>
+		                        </div>
+		                        <div class="columns large-10 left no-padding ">
+		                            <label class="left inline">Situação de exclusão em sala de aula</label>
+		                        </div>
+							</div>
+		                    <div>
+		                        <div class="buttonset left columns large-2 no-padding">
+		                            <input
+		                                type="radio"
+		                                id="do_extras"
+		                                name="extra_adjournment"
+		                                value="true"
+		                                ng-click="avoid('total_extra')"
+		                                ng-model="show_total_extra"/>
+		                            <label
+		                                for="do_extras"
+		                                class="inline">
+		                                Sim
+		                            </label>
+		                            <input
+		                                type="radio"
+		                                id="no_extras"
+		                                name="extra_adjournment"
+		                                value="false"
+		                                checked="checked"
+		                                ng-click="avoid('total_extra')"
+		                                ng-model="show_total_extra"/>
+		                            <label
+		                                for="no_extras"
+		                                class="inline">
+		                                Não
+		                            </label>
+		                        </div>
+		                        <div class="columns large-10 left no-padding ">
+		                            <label class="left inline">Situação de abuso (sexual, moral etc)</label>
+		                        </div>
+							</div>
+		                    <div>
+		                        <div class="buttonset left columns large-2 no-padding">
+		                            <input
+		                                type="radio"
+		                                id="do_extras"
+		                                name="extra_adjournment"
+		                                value="true"
+		                                ng-click="avoid('total_extra')"
+		                                ng-model="show_total_extra"/>
+		                            <label
+		                                for="do_extras"
+		                                class="inline">
+		                                Sim
+		                            </label>
+		                            <input
+		                                type="radio"
+		                                id="no_extras"
+		                                name="extra_adjournment"
+		                                value="false"
+		                                checked="checked"
+		                                ng-click="avoid('total_extra')"
+		                                ng-model="show_total_extra"/>
+		                            <label
+		                                for="no_extras"
+		                                class="inline">
+		                                Não
+		                            </label>
+		                        </div>
+		                        <div class="columns large-10 left no-padding ">
+		                            <label class="left inline">Necessidade de orientação secular (não-relacionado à vida acadêmica)</label>
+		                        </div>
+							</div>
+		                    <div>
+		                        <div class="buttonset left columns large-2 no-padding">
+		                            <input
+		                                type="radio"
+		                                id="do_extras"
+		                                name="extra_adjournment"
+		                                value="true"
+		                                ng-click="avoid('total_extra')"
+		                                ng-model="show_total_extra"/>
+		                            <label
+		                                for="do_extras"
+		                                class="inline">
+		                                Sim
+		                            </label>
+		                            <input
+		                                type="radio"
+		                                id="no_extras"
+		                                name="extra_adjournment"
+		                                value="false"
+		                                checked="checked"
+		                                ng-click="avoid('total_extra')"
+		                                ng-model="show_total_extra"/>
+		                            <label
+		                                for="no_extras"
+		                                class="inline">
+		                                Não
+		                            </label>
+		                        </div>
+		                        <div class="columns large-10 left no-padding ">
+		                            <label class="left inline">Problema de comportamento</label>
+		                        </div>
+							</div>
+		                    <div>
+		                        <div class="buttonset left columns large-2 no-padding">
+		                            <input
+		                                type="radio"
+		                                id="do_extras"
+		                                name="extra_adjournment"
+		                                value="true"
+		                                ng-click="avoid('total_extra')"
+		                                ng-model="show_total_extra"/>
+		                            <label
+		                                for="do_extras"
+		                                class="inline">
+		                                Sim
+		                            </label>
+		                            <input
+		                                type="radio"
+		                                id="no_extras"
+		                                name="extra_adjournment"
+		                                value="false"
+		                                checked="checked"
+		                                ng-click="avoid('total_extra')"
+		                                ng-model="show_total_extra"/>
+		                            <label
+		                                for="no_extras"
+		                                class="inline">
+		                                Não
+		                            </label>
+		                        </div>
+		                        <div class="columns large-10 left no-padding ">
+		                            <label class="left inline">Problema de relacionamento aluno - professor</label>
+		                        </div>
+							</div>
+		                    <div>
+		                        <div class="buttonset left columns large-2 no-padding">
+		                            <input
+		                                type="radio"
+		                                id="do_extras"
+		                                name="extra_adjournment"
+		                                value="true"
+		                                ng-click="avoid('total_extra')"
+		                                ng-model="show_total_extra"/>
+		                            <label
+		                                for="do_extras"
+		                                class="inline">
+		                                Sim
+		                            </label>
+		                            <input
+		                                type="radio"
+		                                id="no_extras"
+		                                name="extra_adjournment"
+		                                value="false"
+		                                checked="checked"
+		                                ng-click="avoid('total_extra')"
+		                                ng-model="show_total_extra"/>
+		                            <label
+		                                for="no_extras"
+		                                class="inline">
+		                                Não
+		                            </label>
+		                        </div>
+		                        <div class="columns large-10 left no-padding ">
+		                            <label class="left inline">Problema de relacionamento aluno - aluno</label>
+		                        </div>
+							</div>
+		                    <div>
+		                        <div class="buttonset left columns large-2 no-padding">
+		                            <input
+		                                type="radio"
+		                                id="do_extras"
+		                                name="extra_adjournment"
+		                                value="true"
+		                                ng-click="avoid('total_extra')"
+		                                ng-model="show_total_extra"/>
+		                            <label
+		                                for="do_extras"
+		                                class="inline">
+		                                Sim
+		                            </label>
+		                            <input
+		                                type="radio"
+		                                id="no_extras"
+		                                name="extra_adjournment"
+		                                value="false"
+		                                checked="checked"
+		                                ng-click="avoid('total_extra')"
+		                                ng-model="show_total_extra"/>
+		                            <label
+		                                for="no_extras"
+		                                class="inline">
+		                                Não
+		                            </label>
+		                        </div>
+		                        <div class="columns large-10 left no-padding ">
+		                            <label class="left inline">Problema de ordem disciplinar leve</label>
+		                        </div>
+							</div>
+		                    <div>
+		                        <div class="buttonset left columns large-2 no-padding">
+		                            <input
+		                                type="radio"
+		                                id="do_extras"
+		                                name="extra_adjournment"
+		                                value="true"
+		                                ng-click="avoid('total_extra')"
+		                                ng-model="show_total_extra"/>
+		                            <label
+		                                for="do_extras"
+		                                class="inline">
+		                                Sim
+		                            </label>
+		                            <input
+		                                type="radio"
+		                                id="no_extras"
+		                                name="extra_adjournment"
+		                                value="false"
+		                                checked="checked"
+		                                ng-click="avoid('total_extra')"
+		                                ng-model="show_total_extra"/>
+		                            <label
+		                                for="no_extras"
+		                                class="inline">
+		                                Não
+		                            </label>
+		                        </div>
+		                        <div class="columns large-10 left no-padding ">
+		                            <label class="left inline">Problema de ordem disciplinar médio</label>
+		                        </div>
+							</div>
+		                    <div>
+		                        <div class="buttonset left columns large-2 no-padding">
+		                            <input
+		                                type="radio"
+		                                id="do_extras"
+		                                name="extra_adjournment"
+		                                value="true"
+		                                ng-click="avoid('total_extra')"
+		                                ng-model="show_total_extra"/>
+		                            <label
+		                                for="do_extras"
+		                                class="inline">
+		                                Sim
+		                            </label>
+		                            <input
+		                                type="radio"
+		                                id="no_extras"
+		                                name="extra_adjournment"
+		                                value="false"
+		                                checked="checked"
+		                                ng-click="avoid('total_extra')"
+		                                ng-model="show_total_extra"/>
+		                            <label
+		                                for="no_extras"
+		                                class="inline">
+		                                Não
+		                            </label>
+		                        </div>
+		                        <div class="columns large-10 left no-padding ">
+		                            <label class="left inline">Problema de ordem disciplinar grave</label>
+		                        </div>
+							</div>
+		                    <div>
+		                        <div class="buttonset left columns large-2 no-padding">
+		                            <input
+		                                type="radio"
+		                                id="do_extras"
+		                                name="extra_adjournment"
+		                                value="true"
+		                                ng-click="avoid('total_extra')"
+		                                ng-model="show_total_extra"/>
+		                            <label
+		                                for="do_extras"
+		                                class="inline">
+		                                Sim
+		                            </label>
+		                            <input
+		                                type="radio"
+		                                id="no_extras"
+		                                name="extra_adjournment"
+		                                value="false"
+		                                checked="checked"
+		                                ng-click="avoid('total_extra')"
+		                                ng-model="show_total_extra"/>
+		                            <label
+		                                for="no_extras"
+		                                class="inline">
+		                                Não
+		                            </label>
+		                        </div>
+		                        <div class="columns large-10 left no-padding ">
+		                            <label class="left inline">Problema de relacionamento com o pai</label>
+		                        </div>
+							</div>
+		                    <div>
+		                        <div class="buttonset left columns large-2 no-padding">
+		                            <input
+		                                type="radio"
+		                                id="do_extras"
+		                                name="extra_adjournment"
+		                                value="true"
+		                                ng-click="avoid('total_extra')"
+		                                ng-model="show_total_extra"/>
+		                            <label
+		                                for="do_extras"
+		                                class="inline">
+		                                Sim
+		                            </label>
+		                            <input
+		                                type="radio"
+		                                id="no_extras"
+		                                name="extra_adjournment"
+		                                value="false"
+		                                checked="checked"
+		                                ng-click="avoid('total_extra')"
+		                                ng-model="show_total_extra"/>
+		                            <label
+		                                for="no_extras"
+		                                class="inline">
+		                                Não
+		                            </label>
+		                        </div>
+		                        <div class="columns large-10 left no-padding ">
+		                            <label class="left inline">Problema de relacionamento com a mãe</label>
+		                        </div>
+							</div>
+		                    <div>
+		                        <div class="buttonset left columns large-2 no-padding">
+		                            <input
+		                                type="radio"
+		                                id="do_extras"
+		                                name="extra_adjournment"
+		                                value="true"
+		                                ng-click="avoid('total_extra')"
+		                                ng-model="show_total_extra"/>
+		                            <label
+		                                for="do_extras"
+		                                class="inline">
+		                                Sim
+		                            </label>
+		                            <input
+		                                type="radio"
+		                                id="no_extras"
+		                                name="extra_adjournment"
+		                                value="false"
+		                                checked="checked"
+		                                ng-click="avoid('total_extra')"
+		                                ng-model="show_total_extra"/>
+		                            <label
+		                                for="no_extras"
+		                                class="inline">
+		                                Não
+		                            </label>
+		                        </div>
+		                        <div class="columns large-10 left no-padding ">
+		                            <label class="left inline">Problema de relacionamento em casa</label>
+		                        </div>
+							</div>
+		                    <div>
+		                        <div class="buttonset left columns large-2 no-padding">
+		                            <input
+		                                type="radio"
+		                                id="do_extras"
+		                                name="extra_adjournment"
+		                                value="true"
+		                                ng-click="avoid('total_extra')"
+		                                ng-model="show_total_extra"/>
+		                            <label
+		                                for="do_extras"
+		                                class="inline">
+		                                Sim
+		                            </label>
+		                            <input
+		                                type="radio"
+		                                id="no_extras"
+		                                name="extra_adjournment"
+		                                value="false"
+		                                checked="checked"
+		                                ng-click="avoid('total_extra')"
+		                                ng-model="show_total_extra"/>
+		                            <label
+		                                for="no_extras"
+		                                class="inline">
+		                                Não
+		                            </label>
+		                        </div>
+		                        <div class="columns large-10 left no-padding ">
+		                            <label class="left inline">Pais em separação</label>
+		                        </div>
+							</div>
+		                    <div>
+		                        <div class="buttonset left columns large-2 no-padding">
+		                            <input
+		                                type="radio"
+		                                id="do_extras"
+		                                name="extra_adjournment"
+		                                value="true"
+		                                ng-click="avoid('total_extra')"
+		                                ng-model="show_total_extra"/>
+		                            <label
+		                                for="do_extras"
+		                                class="inline">
+		                                Sim
+		                            </label>
+		                            <input
+		                                type="radio"
+		                                id="no_extras"
+		                                name="extra_adjournment"
+		                                value="false"
+		                                checked="checked"
+		                                ng-click="avoid('total_extra')"
+		                                ng-model="show_total_extra"/>
+		                            <label
+		                                for="no_extras"
+		                                class="inline">
+		                                Não
+		                            </label>
+		                        </div>
+		                        <div class="columns large-10 left no-padding ">
+		                            <label class="left inline">Conflito familiar</label>
+		                        </div>
+							</div>
+		                    <div>
+		                        <div class="buttonset left columns large-2 no-padding">
+		                            <input
+		                                type="radio"
+		                                id="do_extras"
+		                                name="extra_adjournment"
+		                                value="true"
+		                                ng-click="avoid('total_extra')"
+		                                ng-model="show_total_extra"/>
+		                            <label
+		                                for="do_extras"
+		                                class="inline">
+		                                Sim
+		                            </label>
+		                            <input
+		                                type="radio"
+		                                id="no_extras"
+		                                name="extra_adjournment"
+		                                value="false"
+		                                checked="checked"
+		                                ng-click="avoid('total_extra')"
+		                                ng-model="show_total_extra"/>
+		                            <label
+		                                for="no_extras"
+		                                class="inline">
+		                                Não
+		                            </label>
+		                        </div>
+		                        <div class="columns large-10 left no-padding ">
+		                            <label class="left inline">Problemas de ordem sócio-econômica do aluno ou família</label>
+		                        </div>
+							</div>
+							<hr/>
+				            <div class="row collapse">
+				                <div class="small-2 columns">
+				                    <label class="prefix"
+				                        for="contexto">
+				                        Contexto
+				                    </label>
+				                </div>
+				                <div class="small-10 columns end">
+				                    <textarea
+				                        id="contexto"
+				                        name="contexto"
+	                        			rows="8"
+										placeholder="Descreva o máximo de informações a respeito da situação do aluno. Evite colocar informações que o identifique ou a outras pessoas. Faça comentários ou observações relevantes sobre o atendimento."></textarea>
+				                </div>
+				            </div>
+							<div class="row">
+				                <div class="small-12 column centered">
+				                    <button
+				                        type="submit"
+				                        class="success button small">
+				                        ENCAMINHAMENTOS
+				                    </button>
+				                </div>
+				            </div>	
+				        </section>
+				    </form>
+				</div>
+            </div>	            
+            <% include ../footer %>
