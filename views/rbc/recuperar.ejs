@@ -11,7 +11,8 @@
 				        class="row"
 				        method="post"
 				        action="/recuperar"
-				    >
+	        			data-abide 
+	        			novalidate >
 				        <section class="large-12 panel no-border">
 							<fieldset>
 							<legend>Informações pessoais do aluno</legend>
@@ -28,38 +29,13 @@
 						                    <input
 						                        type="text"
 						                        id="data"
-						                        name="data"
+						                        name="caso[data]"
 				                                maxlength="10"
-				                                placeholder="00/00/0000" />
+				                                placeholder="00/00/0000"
+												required />
 						                </div>
 						            </div>
 					            </div>
-					            <div class="small-12 large-6 columns">
-						            <div class="row collapse">
-						                <div class="small-5 column">
-						                    <label
-						                        class="prefix"
-						                        for="sexo">
-						                        Sexo
-						                    </label>
-						                </div>
-						                <div class="small-7 column">
-						                    <select
-						                        id="sexo"
-						                        name="sexo"
-						                        class="small-12">
-												<option value="0">
-													FEMININO
-												</option>
-												<option value="1">
-													MASCULINO
-												</option>
-											</select>
-						                </div>
-						            </div>
-					            </div>
-				            </div>
-				            <div class="row">
 					            <div class="columns small-12 large-6">
 						            <div class="row collapse">
 						                <div class="small-5 column">
@@ -74,8 +50,57 @@
 						                        type="text"
 												id="matricula"
 				                                maxlength="128"
-						                        name="matricula"
+						                        name="caso[matricula]"
+												required
 						                    />
+						                </div>
+						            </div>
+					            </div>
+				            </div>
+				            <div class="row collapse">
+				                <div class="small-2 columns">
+				                    <label class="prefix"
+				                        for="nome">
+				                        Nome
+				                    </label>
+				                </div>
+				                <div class="small-10 columns end">
+				                    <input
+				                        type="text"
+				                        id="nome"
+				                        name="caso[nome]"
+				                        min="5"
+				                        maxlength="128"
+										placeholder="Nome Completo do Aluno"
+										required />
+				                </div>
+				            </div>
+				            <div class="row">
+					            <div class="small-12 large-6 columns">
+						            <div class="row collapse">
+						                <div class="small-4 column">
+						                    <label
+						                        class="prefix"
+						                        for="sexo">
+						                        Sexo
+						                    </label>
+						                </div>
+						                <div class="small-8 column">
+						                    <select 
+						                        id="sexo"
+						                        name="caso[sexo]"
+						                        class="small-12 justifyed"
+												required >
+												<option value="">
+													Selecione
+												</option>
+												<option value="0" >
+													FEMININO
+												</option>
+												<option value="1">
+													MASCULINO
+												</option>
+											</select>
 						                </div>
 						            </div>
 					            </div>
@@ -93,7 +118,7 @@
 						                        type="text"
 						                        maxlength="15"
 												id="telefone"
-						                        name="telefone"
+						                        name="caso[telefone]"
 						                        placeholder="(84)0000-0000"
 						                    />
 						                </div>
@@ -101,41 +126,24 @@
 					            </div>
 				            </div>
 				            <div class="row collapse">
-				                <div class="small-3 columns">
-				                    <label class="prefix"
-				                        for="nome">
-				                        Nome
-				                    </label>
-				                </div>
-				                <div class="small-9 columns end">
-				                    <input
-				                        type="text"
-				                        id="nome"
-				                        name="nome"
-				                        min="5"
-				                        maxlength="128"
-										placeholder="Nome Completo do Aluno" />
-				                </div>
-				            </div>
-				            <div class="row collapse">
-				                <div class="small-3 columns">
+				                <div class="small-2 columns">
 				                    <label class="prefix"
 				                        for="email">
 				                        Email
 				                    </label>
 				                </div>
-				                <div class="small-9 columns end">
+				                <div class="small-10 columns end">
 				                    <input
 				                        type="email"
 				                        id="email"
-				                        name="email"
+				                        name="caso[email]"
 				                        min="5"
 				                        maxlength="128"
 										placeholder="email@ifrn.edu.br" />
 				                </div>
 				            </div>
 				            <div class="row">
-					            <div class="columns small-12 large-7">
+					            <div class="columns small-12 large-6">
 						            <div class="row collapse">
 						                <div class="small-3 column">
 						                    <label
@@ -147,37 +155,42 @@
 						                <div class="small-9 column">
 						                    <select
 						                        id="curso"
-						                        name="curso"
-												style="width:100%">
+						                        name="caso[curso]"
+												style="width:100%"
+												class="small-12 justifyed"
+												required >
 												<option value="">
+													Selecione
+												</option>
+												<option value="1">
 													Integrado em Administração
 												</option>
-												<option value="">
+												<option value="2">
 													Integrado em Informática para Internet
 												</option>
-												<option value="">
+												<option value="3">
 													Integrado em Manutenção e Suporte em Informática
 												</option>
-												<option value="">
+												<option value="4">
 													Integrado em Informática (generalista)
 												</option>
-												<option value="">
+												<option value="5">
 													Superior - TADS
 												</option>
-												<option value="">
+												<option value="6">
 													Superior - REDES
 												</option>
-												<option value="">
+												<option value="7">
 													Superior - GESTÃO PÚBLICA
 												</option>
-												<option value="">
+												<option value="8">
 													Superior - COMEX
 												</option>
 											</select>
 						                </div>
 						            </div>
 					            </div>
-					            <div class="columns small-12 large-5">
+					            <div class="columns small-12 large-6">
 						            <div class="row collapse">
 						                <div class="small-5 column">
 						                    <label
@@ -189,8 +202,13 @@
 						                <div class="small-7 column">
 						                    <select
 						                        id="periodo"
-						                        name="periodo"
-												style="width:100%">
+						                        name="caso[periodo]"
+												style="width:100%"
+												class="small-12 justifyed"
+												required >
+												<option value="" >
+													Selecione
+												</option>
 												<option value="1">
 													1º Período/Ano
 												</option>
@@ -218,14 +236,14 @@
 				            <div class="row collapse">
 				                <div class="small-3 columns">
 				                    <label class="prefix"
-				                        for="notas">
+				                        for="observacoes">
 				                        Dados Seguros
 				                    </label>
 				                </div>
 				                <div class="small-9 columns end">
 				                    <textarea
-				                        id="notas"
-				                        name="notas"
+				                        id="observacoes"
+				                        name="caso[observacoes]"
 	                        			rows="5"
 										placeholder="Aqui você pode inserir informações sigilosas, que tenham relação ao caso apresentado, tais como dados do responsável, grau de parentesco, contatos..."></textarea>
 				                </div>
@@ -239,26 +257,23 @@
 		                        <div class="buttonset left columns large-2 no-padding">
 		                            <input
 		                                type="radio"
-		                                id="do_extras"
-		                                name="extra_adjournment"
-		                                value="true"
-		                                ng-click="avoid('total_extra')"
-		                                ng-model="show_total_extra"/>
+										value="1"
+		                                id="caso[demandas][dificuldadeAprendizagem]Yep"
+		                                name="caso[demandas][dificuldadeAprendizagem]"
+										ng-model="caso[demandas][dificuldadeAprendizagem]"/>
 		                            <label
-		                                for="do_extras"
+		                                for="caso[demandas][dificuldadeAprendizagem]Yep"
 		                                class="inline">
 		                                Sim
 		                            </label>
 		                            <input
 		                                type="radio"
-		                                id="no_extras"
-		                                name="extra_adjournment"
-		                                value="false"
-		                                checked="checked"
-		                                ng-click="avoid('total_extra')"
-		                                ng-model="show_total_extra"/>
+										value="0" checked="checked"
+		                                id="caso[demandas][dificuldadeAprendizagem]No"
+		                                name="caso[demandas][dificuldadeAprendizagem]"
+										ng-model="caso[demandas][dificuldadeAprendizagem]"/>
 		                            <label
-		                                for="no_extras"
+		                                for="caso[demandas][dificuldadeAprendizagem]No"
 		                                class="inline">
 		                                Não
 		                            </label>
@@ -271,26 +286,23 @@
 		                        <div class="buttonset left columns large-2 no-padding">
 		                            <input
 		                                type="radio"
-		                                id="do_extras"
-		                                name="extra_adjournment"
-		                                value="true"
-		                                ng-click="avoid('total_extra')"
-		                                ng-model="show_total_extra"/>
+										value="1"
+		                                id="caso[demandas][orientacaoPedagogica]Yep"
+		                                name="caso[demandas][orientacaoPedagogica]"
+										ng-model="caso[demandas][orientacaoPedagogica]"/>
 		                            <label
-		                                for="do_extras"
+		                                for="caso[demandas][orientacaoPedagogica]Yep"
 		                                class="inline">
 		                                Sim
 		                            </label>
 		                            <input
 		                                type="radio"
-		                                id="no_extras"
-		                                name="extra_adjournment"
-		                                value="false"
-		                                checked="checked"
-		                                ng-click="avoid('total_extra')"
-		                                ng-model="show_total_extra"/>
+										value="0" checked="checked"
+		                                id="caso[demandas][orientacaoPedagogica]No"
+		                                name="caso[demandas][orientacaoPedagogica]"
+										ng-model="caso[demandas][orientacaoPedagogica]"/>
 		                            <label
-		                                for="no_extras"
+		                                for="caso[demandas][orientacaoPedagogica]No"
 		                                class="inline">
 		                                Não
 		                            </label>
@@ -303,26 +315,23 @@
 		                        <div class="buttonset left columns large-2 no-padding">
 		                            <input
 		                                type="radio"
-		                                id="do_extras"
-		                                name="extra_adjournment"
-		                                value="true"
-		                                ng-click="avoid('total_extra')"
-		                                ng-model="show_total_extra"/>
+										value="1"
+		                                id="caso[demandas][muitasFaltas]Yep"
+		                                name="caso[demandas][muitasFaltas]"
+										ng-model="caso[demandas][muitasFaltas]"/>
 		                            <label
-		                                for="do_extras"
+		                                for="caso[demandas][muitasFaltas]Yep"
 		                                class="inline">
 		                                Sim
 		                            </label>
 		                            <input
 		                                type="radio"
-		                                id="no_extras"
-		                                name="extra_adjournment"
-		                                value="false"
-		                                checked="checked"
-		                                ng-click="avoid('total_extra')"
-		                                ng-model="show_total_extra"/>
+										value="0" checked="checked"
+		                                id="caso[demandas][muitasFaltas]No"
+		                                name="caso[demandas][muitasFaltas]"
+										ng-model="caso[demandas][muitasFaltas]"/>
 		                            <label
-		                                for="no_extras"
+		                                for="caso[demandas][muitasFaltas]No"
 		                                class="inline">
 		                                Não
 		                            </label>
@@ -335,26 +344,23 @@
 		                        <div class="buttonset left columns large-2 no-padding">
 		                            <input
 		                                type="radio"
-		                                id="do_extras"
-		                                name="extra_adjournment"
-		                                value="true"
-		                                ng-click="avoid('total_extra')"
-		                                ng-model="show_total_extra"/>
+										value="1"
+		                                id="caso[demandas][atrasosConstantes]Yep"
+		                                name="caso[demandas][atrasosConstantes]"
+										ng-model="caso[demandas][atrasosConstantes]"/>
 		                            <label
-		                                for="do_extras"
+		                                for="caso[demandas][atrasosConstantes]Yep"
 		                                class="inline">
 		                                Sim
 		                            </label>
 		                            <input
 		                                type="radio"
-		                                id="no_extras"
-		                                name="extra_adjournment"
-		                                value="false"
-		                                checked="checked"
-		                                ng-click="avoid('total_extra')"
-		                                ng-model="show_total_extra"/>
+										value="0" checked="checked"
+		                                id="caso[demandas][atrasosConstantes]No"
+		                                name="caso[demandas][atrasosConstantes]"
+										ng-model="caso[demandas][atrasosConstantes]"/>
 		                            <label
-		                                for="no_extras"
+		                                for="caso[demandas][atrasosConstantes]No"
 		                                class="inline">
 		                                Não
 		                            </label>
@@ -367,26 +373,23 @@
 		                        <div class="buttonset left columns large-2 no-padding">
 		                            <input
 		                                type="radio"
-		                                id="do_extras"
-		                                name="extra_adjournment"
-		                                value="true"
-		                                ng-click="avoid('total_extra')"
-		                                ng-model="show_total_extra"/>
+										value="1"
+		                                id="caso[demandas][desequilibrioPsicologico]Yep"
+		                                name="caso[demandas][desequilibrioPsicologico]"
+										ng-model="caso[demandas][desequilibrioPsicologico]"/>
 		                            <label
-		                                for="do_extras"
+		                                for="caso[demandas][desequilibrioPsicologico]Yep"
 		                                class="inline">
 		                                Sim
 		                            </label>
 		                            <input
 		                                type="radio"
-		                                id="no_extras"
-		                                name="extra_adjournment"
-		                                value="false"
-		                                checked="checked"
-		                                ng-click="avoid('total_extra')"
-		                                ng-model="show_total_extra"/>
+										value="0" checked="checked"
+		                                id="caso[demandas][desequilibrioPsicologico]No"
+		                                name="caso[demandas][desequilibrioPsicologico]"
+										ng-model="caso[demandas][desequilibrioPsicologico]"/>
 		                            <label
-		                                for="no_extras"
+		                                for="caso[demandas][desequilibrioPsicologico]No"
 		                                class="inline">
 		                                Não
 		                            </label>
@@ -399,58 +402,52 @@
 		                        <div class="buttonset left columns large-2 no-padding">
 		                            <input
 		                                type="radio"
-		                                id="do_extras"
-		                                name="extra_adjournment"
-		                                value="true"
-		                                ng-click="avoid('total_extra')"
-		                                ng-model="show_total_extra"/>
+										value="1"
+		                                id="caso[demandas][desmotivacaoRendimento]Yep"
+		                                name="caso[demandas][desmotivacaoRendimento]"
+										ng-model="caso[demandas][desmotivacaoRendimento]"/>
 		                            <label
-		                                for="do_extras"
+		                                for="caso[demandas][desmotivacaoRendimento]Yep"
 		                                class="inline">
 		                                Sim
 		                            </label>
 		                            <input
 		                                type="radio"
-		                                id="no_extras"
-		                                name="extra_adjournment"
-		                                value="false"
-		                                checked="checked"
-		                                ng-click="avoid('total_extra')"
-		                                ng-model="show_total_extra"/>
+										value="0" checked="checked"
+		                                id="caso[demandas][desmotivacaoRendimento]No"
+		                                name="caso[demandas][desmotivacaoRendimento]"
+										ng-model="caso[demandas][desmotivacaoRendimento]"/>
 		                            <label
-		                                for="no_extras"
+		                                for="caso[demandas][desmotivacaoRendimento]No"
 		                                class="inline">
 		                                Não
 		                            </label>
 		                        </div>
 		                        <div class="columns large-10 left no-padding ">
-		                            <label class="left inline">Desotivação por baixo rendimento</label>
+		                            <label class="left inline">Desmotivação por baixo rendimento</label>
 		                        </div>
 							</div>
 		                    <div>
 		                        <div class="buttonset left columns large-2 no-padding">
 		                            <input
 		                                type="radio"
-		                                id="do_extras"
-		                                name="extra_adjournment"
-		                                value="true"
-		                                ng-click="avoid('total_extra')"
-		                                ng-model="show_total_extra"/>
+										value="1"
+		                                id="caso[demandas][desmotivacaoCurso]Yep"
+		                                name="caso[demandas][desmotivacaoCurso]"
+										ng-model="caso[demandas][desmotivacaoCurso]"/>
 		                            <label
-		                                for="do_extras"
+		                                for="caso[demandas][desmotivacaoCurso]Yep"
 		                                class="inline">
 		                                Sim
 		                            </label>
 		                            <input
 		                                type="radio"
-		                                id="no_extras"
-		                                name="extra_adjournment"
-		                                value="false"
-		                                checked="checked"
-		                                ng-click="avoid('total_extra')"
-		                                ng-model="show_total_extra"/>
+										value="0" checked="checked"
+		                                id="caso[demandas][desmotivacaoCurso]No"
+		                                name="caso[demandas][desmotivacaoCurso]"
+										ng-model="caso[demandas][desmotivacaoCurso]"/>
 		                            <label
-		                                for="no_extras"
+		                                for="caso[demandas][desmotivacaoCurso]No"
 		                                class="inline">
 		                                Não
 		                            </label>
@@ -463,26 +460,23 @@
 		                        <div class="buttonset left columns large-2 no-padding">
 		                            <input
 		                                type="radio"
-		                                id="do_extras"
-		                                name="extra_adjournment"
-		                                value="true"
-		                                ng-click="avoid('total_extra')"
-		                                ng-model="show_total_extra"/>
+										value="1"
+		                                id="caso[demandas][conflitoOpcaoSexual]Yep"
+		                                name="caso[demandas][conflitoOpcaoSexual]"
+										ng-model="caso[demandas][conflitoOpcaoSexual]"/>
 		                            <label
-		                                for="do_extras"
+		                                for="caso[demandas][conflitoOpcaoSexual]Yep"
 		                                class="inline">
 		                                Sim
 		                            </label>
 		                            <input
 		                                type="radio"
-		                                id="no_extras"
-		                                name="extra_adjournment"
-		                                value="false"
-		                                checked="checked"
-		                                ng-click="avoid('total_extra')"
-		                                ng-model="show_total_extra"/>
+										value="0" checked="checked"
+		                                id="caso[demandas][conflitoOpcaoSexual]No"
+		                                name="caso[demandas][conflitoOpcaoSexual]"
+										ng-model="caso[demandas][conflitoOpcaoSexual]"/>
 		                            <label
-		                                for="no_extras"
+		                                for="caso[demandas][conflitoOpcaoSexual]No"
 		                                class="inline">
 		                                Não
 		                            </label>
@@ -495,26 +489,23 @@
 		                        <div class="buttonset left columns large-2 no-padding">
 		                            <input
 		                                type="radio"
-		                                id="do_extras"
-		                                name="extra_adjournment"
-		                                value="true"
-		                                ng-click="avoid('total_extra')"
-		                                ng-model="show_total_extra"/>
+										value="1"
+		                                id="caso[demandas][conflitoRelacionalAfetivo]Yep"
+		                                name="caso[demandas][conflitoRelacionalAfetivo]"
+										ng-model="caso[demandas][conflitoRelacionalAfetivo]"/>
 		                            <label
-		                                for="do_extras"
+		                                for="caso[demandas][conflitoRelacionalAfetivo]Yep"
 		                                class="inline">
 		                                Sim
 		                            </label>
 		                            <input
 		                                type="radio"
-		                                id="no_extras"
-		                                name="extra_adjournment"
-		                                value="false"
-		                                checked="checked"
-		                                ng-click="avoid('total_extra')"
-		                                ng-model="show_total_extra"/>
+										value="0" checked="checked"
+		                                id="caso[demandas][conflitoRelacionalAfetivo]No"
+		                                name="caso[demandas][conflitoRelacionalAfetivo]"
+										ng-model="caso[demandas][conflitoRelacionalAfetivo]"/>
 		                            <label
-		                                for="no_extras"
+		                                for="caso[demandas][conflitoRelacionalAfetivo]No"
 		                                class="inline">
 		                                Não
 		                            </label>
@@ -527,26 +518,23 @@
 		                        <div class="buttonset left columns large-2 no-padding">
 		                            <input
 		                                type="radio"
-		                                id="do_extras"
-		                                name="extra_adjournment"
-		                                value="true"
-		                                ng-click="avoid('total_extra')"
-		                                ng-model="show_total_extra"/>
+										value="1"
+		                                id="caso[demandas][bulling]Yep"
+		                                name="caso[demandas][bulling]"
+										ng-model="caso[demandas][bulling]"/>
 		                            <label
-		                                for="do_extras"
+		                                for="caso[demandas][bulling]Yep"
 		                                class="inline">
 		                                Sim
 		                            </label>
 		                            <input
 		                                type="radio"
-		                                id="no_extras"
-		                                name="extra_adjournment"
-		                                value="false"
-		                                checked="checked"
-		                                ng-click="avoid('total_extra')"
-		                                ng-model="show_total_extra"/>
+										value="0" checked="checked"
+		                                id="caso[demandas][bulling]No"
+		                                name="caso[demandas][bulling]"
+										ng-model="caso[demandas][bulling]"/>
 		                            <label
-		                                for="no_extras"
+		                                for="caso[demandas][bulling]No"
 		                                class="inline">
 		                                Não
 		                            </label>
@@ -559,26 +547,23 @@
 		                        <div class="buttonset left columns large-2 no-padding">
 		                            <input
 		                                type="radio"
-		                                id="do_extras"
-		                                name="extra_adjournment"
-		                                value="true"
-		                                ng-click="avoid('total_extra')"
-		                                ng-model="show_total_extra"/>
+										value="1"
+		                                id="caso[demandas][situacaoTimidez]Yep"
+		                                name="caso[demandas][situacaoTimidez]"
+										ng-model="caso[demandas][situacaoTimidez]"/>
 		                            <label
-		                                for="do_extras"
+		                                for="caso[demandas][situacaoTimidez]Yep"
 		                                class="inline">
 		                                Sim
 		                            </label>
 		                            <input
 		                                type="radio"
-		                                id="no_extras"
-		                                name="extra_adjournment"
-		                                value="false"
-		                                checked="checked"
-		                                ng-click="avoid('total_extra')"
-		                                ng-model="show_total_extra"/>
+										value="0" checked="checked"
+		                                id="caso[demandas][situacaoTimidez]No"
+		                                name="caso[demandas][situacaoTimidez]"
+										ng-model="caso[demandas][situacaoTimidez]"/>
 		                            <label
-		                                for="no_extras"
+		                                for="caso[demandas][situacaoTimidez]No"
 		                                class="inline">
 		                                Não
 		                            </label>
@@ -591,26 +576,23 @@
 		                        <div class="buttonset left columns large-2 no-padding">
 		                            <input
 		                                type="radio"
-		                                id="do_extras"
-		                                name="extra_adjournment"
-		                                value="true"
-		                                ng-click="avoid('total_extra')"
-		                                ng-model="show_total_extra"/>
+										value="1"
+		                                id="caso[demandas][situacaoExclusao]Yep"
+		                                name="caso[demandas][situacaoExclusao]"
+										ng-model="caso[demandas][situacaoExclusao]"/>
 		                            <label
-		                                for="do_extras"
+		                                for="caso[demandas][situacaoExclusao]Yep"
 		                                class="inline">
 		                                Sim
 		                            </label>
 		                            <input
 		                                type="radio"
-		                                id="no_extras"
-		                                name="extra_adjournment"
-		                                value="false"
-		                                checked="checked"
-		                                ng-click="avoid('total_extra')"
-		                                ng-model="show_total_extra"/>
+										value="0" checked="checked"
+		                                id="caso[demandas][situacaoExclusao]No"
+		                                name="caso[demandas][situacaoExclusao]"
+										ng-model="caso[demandas][situacaoExclusao]"/>
 		                            <label
-		                                for="no_extras"
+		                                for="caso[demandas][situacaoExclusao]No"
 		                                class="inline">
 		                                Não
 		                            </label>
@@ -623,26 +605,23 @@
 		                        <div class="buttonset left columns large-2 no-padding">
 		                            <input
 		                                type="radio"
-		                                id="do_extras"
-		                                name="extra_adjournment"
-		                                value="true"
-		                                ng-click="avoid('total_extra')"
-		                                ng-model="show_total_extra"/>
+										value="1"
+		                                id="caso[demandas][situacaoAbuso]Yep"
+		                                name="caso[demandas][situacaoAbuso]"
+										ng-model="caso[demandas][situacaoAbuso]"/>
 		                            <label
-		                                for="do_extras"
+		                                for="caso[demandas][situacaoAbuso]Yep"
 		                                class="inline">
 		                                Sim
 		                            </label>
 		                            <input
 		                                type="radio"
-		                                id="no_extras"
-		                                name="extra_adjournment"
-		                                value="false"
-		                                checked="checked"
-		                                ng-click="avoid('total_extra')"
-		                                ng-model="show_total_extra"/>
+										value="0" checked="checked"
+		                                id="caso[demandas][situacaoAbuso]No"
+		                                name="caso[demandas][situacaoAbuso]"
+										ng-model="caso[demandas][situacaoAbuso]"/>
 		                            <label
-		                                for="no_extras"
+		                                for="caso[demandas][situacaoAbuso]No"
 		                                class="inline">
 		                                Não
 		                            </label>
@@ -655,26 +634,23 @@
 		                        <div class="buttonset left columns large-2 no-padding">
 		                            <input
 		                                type="radio"
-		                                id="do_extras"
-		                                name="extra_adjournment"
-		                                value="true"
-		                                ng-click="avoid('total_extra')"
-		                                ng-model="show_total_extra"/>
+										value="1"
+		                                id="caso[demandas][orientacaoSecular]Yep"
+		                                name="caso[demandas][orientacaoSecular]"
+										ng-model="caso[demandas][orientacaoSecular]"/>
 		                            <label
-		                                for="do_extras"
+		                                for="caso[demandas][orientacaoSecular]Yep"
 		                                class="inline">
 		                                Sim
 		                            </label>
 		                            <input
 		                                type="radio"
-		                                id="no_extras"
-		                                name="extra_adjournment"
-		                                value="false"
-		                                checked="checked"
-		                                ng-click="avoid('total_extra')"
-		                                ng-model="show_total_extra"/>
+										value="0" checked="checked"
+		                                id="caso[demandas][orientacaoSecular]No"
+		                                name="caso[demandas][orientacaoSecular]"
+										ng-model="caso[demandas][orientacaoSecular]"/>
 		                            <label
-		                                for="no_extras"
+		                                for="caso[demandas][orientacaoSecular]No"
 		                                class="inline">
 		                                Não
 		                            </label>
@@ -687,26 +663,23 @@
 		                        <div class="buttonset left columns large-2 no-padding">
 		                            <input
 		                                type="radio"
-		                                id="do_extras"
-		                                name="extra_adjournment"
-		                                value="true"
-		                                ng-click="avoid('total_extra')"
-		                                ng-model="show_total_extra"/>
+										value="1"
+		                                id="caso[demandas][problemaComportamento]Yep"
+		                                name="caso[demandas][problemaComportamento]"
+										ng-model="caso[demandas][problemaComportamento]"/>
 		                            <label
-		                                for="do_extras"
+		                                for="caso[demandas][problemaComportamento]Yep"
 		                                class="inline">
 		                                Sim
 		                            </label>
 		                            <input
 		                                type="radio"
-		                                id="no_extras"
-		                                name="extra_adjournment"
-		                                value="false"
-		                                checked="checked"
-		                                ng-click="avoid('total_extra')"
-		                                ng-model="show_total_extra"/>
+										value="0" checked="checked"
+		                                id="caso[demandas][problemaComportamento]No"
+		                                name="caso[demandas][problemaComportamento]"
+										ng-model="caso[demandas][problemaComportamento]"/>
 		                            <label
-		                                for="no_extras"
+		                                for="caso[demandas][problemaComportamento]No"
 		                                class="inline">
 		                                Não
 		                            </label>
@@ -719,26 +692,23 @@
 		                        <div class="buttonset left columns large-2 no-padding">
 		                            <input
 		                                type="radio"
-		                                id="do_extras"
-		                                name="extra_adjournment"
-		                                value="true"
-		                                ng-click="avoid('total_extra')"
-		                                ng-model="show_total_extra"/>
+										value="1"
+		                                id="caso[demandas][problemaRelacionamentoProfessor]Yep"
+		                                name="caso[demandas][problemaRelacionamentoProfessor]"
+										ng-model="caso[demandas][problemaRelacionamentoProfessor]"/>
 		                            <label
-		                                for="do_extras"
+		                                for="caso[demandas][problemaRelacionamentoProfessor]Yep"
 		                                class="inline">
 		                                Sim
 		                            </label>
 		                            <input
 		                                type="radio"
-		                                id="no_extras"
-		                                name="extra_adjournment"
-		                                value="false"
-		                                checked="checked"
-		                                ng-click="avoid('total_extra')"
-		                                ng-model="show_total_extra"/>
+										value="0" checked="checked"
+		                                id="caso[demandas][problemaRelacionamentoProfessor]No"
+		                                name="caso[demandas][problemaRelacionamentoProfessor]"
+										ng-model="caso[demandas][problemaRelacionamentoProfessor]"/>
 		                            <label
-		                                for="no_extras"
+		                                for="caso[demandas][problemaRelacionamentoProfessor]No"
 		                                class="inline">
 		                                Não
 		                            </label>
@@ -751,26 +721,23 @@
 		                        <div class="buttonset left columns large-2 no-padding">
 		                            <input
 		                                type="radio"
-		                                id="do_extras"
-		                                name="extra_adjournment"
-		                                value="true"
-		                                ng-click="avoid('total_extra')"
-		                                ng-model="show_total_extra"/>
+										value="1"
+		                                id="caso[demandas][problemaRelacionamentoAluno]Yep"
+		                                name="caso[demandas][problemaRelacionamentoAluno]"
+										ng-model="caso[demandas][problemaRelacionamentoAluno]"/>
 		                            <label
-		                                for="do_extras"
+		                                for="caso[demandas][problemaRelacionamentoAluno]Yep"
 		                                class="inline">
 		                                Sim
 		                            </label>
 		                            <input
 		                                type="radio"
-		                                id="no_extras"
-		                                name="extra_adjournment"
-		                                value="false"
-		                                checked="checked"
-		                                ng-click="avoid('total_extra')"
-		                                ng-model="show_total_extra"/>
+										value="0" checked="checked"
+		                                id="caso[demandas][problemaRelacionamentoAluno]No"
+		                                name="caso[demandas][problemaRelacionamentoAluno]"
+										ng-model="caso[demandas][problemaRelacionamentoAluno]"/>
 		                            <label
-		                                for="no_extras"
+		                                for="caso[demandas][problemaRelacionamentoAluno]No"
 		                                class="inline">
 		                                Não
 		                            </label>
@@ -783,26 +750,23 @@
 		                        <div class="buttonset left columns large-2 no-padding">
 		                            <input
 		                                type="radio"
-		                                id="do_extras"
-		                                name="extra_adjournment"
-		                                value="true"
-		                                ng-click="avoid('total_extra')"
-		                                ng-model="show_total_extra"/>
+										value="1"
+		                                id="caso[demandas][problemaDisciplinarLeve]Yep"
+		                                name="caso[demandas][problemaDisciplinarLeve]"
+										ng-model="caso[demandas][problemaDisciplinarLeve]"/>
 		                            <label
-		                                for="do_extras"
+		                                for="caso[demandas][problemaDisciplinarLeve]Yep"
 		                                class="inline">
 		                                Sim
 		                            </label>
 		                            <input
 		                                type="radio"
-		                                id="no_extras"
-		                                name="extra_adjournment"
-		                                value="false"
-		                                checked="checked"
-		                                ng-click="avoid('total_extra')"
-		                                ng-model="show_total_extra"/>
+										value="0" checked="checked"
+		                                id="caso[demandas][problemaDisciplinarLeve]No"
+		                                name="caso[demandas][problemaDisciplinarLeve]"
+										ng-model="caso[demandas][problemaDisciplinarLeve]"/>
 		                            <label
-		                                for="no_extras"
+		                                for="caso[demandas][problemaDisciplinarLeve]No"
 		                                class="inline">
 		                                Não
 		                            </label>
@@ -815,26 +779,23 @@
 		                        <div class="buttonset left columns large-2 no-padding">
 		                            <input
 		                                type="radio"
-		                                id="do_extras"
-		                                name="extra_adjournment"
-		                                value="true"
-		                                ng-click="avoid('total_extra')"
-		                                ng-model="show_total_extra"/>
+										value="1"
+		                                id="caso[demandas][problemaDisciplinarMedio]Yep"
+		                                name="caso[demandas][problemaDisciplinarMedio]"
+										ng-model="caso[demandas][problemaDisciplinarMedio]"/>
 		                            <label
-		                                for="do_extras"
+		                                for="caso[demandas][problemaDisciplinarMedio]Yep"
 		                                class="inline">
 		                                Sim
 		                            </label>
 		                            <input
 		                                type="radio"
-		                                id="no_extras"
-		                                name="extra_adjournment"
-		                                value="false"
-		                                checked="checked"
-		                                ng-click="avoid('total_extra')"
-		                                ng-model="show_total_extra"/>
+										value="0" checked="checked"
+		                                id="caso[demandas][problemaDisciplinarMedio]No"
+		                                name="caso[demandas][problemaDisciplinarMedio]"
+										ng-model="caso[demandas][problemaDisciplinarMedio]"/>
 		                            <label
-		                                for="no_extras"
+		                                for="caso[demandas][problemaDisciplinarMedio]No"
 		                                class="inline">
 		                                Não
 		                            </label>
@@ -847,26 +808,23 @@
 		                        <div class="buttonset left columns large-2 no-padding">
 		                            <input
 		                                type="radio"
-		                                id="do_extras"
-		                                name="extra_adjournment"
-		                                value="true"
-		                                ng-click="avoid('total_extra')"
-		                                ng-model="show_total_extra"/>
+										value="1"
+		                                id="caso[demandas][problemaDisciplinarGrave]Yep"
+		                                name="caso[demandas][problemaDisciplinarGrave]"
+										ng-model="caso[demandas][problemaDisciplinarGrave]"/>
 		                            <label
-		                                for="do_extras"
+		                                for="caso[demandas][problemaDisciplinarGrave]Yep"
 		                                class="inline">
 		                                Sim
 		                            </label>
 		                            <input
 		                                type="radio"
-		                                id="no_extras"
-		                                name="extra_adjournment"
-		                                value="false"
-		                                checked="checked"
-		                                ng-click="avoid('total_extra')"
-		                                ng-model="show_total_extra"/>
+										value="0" checked="checked"
+		                                id="caso[demandas][problemaDisciplinarGrave]No"
+		                                name="caso[demandas][problemaDisciplinarGrave]"
+										ng-model="caso[demandas][problemaDisciplinarGrave]"/>
 		                            <label
-		                                for="no_extras"
+		                                for="caso[demandas][problemaDisciplinarGrave]No"
 		                                class="inline">
 		                                Não
 		                            </label>
@@ -879,26 +837,23 @@
 		                        <div class="buttonset left columns large-2 no-padding">
 		                            <input
 		                                type="radio"
-		                                id="do_extras"
-		                                name="extra_adjournment"
-		                                value="true"
-		                                ng-click="avoid('total_extra')"
-		                                ng-model="show_total_extra"/>
+										value="1"
+		                                id="caso[demandas][problemaRelacionamentoPai]Yep"
+		                                name="caso[demandas][problemaRelacionamentoPai]"
+										ng-model="caso[demandas][problemaRelacionamentoPai]"/>
 		                            <label
-		                                for="do_extras"
+		                                for="caso[demandas][problemaRelacionamentoPai]Yep"
 		                                class="inline">
 		                                Sim
 		                            </label>
 		                            <input
 		                                type="radio"
-		                                id="no_extras"
-		                                name="extra_adjournment"
-		                                value="false"
-		                                checked="checked"
-		                                ng-click="avoid('total_extra')"
-		                                ng-model="show_total_extra"/>
+										value="0" checked="checked"
+		                                id="caso[demandas][problemaRelacionamentoPai]No"
+		                                name="caso[demandas][problemaRelacionamentoPai]"
+										ng-model="caso[demandas][problemaRelacionamentoPai]"/>
 		                            <label
-		                                for="no_extras"
+		                                for="caso[demandas][problemaRelacionamentoPai]No"
 		                                class="inline">
 		                                Não
 		                            </label>
@@ -911,26 +866,23 @@
 		                        <div class="buttonset left columns large-2 no-padding">
 		                            <input
 		                                type="radio"
-		                                id="do_extras"
-		                                name="extra_adjournment"
-		                                value="true"
-		                                ng-click="avoid('total_extra')"
-		                                ng-model="show_total_extra"/>
+										value="1"
+		                                id="caso[demandas][problemaRelacionamentoMae]Yep"
+		                                name="caso[demandas][problemaRelacionamentoMae]"
+										ng-model="caso[demandas][problemaRelacionamentoMae]"/>
 		                            <label
-		                                for="do_extras"
+		                                for="caso[demandas][problemaRelacionamentoMae]Yep"
 		                                class="inline">
 		                                Sim
 		                            </label>
 		                            <input
 		                                type="radio"
-		                                id="no_extras"
-		                                name="extra_adjournment"
-		                                value="false"
-		                                checked="checked"
-		                                ng-click="avoid('total_extra')"
-		                                ng-model="show_total_extra"/>
+										value="0" checked="checked"
+		                                id="caso[demandas][problemaRelacionamentoMae]No"
+		                                name="caso[demandas][problemaRelacionamentoMae]"
+										ng-model="caso[demandas][problemaRelacionamentoMae]"/>
 		                            <label
-		                                for="no_extras"
+		                                for="caso[demandas][problemaRelacionamentoMae]No"
 		                                class="inline">
 		                                Não
 		                            </label>
@@ -943,26 +895,23 @@
 		                        <div class="buttonset left columns large-2 no-padding">
 		                            <input
 		                                type="radio"
-		                                id="do_extras"
-		                                name="extra_adjournment"
-		                                value="true"
-		                                ng-click="avoid('total_extra')"
-		                                ng-model="show_total_extra"/>
+										value="1"
+		                                id="caso[demandas][problemaRelacionamentoCasa]Yep"
+		                                name="caso[demandas][problemaRelacionamentoCasa]"
+										ng-model="caso[demandas][problemaRelacionamentoCasa]"/>
 		                            <label
-		                                for="do_extras"
+		                                for="caso[demandas][problemaRelacionamentoCasa]Yep"
 		                                class="inline">
 		                                Sim
 		                            </label>
 		                            <input
 		                                type="radio"
-		                                id="no_extras"
-		                                name="extra_adjournment"
-		                                value="false"
-		                                checked="checked"
-		                                ng-click="avoid('total_extra')"
-		                                ng-model="show_total_extra"/>
+										value="0" checked="checked"
+		                                id="caso[demandas][problemaRelacionamentoCasa]No"
+		                                name="caso[demandas][problemaRelacionamentoCasa]"
+										ng-model="caso[demandas][problemaRelacionamentoCasa]"/>
 		                            <label
-		                                for="no_extras"
+		                                for="caso[demandas][problemaRelacionamentoCasa]No"
 		                                class="inline">
 		                                Não
 		                            </label>
@@ -975,26 +924,23 @@
 		                        <div class="buttonset left columns large-2 no-padding">
 		                            <input
 		                                type="radio"
-		                                id="do_extras"
-		                                name="extra_adjournment"
-		                                value="true"
-		                                ng-click="avoid('total_extra')"
-		                                ng-model="show_total_extra"/>
+										value="1"
+		                                id="caso[demandas][separacaoPais]Yep"
+		                                name="caso[demandas][separacaoPais]"
+										ng-model="caso[demandas][separacaoPais]"/>
 		                            <label
-		                                for="do_extras"
+		                                for="caso[demandas][separacaoPais]Yep"
 		                                class="inline">
 		                                Sim
 		                            </label>
 		                            <input
 		                                type="radio"
-		                                id="no_extras"
-		                                name="extra_adjournment"
-		                                value="false"
-		                                checked="checked"
-		                                ng-click="avoid('total_extra')"
-		                                ng-model="show_total_extra"/>
+										value="0" checked="checked"
+		                                id="caso[demandas][separacaoPais]No"
+		                                name="caso[demandas][separacaoPais]"
+										ng-model="caso[demandas][separacaoPais]"/>
 		                            <label
-		                                for="no_extras"
+		                                for="caso[demandas][separacaoPais]No"
 		                                class="inline">
 		                                Não
 		                            </label>
@@ -1007,26 +953,23 @@
 		                        <div class="buttonset left columns large-2 no-padding">
 		                            <input
 		                                type="radio"
-		                                id="do_extras"
-		                                name="extra_adjournment"
-		                                value="true"
-		                                ng-click="avoid('total_extra')"
-		                                ng-model="show_total_extra"/>
+										value="1"
+		                                id="caso[demandas][conflitoFamiliar]Yep"
+		                                name="caso[demandas][conflitoFamiliar]"
+										ng-model="caso[demandas][conflitoFamiliar]"/>
 		                            <label
-		                                for="do_extras"
+		                                for="caso[demandas][conflitoFamiliar]Yep"
 		                                class="inline">
 		                                Sim
 		                            </label>
 		                            <input
 		                                type="radio"
-		                                id="no_extras"
-		                                name="extra_adjournment"
-		                                value="false"
-		                                checked="checked"
-		                                ng-click="avoid('total_extra')"
-		                                ng-model="show_total_extra"/>
+										value="0" checked="checked"
+		                                id="caso[demandas][conflitoFamiliar]No"
+		                                name="caso[demandas][conflitoFamiliar]"
+										ng-model="caso[demandas][conflitoFamiliar]"/>
 		                            <label
-		                                for="no_extras"
+		                                for="caso[demandas][conflitoFamiliar]No"
 		                                class="inline">
 		                                Não
 		                            </label>
@@ -1039,46 +982,45 @@
 		                        <div class="buttonset left columns large-2 no-padding">
 		                            <input
 		                                type="radio"
-		                                id="do_extras"
-		                                name="extra_adjournment"
-		                                value="true"
-		                                ng-click="avoid('total_extra')"
-		                                ng-model="show_total_extra"/>
+										value="1"
+		                                id="caso[demandas][problemaSocioEconomico]Yep"
+		                                name="caso[demandas][problemaSocioEconomico]"
+										ng-model="caso[demandas][problemaSocioEconomico]"/>
 		                            <label
-		                                for="do_extras"
+		                                for="caso[demandas][problemaSocioEconomico]Yep"
 		                                class="inline">
 		                                Sim
 		                            </label>
 		                            <input
 		                                type="radio"
-		                                id="no_extras"
-		                                name="extra_adjournment"
-		                                value="false"
-		                                checked="checked"
-		                                ng-click="avoid('total_extra')"
-		                                ng-model="show_total_extra"/>
+										value="0" checked="checked"
+		                                id="caso[demandas][problemaSocioEconomico]No"
+		                                name="caso[demandas][problemaSocioEconomico]"
+										ng-model="caso[demandas][problemaSocioEconomico]"/>
 		                            <label
-		                                for="no_extras"
+		                                for="caso[demandas][problemaSocioEconomico]No"
 		                                class="inline">
 		                                Não
 		                            </label>
 		                        </div>
 		                        <div class="columns large-10 left no-padding ">
-		                            <label class="left inline">Problemas de ordem sócio-econômica do aluno ou família</label>
+		                            <label class="left inline">
+										Problemas de ordem sócio-econômica do aluno ou família
+									</label>
 		                        </div>
 							</div>
 							<hr/>
 				            <div class="row collapse">
 				                <div class="small-2 columns">
 				                    <label class="prefix"
-				                        for="contexto">
+				                        for="caso[contexto]">
 				                        Contexto
 				                    </label>
 				                </div>
 				                <div class="small-10 columns end">
 				                    <textarea
-				                        id="contexto"
-				                        name="contexto"
+				                        id="caso[contexto]"
+				                        name="caso[contexto]"
 	                        			rows="8"
 										placeholder="Descreva o máximo de informações a respeito da situação do aluno. Evite colocar informações que o identifique ou a outras pessoas. Faça comentários ou observações relevantes sobre o atendimento."></textarea>
 				                </div>

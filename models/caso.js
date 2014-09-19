@@ -2,15 +2,15 @@ module.exports = function(app) {
 	var Mongoose = require('Mongoose');
 	var casoSchema = new Mongoose.Schema({
 		nome: {type: String, required: true},
-		genero: Number,
-		telefone: {type: String, required: true},
+		sexo: Number,
+		telefone: {type: String},
 		email: {type: String},
 		matricula: {type: String, required: true},
 		curso: {type: String, required: true},
 		periodo: {type: Number, required: true},
 		data: {type: String, required: true},
 		observacoes: {type: String},
-		demandas: [{
+		demandas: {
 			desequilibrioPsicologico: Number,
 			orientacaoSecular: Number,
 			orientacaoPedagogica: Number,
@@ -37,8 +37,8 @@ module.exports = function(app) {
 			situacaoExclusao: Number,
 			situacaoTimidez: Number,
 			separacaoPais: Number,
-		}],
-		encaminhamentos: [{
+		},
+		encaminhamentos: {
 			psicologiaEscolar: Number,
 			servicoSocial: Number,
 			setorMedico: Number,
@@ -59,7 +59,7 @@ module.exports = function(app) {
 			centroAprendizagem: Number,
 			mudarTurno: Number,
 			conversar: Number
-		}],
+		},
 		contexto: {type: String},
 		atendidoPor: {type: String, required: true},
 		classe: {type: String, required: true},
