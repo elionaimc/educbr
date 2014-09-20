@@ -9,7 +9,14 @@
     	<script src="/public/js/select2.js"></script>
     	<script src="/public/js/select2_locale_pt-BR.js"></script>
     	<script src="/public/js/jquery-ui.js"></script>
-    	<script src="/public/js/angular.js"></script>
+		<script>
+			$(document).ready(function() {
+			      $(document).foundation();
+				  $('.buttonset').buttonset();//starts buttonsets plugin
+				  $('#sexo').select2();
+				  $('#curso').select2();
+				  $('#periodo').select2();
+			});
+		</script>
+    	<script src="/public/js/angular.min.js"></script>
     	<script src="/public/js/app.js"></script>
-    </body>
-</html>

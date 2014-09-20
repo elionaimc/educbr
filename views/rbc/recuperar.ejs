@@ -1,4 +1,4 @@
-			<% include ../header %>
+<% include ../header %>
 			<div id="principal"  class="row bg">
                 <h1 class="title"> Atendimento Pedagógico
 				<small class="right">
@@ -19,13 +19,13 @@
 				            <div class="row">
 					            <div class="columns small-12 large-6">
 						            <div class="row collapse">
-						                <div class="small-5 column">
+						                <div class="small-4 column">
 						                    <label class="prefix"
 						                        for="data">
 						                        Data
 						                    </label>
 						                </div>
-						                <div class="small-7 column">
+						                <div class="small-8 column">
 						                    <input
 						                        type="text"
 						                        id="data"
@@ -76,83 +76,16 @@
 				                </div>
 				            </div>
 				            <div class="row">
-					            <div class="small-12 large-6 columns">
+					            <div class="columns small-12 large-6">
 						            <div class="row collapse">
 						                <div class="small-4 column">
-						                    <label
-						                        class="prefix"
-						                        for="sexo">
-						                        Sexo
-						                    </label>
-						                </div>
-						                <div class="small-8 column">
-						                    <select 
-						                        id="sexo"
-						                        name="caso[sexo]"
-						                        class="small-12 justifyed"
-												required >
-												<option value="">
-													Selecione
-												</option>
-												<option value="0" >
-													FEMININO
-												</option>
-												<option value="1">
-													MASCULINO
-												</option>
-											</select>
-						                </div>
-						            </div>
-					            </div>
-					            <div class="columns small-12 large-6">
-						            <div class="row collapse">
-						                <div class="small-5 column">
-						                    <label
-												class="prefix"
-												for="telefone">
-						                        Telefone
-						                    </label>
-						                </div>
-						                <div class="small-7 column">
-						                    <input
-						                        type="text"
-						                        maxlength="15"
-												id="telefone"
-						                        name="caso[telefone]"
-						                        placeholder="(84)0000-0000"
-						                    />
-						                </div>
-						            </div>
-					            </div>
-				            </div>
-				            <div class="row collapse">
-				                <div class="small-2 columns">
-				                    <label class="prefix"
-				                        for="email">
-				                        Email
-				                    </label>
-				                </div>
-				                <div class="small-10 columns end">
-				                    <input
-				                        type="email"
-				                        id="email"
-				                        name="caso[email]"
-				                        min="5"
-				                        maxlength="128"
-										placeholder="email@ifrn.edu.br" />
-				                </div>
-				            </div>
-				            <div class="row">
-					            <div class="columns small-12 large-6">
-						            <div class="row collapse">
-						                <div class="small-3 column">
 						                    <label
 												class="prefix"
 												for="curso">
 						                        Curso
 						                    </label>
 						                </div>
-						                <div class="small-9 column">
+						                <div class="small-8 column">
 						                    <select
 						                        id="curso"
 						                        name="caso[curso]"
@@ -233,6 +166,73 @@
 					            </div>
 				            </div>
 							<div><br/></div>
+				            <div class="row">
+					            <div class="small-12 large-6 columns">
+						            <div class="row collapse">
+						                <div class="small-4 column">
+						                    <label
+						                        class="prefix"
+						                        for="sexo">
+						                        Sexo
+						                    </label>
+						                </div>
+						                <div class="small-8 column">
+						                    <select 
+						                        id="sexo"
+						                        name="caso[sexo]"
+						                        class="small-12 justifyed"
+												required >
+												<option value="">
+													Selecione
+												</option>
+												<option value="0" >
+													FEMININO
+												</option>
+												<option value="1">
+													MASCULINO
+												</option>
+											</select>
+						                </div>
+						            </div>
+					            </div>
+					            <div class="columns small-12 large-6">
+						            <div class="row collapse">
+						                <div class="small-5 column">
+						                    <label
+												class="prefix"
+												for="telefone">
+						                        Telefone
+						                    </label>
+						                </div>
+						                <div class="small-7 column">
+						                    <input
+						                        type="text"
+						                        maxlength="15"
+												id="telefone"
+						                        name="caso[telefone]"
+						                        placeholder="(84)0000-0000"
+						                    />
+						                </div>
+						            </div>
+					            </div>
+				            </div>
+				            <div class="row collapse">
+				                <div class="small-2 columns">
+				                    <label class="prefix"
+				                        for="email">
+				                        Email
+				                    </label>
+				                </div>
+				                <div class="small-10 columns end">
+				                    <input
+				                        type="email"
+				                        id="email"
+				                        name="caso[email]"
+				                        min="5"
+				                        maxlength="128"
+										placeholder="email@ifrn.edu.br" />
+				                </div>
+				            </div>
 				            <div class="row collapse">
 				                <div class="small-3 columns">
 				                    <label class="prefix"
@@ -1019,6 +1019,7 @@
 				                </div>
 				                <div class="small-10 columns end">
 				                    <textarea
+										required
 				                        id="caso[contexto]"
 				                        name="caso[contexto]"
 	                        			rows="8"
@@ -1039,3 +1040,5 @@
 				</div>
             </div>	            
             <% include ../footer %>
+    </body>
+</html>

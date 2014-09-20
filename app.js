@@ -1,28 +1,25 @@
-var express = require('express'); // loads express module
-var app = express();
-var load = require('express-load');
-var server = require('http').createServer(app); // create a server using express app
+var express = require('express'); //loads express module
+var app = express(); //to build an app
+var load = require('express-load'); //helps with the mvc structure
+var server = require('http').createServer(app); //create a server using express app
+
+/*
+ * database configs (mongoose lib for mongoDB)
+ */
 var Mongoose = require('Mongoose');
-
 var db = Mongoose.connection;
-
-var erroMongo = function(){
-	console.log('MongoDB: Vaso? que va...');
-}
-
-db.on('error', erroMongo);
-db.on('error', console.error);
-db.once('open', function() {
+db.on('error', function(){
+	console.log('MongoDB: Vaso? que v...'); //if something goes wrong with database
+});
+db.on('error', console.error); //shows databases errors
+db.once('open', function() { //database conection is OK!
   console.log('MongoDB: Não vou cair nessa de novo, Oráculo!');
 });
-
+// defines what database to connect
 Mongoose.connect('mongodb://localhost/test');
 
-
-
-
-/**
- * Sets main configs for express
+/*
+ * Sets main configs for express library
  */
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
@@ -37,17 +34,17 @@ res.status(404);
 res.render('404');
 });
 
-/**
- * Rota principal
+/*
+ * loads the mvc structure
  */
-//app.get("/", function(req, res){
-//  res.render('index');
-//});
-
 load('models')
 .then('controllers')
 .then('routes')
 .into(app);
+
+/*
+ * starts the application server
+ */
 server.listen(3000, function(){
   console.log("NodeJS: Bem vindo, Neo. Não se preocupe com o vaso.");
 });

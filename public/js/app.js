@@ -1,7 +1,6 @@
-$(document).ready(function() {
-      $(document).foundation();
-	  $('.buttonset').buttonset();//starts buttonsets plugin
-	  $('#sexo').select2();
-	  $('#curso').select2();
-	  $('#periodo').select2()
+var RBC = angular.module('RBC');// RBC AngularJS App
+
+RBC.controller('reusar', function($scope) {
+	$scope.vizinhos = [];
+	var data = <%- JSON.stringify(vizinhos) %>;
 });
