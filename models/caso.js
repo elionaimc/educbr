@@ -36,7 +36,7 @@ module.exports = function(app) {
 			situacaoAbuso: Number,
 			situacaoExclusao: Number,
 			situacaoTimidez: Number,
-			separacaoPais: Number,
+			separacaoPais: Number
 		},
 		encaminhamentos: {
 			psicologiaEscolar: Number,

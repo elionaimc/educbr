@@ -6,16 +6,17 @@
 					<a href="/sair">sair</a>
 				</small>
 			</h1>
-				<div class="small-10 centered" id="form">
+				<div class="small-10 centered" id="form" ng-controller="recuperarController">
 				    <form
 				        class="row"
+						ng-submit="recuperarKNN()"
 				        method="post"
-				        action="/recuperar"
 	        			data-abide 
 	        			novalidate >
 				        <section class="large-12 panel no-border">
 							<fieldset>
 							<legend>Informações pessoais do aluno</legend>
+							<inpu type="hidden" ng-model="atendidoPor" value="<%- usuario.email %>" name="atendidoPor">
 				            <div class="row">
 					            <div class="columns small-12 large-6">
 						            <div class="row collapse">
@@ -29,7 +30,8 @@
 						                    <input
 						                        type="text"
 						                        id="data"
-						                        name="caso[data]"
+						                        name="caso.data"
+												ng-model="caso.data"
 				                                maxlength="10"
 				                                placeholder="00/00/0000"
 												required />
@@ -50,7 +52,8 @@
 						                        type="text"
 												id="matricula"
 				                                maxlength="128"
-						                        name="caso[matricula]"
+						                        name="caso.matricula"
+												ng-model="caso.matricula"
 												required
 						                    />
 						                </div>
@@ -68,7 +71,8 @@
 				                    <input
 				                        type="text"
 				                        id="nome"
-				                        name="caso[nome]"
+				                        name="caso.nome"
+										ng-model="caso.nome"
 				                        min="5"
 				                        maxlength="128"
 										placeholder="Nome Completo do Aluno"
@@ -88,7 +92,8 @@
 						                <div class="small-8 column">
 						                    <select
 						                        id="curso"
-						                        name="caso[curso]"
+						                        name="caso.curso"
+												ng-model="caso.curso"
 												style="width:100%"
 												class="small-12 justifyed"
 												required >
@@ -135,7 +140,8 @@
 						                <div class="small-7 column">
 						                    <select
 						                        id="periodo"
-						                        name="caso[periodo]"
+						                        name="caso.periodo"
+												ng-model="caso.periodo"
 												style="width:100%"
 												class="small-12 justifyed"
 												required >
@@ -179,7 +185,8 @@
 						                <div class="small-8 column">
 						                    <select 
 						                        id="sexo"
-						                        name="caso[sexo]"
+						                        name="caso.sexo"
+												ng-model="caso.sexo"
 						                        class="small-12 justifyed"
 												required >
 												<option value="">
@@ -209,7 +216,8 @@
 						                        type="text"
 						                        maxlength="15"
 												id="telefone"
-						                        name="caso[telefone]"
+						                        name="caso.telefone"
+												ng-model="caso.telefone"
 						                        placeholder="(84)0000-0000"
 						                    />
 						                </div>
@@ -227,7 +235,8 @@
 				                    <input
 				                        type="email"
 				                        id="email"
-				                        name="caso[email]"
+				                        name="caso.email"
+										ng-model="caso.email"
 				                        min="5"
 				                        maxlength="128"
 										placeholder="email@ifrn.edu.br" />
@@ -243,7 +252,8 @@
 				                <div class="small-9 columns end">
 				                    <textarea
 				                        id="observacoes"
-				                        name="caso[observacoes]"
+				                        name="caso.observacoes"
+										ng-model="caso.observacoes"
 	                        			rows="5"
 										placeholder="Aqui você pode inserir informações sigilosas, que tenham relação ao caso apresentado, tais como dados do responsável, grau de parentesco, contatos..."></textarea>
 				                </div>
@@ -258,24 +268,13 @@
 		                            <input
 		                                type="radio"
 										value="1"
-		                                id="caso[demandas][dificuldadeAprendizagem]Yep"
-		                                name="caso[demandas][dificuldadeAprendizagem]"
-										ng-model="caso[demandas][dificuldadeAprendizagem]"/>
+		                                id="casodemandasdificuldadeAprendizagemYep"
+		                                name="[caso][demandas][dificuldadeAprendizagem]"
+										ng-model="caso.demandas.dificuldadeAprendizagem"/>
 		                            <label
-		                                for="caso[demandas][dificuldadeAprendizagem]Yep"
+		                                for="casodemandasdificuldadeAprendizagemYep"
 		                                class="inline">
 		                                Sim
-		                            </label>
-		                            <input
-		                                type="radio"
-										value="0" checked="checked"
-		                                id="caso[demandas][dificuldadeAprendizagem]No"
-		                                name="caso[demandas][dificuldadeAprendizagem]"
-										ng-model="caso[demandas][dificuldadeAprendizagem]"/>
-		                            <label
-		                                for="caso[demandas][dificuldadeAprendizagem]No"
-		                                class="inline">
-		                                Não
 		                            </label>
 		                        </div>
 		                        <div class="columns large-10 left no-padding ">
@@ -287,24 +286,13 @@
 		                            <input
 		                                type="radio"
 										value="1"
-		                                id="caso[demandas][orientacaoPedagogica]Yep"
-		                                name="caso[demandas][orientacaoPedagogica]"
-										ng-model="caso[demandas][orientacaoPedagogica]"/>
+		                                id="casodemandasorientacaoPedagogicaYep"
+		                                name="[caso][demandas][orientacaoPedagogica]"
+										ng-model="caso.demandas.orientacaoPedagogica"/>
 		                            <label
-		                                for="caso[demandas][orientacaoPedagogica]Yep"
+		                                for="casodemandasorientacaoPedagogicaYep"
 		                                class="inline">
 		                                Sim
-		                            </label>
-		                            <input
-		                                type="radio"
-										value="0" checked="checked"
-		                                id="caso[demandas][orientacaoPedagogica]No"
-		                                name="caso[demandas][orientacaoPedagogica]"
-										ng-model="caso[demandas][orientacaoPedagogica]"/>
-		                            <label
-		                                for="caso[demandas][orientacaoPedagogica]No"
-		                                class="inline">
-		                                Não
 		                            </label>
 		                        </div>
 		                        <div class="columns large-10 left no-padding ">
@@ -316,24 +304,13 @@
 		                            <input
 		                                type="radio"
 										value="1"
-		                                id="caso[demandas][muitasFaltas]Yep"
-		                                name="caso[demandas][muitasFaltas]"
-										ng-model="caso[demandas][muitasFaltas]"/>
+		                                id="casodemandasmuitasFaltasYep"
+		                                name="[caso][demandas][muitasFaltas]"
+										ng-model="caso.demandas.muitasFaltas"/>
 		                            <label
-		                                for="caso[demandas][muitasFaltas]Yep"
+		                                for="casodemandasmuitasFaltasYep"
 		                                class="inline">
 		                                Sim
-		                            </label>
-		                            <input
-		                                type="radio"
-										value="0" checked="checked"
-		                                id="caso[demandas][muitasFaltas]No"
-		                                name="caso[demandas][muitasFaltas]"
-										ng-model="caso[demandas][muitasFaltas]"/>
-		                            <label
-		                                for="caso[demandas][muitasFaltas]No"
-		                                class="inline">
-		                                Não
 		                            </label>
 		                        </div>
 		                        <div class="columns large-10 left no-padding ">
@@ -345,24 +322,13 @@
 		                            <input
 		                                type="radio"
 										value="1"
-		                                id="caso[demandas][atrasosConstantes]Yep"
-		                                name="caso[demandas][atrasosConstantes]"
-										ng-model="caso[demandas][atrasosConstantes]"/>
+		                                id="casodemandasatrasosConstantesYep"
+		                                name="[caso][demandas][atrasosConstantes]"
+										ng-model="caso.demandas.atrasosConstantes"/>
 		                            <label
-		                                for="caso[demandas][atrasosConstantes]Yep"
+		                                for="casodemandasatrasosConstantesYep"
 		                                class="inline">
 		                                Sim
-		                            </label>
-		                            <input
-		                                type="radio"
-										value="0" checked="checked"
-		                                id="caso[demandas][atrasosConstantes]No"
-		                                name="caso[demandas][atrasosConstantes]"
-										ng-model="caso[demandas][atrasosConstantes]"/>
-		                            <label
-		                                for="caso[demandas][atrasosConstantes]No"
-		                                class="inline">
-		                                Não
 		                            </label>
 		                        </div>
 		                        <div class="columns large-10 left no-padding ">
@@ -374,24 +340,13 @@
 		                            <input
 		                                type="radio"
 										value="1"
-		                                id="caso[demandas][desequilibrioPsicologico]Yep"
-		                                name="caso[demandas][desequilibrioPsicologico]"
-										ng-model="caso[demandas][desequilibrioPsicologico]"/>
+		                                id="casodemandasdesequilibrioPsicologicoYep"
+		                                name="[caso][demandas][desequilibrioPsicologico]"
+										ng-model="caso.demandas.desequilibrioPsicologico"/>
 		                            <label
-		                                for="caso[demandas][desequilibrioPsicologico]Yep"
+		                                for="casodemandasdesequilibrioPsicologicoYep"
 		                                class="inline">
 		                                Sim
-		                            </label>
-		                            <input
-		                                type="radio"
-										value="0" checked="checked"
-		                                id="caso[demandas][desequilibrioPsicologico]No"
-		                                name="caso[demandas][desequilibrioPsicologico]"
-										ng-model="caso[demandas][desequilibrioPsicologico]"/>
-		                            <label
-		                                for="caso[demandas][desequilibrioPsicologico]No"
-		                                class="inline">
-		                                Não
 		                            </label>
 		                        </div>
 		                        <div class="columns large-10 left no-padding ">
@@ -403,24 +358,13 @@
 		                            <input
 		                                type="radio"
 										value="1"
-		                                id="caso[demandas][desmotivacaoRendimento]Yep"
-		                                name="caso[demandas][desmotivacaoRendimento]"
-										ng-model="caso[demandas][desmotivacaoRendimento]"/>
+		                                id="casodemandasdesmotivacaoRendimentoYep"
+		                                name="[caso][demandas][desmotivacaoRendimento]"
+										ng-model="caso.demandas.desmotivacaoRendimento"/>
 		                            <label
-		                                for="caso[demandas][desmotivacaoRendimento]Yep"
+		                                for="casodemandasdesmotivacaoRendimentoYep"
 		                                class="inline">
 		                                Sim
-		                            </label>
-		                            <input
-		                                type="radio"
-										value="0" checked="checked"
-		                                id="caso[demandas][desmotivacaoRendimento]No"
-		                                name="caso[demandas][desmotivacaoRendimento]"
-										ng-model="caso[demandas][desmotivacaoRendimento]"/>
-		                            <label
-		                                for="caso[demandas][desmotivacaoRendimento]No"
-		                                class="inline">
-		                                Não
 		                            </label>
 		                        </div>
 		                        <div class="columns large-10 left no-padding ">
@@ -432,24 +376,13 @@
 		                            <input
 		                                type="radio"
 										value="1"
-		                                id="caso[demandas][desmotivacaoCurso]Yep"
-		                                name="caso[demandas][desmotivacaoCurso]"
-										ng-model="caso[demandas][desmotivacaoCurso]"/>
+		                                id="casodemandasdesmotivacaoCursoYep"
+		                                name="[caso][demandas][desmotivacaoCurso]"
+										ng-model="caso.demandas.desmotivacaoCurso"/>
 		                            <label
-		                                for="caso[demandas][desmotivacaoCurso]Yep"
+		                                for="casodemandasdesmotivacaoCursoYep"
 		                                class="inline">
 		                                Sim
-		                            </label>
-		                            <input
-		                                type="radio"
-										value="0" checked="checked"
-		                                id="caso[demandas][desmotivacaoCurso]No"
-		                                name="caso[demandas][desmotivacaoCurso]"
-										ng-model="caso[demandas][desmotivacaoCurso]"/>
-		                            <label
-		                                for="caso[demandas][desmotivacaoCurso]No"
-		                                class="inline">
-		                                Não
 		                            </label>
 		                        </div>
 		                        <div class="columns large-10 left no-padding ">
@@ -461,24 +394,13 @@
 		                            <input
 		                                type="radio"
 										value="1"
-		                                id="caso[demandas][conflitoOpcaoSexual]Yep"
-		                                name="caso[demandas][conflitoOpcaoSexual]"
-										ng-model="caso[demandas][conflitoOpcaoSexual]"/>
+		                                id="casodemandasconflitoOpcaoSexualYep"
+		                                name="[caso][demandas][conflitoOpcaoSexual]"
+										ng-model="caso.demandas.conflitoOpcaoSexual"/>
 		                            <label
-		                                for="caso[demandas][conflitoOpcaoSexual]Yep"
+		                                for="casodemandasconflitoOpcaoSexualYep"
 		                                class="inline">
 		                                Sim
-		                            </label>
-		                            <input
-		                                type="radio"
-										value="0" checked="checked"
-		                                id="caso[demandas][conflitoOpcaoSexual]No"
-		                                name="caso[demandas][conflitoOpcaoSexual]"
-										ng-model="caso[demandas][conflitoOpcaoSexual]"/>
-		                            <label
-		                                for="caso[demandas][conflitoOpcaoSexual]No"
-		                                class="inline">
-		                                Não
 		                            </label>
 		                        </div>
 		                        <div class="columns large-10 left no-padding ">
@@ -490,24 +412,13 @@
 		                            <input
 		                                type="radio"
 										value="1"
-		                                id="caso[demandas][conflitoRelacionalAfetivo]Yep"
-		                                name="caso[demandas][conflitoRelacionalAfetivo]"
-										ng-model="caso[demandas][conflitoRelacionalAfetivo]"/>
+		                                id="casodemandasconflitoRelacionalAfetivoYep"
+		                                name="[caso][demandas][conflitoRelacionalAfetivo]"
+										ng-model="caso.demandas.conflitoRelacionalAfetivo"/>
 		                            <label
-		                                for="caso[demandas][conflitoRelacionalAfetivo]Yep"
+		                                for="casodemandasconflitoRelacionalAfetivoYep"
 		                                class="inline">
 		                                Sim
-		                            </label>
-		                            <input
-		                                type="radio"
-										value="0" checked="checked"
-		                                id="caso[demandas][conflitoRelacionalAfetivo]No"
-		                                name="caso[demandas][conflitoRelacionalAfetivo]"
-										ng-model="caso[demandas][conflitoRelacionalAfetivo]"/>
-		                            <label
-		                                for="caso[demandas][conflitoRelacionalAfetivo]No"
-		                                class="inline">
-		                                Não
 		                            </label>
 		                        </div>
 		                        <div class="columns large-10 left no-padding ">
@@ -519,24 +430,13 @@
 		                            <input
 		                                type="radio"
 										value="1"
-		                                id="caso[demandas][bulling]Yep"
-		                                name="caso[demandas][bulling]"
-										ng-model="caso[demandas][bulling]"/>
+		                                id="casodemandasbullingYep"
+		                                name="[caso][demandas][bulling]"
+										ng-model="caso.demandas.bulling"/>
 		                            <label
-		                                for="caso[demandas][bulling]Yep"
+		                                for="casodemandasbullingYep"
 		                                class="inline">
 		                                Sim
-		                            </label>
-		                            <input
-		                                type="radio"
-										value="0" checked="checked"
-		                                id="caso[demandas][bulling]No"
-		                                name="caso[demandas][bulling]"
-										ng-model="caso[demandas][bulling]"/>
-		                            <label
-		                                for="caso[demandas][bulling]No"
-		                                class="inline">
-		                                Não
 		                            </label>
 		                        </div>
 		                        <div class="columns large-10 left no-padding ">
@@ -548,24 +448,13 @@
 		                            <input
 		                                type="radio"
 										value="1"
-		                                id="caso[demandas][situacaoTimidez]Yep"
-		                                name="caso[demandas][situacaoTimidez]"
-										ng-model="caso[demandas][situacaoTimidez]"/>
+		                                id="casodemandassituacaoTimidezYep"
+		                                name="[caso][demandas][situacaoTimidez]"
+										ng-model="caso.demandas.situacaoTimidez"/>
 		                            <label
-		                                for="caso[demandas][situacaoTimidez]Yep"
+		                                for="casodemandassituacaoTimidezYep"
 		                                class="inline">
 		                                Sim
-		                            </label>
-		                            <input
-		                                type="radio"
-										value="0" checked="checked"
-		                                id="caso[demandas][situacaoTimidez]No"
-		                                name="caso[demandas][situacaoTimidez]"
-										ng-model="caso[demandas][situacaoTimidez]"/>
-		                            <label
-		                                for="caso[demandas][situacaoTimidez]No"
-		                                class="inline">
-		                                Não
 		                            </label>
 		                        </div>
 		                        <div class="columns large-10 left no-padding ">
@@ -577,24 +466,13 @@
 		                            <input
 		                                type="radio"
 										value="1"
-		                                id="caso[demandas][situacaoExclusao]Yep"
-		                                name="caso[demandas][situacaoExclusao]"
-										ng-model="caso[demandas][situacaoExclusao]"/>
+		                                id="casodemandassituacaoExclusaoYep"
+		                                name="[caso][demandas][situacaoExclusao]"
+										ng-model="caso.demandas.situacaoExclusao"/>
 		                            <label
-		                                for="caso[demandas][situacaoExclusao]Yep"
+		                                for="casodemandassituacaoExclusaoYep"
 		                                class="inline">
 		                                Sim
-		                            </label>
-		                            <input
-		                                type="radio"
-										value="0" checked="checked"
-		                                id="caso[demandas][situacaoExclusao]No"
-		                                name="caso[demandas][situacaoExclusao]"
-										ng-model="caso[demandas][situacaoExclusao]"/>
-		                            <label
-		                                for="caso[demandas][situacaoExclusao]No"
-		                                class="inline">
-		                                Não
 		                            </label>
 		                        </div>
 		                        <div class="columns large-10 left no-padding ">
@@ -606,24 +484,13 @@
 		                            <input
 		                                type="radio"
 										value="1"
-		                                id="caso[demandas][situacaoAbuso]Yep"
-		                                name="caso[demandas][situacaoAbuso]"
-										ng-model="caso[demandas][situacaoAbuso]"/>
+		                                id="casodemandassituacaoAbusoYep"
+		                                name="[caso][demandas][situacaoAbuso]"
+										ng-model="caso.demandas.situacaoAbuso"/>
 		                            <label
-		                                for="caso[demandas][situacaoAbuso]Yep"
+		                                for="casodemandassituacaoAbusoYep"
 		                                class="inline">
 		                                Sim
-		                            </label>
-		                            <input
-		                                type="radio"
-										value="0" checked="checked"
-		                                id="caso[demandas][situacaoAbuso]No"
-		                                name="caso[demandas][situacaoAbuso]"
-										ng-model="caso[demandas][situacaoAbuso]"/>
-		                            <label
-		                                for="caso[demandas][situacaoAbuso]No"
-		                                class="inline">
-		                                Não
 		                            </label>
 		                        </div>
 		                        <div class="columns large-10 left no-padding ">
@@ -635,24 +502,13 @@
 		                            <input
 		                                type="radio"
 										value="1"
-		                                id="caso[demandas][orientacaoSecular]Yep"
-		                                name="caso[demandas][orientacaoSecular]"
-										ng-model="caso[demandas][orientacaoSecular]"/>
+		                                id="casodemandasorientacaoSecularYep"
+		                                name="[caso][demandas][orientacaoSecular]"
+										ng-model="caso.demandas.orientacaoSecular"/>
 		                            <label
-		                                for="caso[demandas][orientacaoSecular]Yep"
+		                                for="casodemandasorientacaoSecularYep"
 		                                class="inline">
 		                                Sim
-		                            </label>
-		                            <input
-		                                type="radio"
-										value="0" checked="checked"
-		                                id="caso[demandas][orientacaoSecular]No"
-		                                name="caso[demandas][orientacaoSecular]"
-										ng-model="caso[demandas][orientacaoSecular]"/>
-		                            <label
-		                                for="caso[demandas][orientacaoSecular]No"
-		                                class="inline">
-		                                Não
 		                            </label>
 		                        </div>
 		                        <div class="columns large-10 left no-padding ">
@@ -664,24 +520,13 @@
 		                            <input
 		                                type="radio"
 										value="1"
-		                                id="caso[demandas][problemaComportamento]Yep"
-		                                name="caso[demandas][problemaComportamento]"
-										ng-model="caso[demandas][problemaComportamento]"/>
+		                                id="casodemandasproblemaComportamentoYep"
+		                                name="[caso][demandas][problemaComportamento]"
+										ng-model="caso.demandas.problemaComportamento"/>
 		                            <label
-		                                for="caso[demandas][problemaComportamento]Yep"
+		                                for="casodemandasproblemaComportamentoYep"
 		                                class="inline">
 		                                Sim
-		                            </label>
-		                            <input
-		                                type="radio"
-										value="0" checked="checked"
-		                                id="caso[demandas][problemaComportamento]No"
-		                                name="caso[demandas][problemaComportamento]"
-										ng-model="caso[demandas][problemaComportamento]"/>
-		                            <label
-		                                for="caso[demandas][problemaComportamento]No"
-		                                class="inline">
-		                                Não
 		                            </label>
 		                        </div>
 		                        <div class="columns large-10 left no-padding ">
@@ -693,24 +538,13 @@
 		                            <input
 		                                type="radio"
 										value="1"
-		                                id="caso[demandas][problemaRelacionamentoProfessor]Yep"
-		                                name="caso[demandas][problemaRelacionamentoProfessor]"
-										ng-model="caso[demandas][problemaRelacionamentoProfessor]"/>
+		                                id="casodemandasproblemaRelacionamentoProfessorYep"
+		                                name="[caso][demandas][problemaRelacionamentoProfessor]"
+										ng-model="caso.demandas.problemaRelacionamentoProfessor"/>
 		                            <label
-		                                for="caso[demandas][problemaRelacionamentoProfessor]Yep"
+		                                for="casodemandasproblemaRelacionamentoProfessorYep"
 		                                class="inline">
 		                                Sim
-		                            </label>
-		                            <input
-		                                type="radio"
-										value="0" checked="checked"
-		                                id="caso[demandas][problemaRelacionamentoProfessor]No"
-		                                name="caso[demandas][problemaRelacionamentoProfessor]"
-										ng-model="caso[demandas][problemaRelacionamentoProfessor]"/>
-		                            <label
-		                                for="caso[demandas][problemaRelacionamentoProfessor]No"
-		                                class="inline">
-		                                Não
 		                            </label>
 		                        </div>
 		                        <div class="columns large-10 left no-padding ">
@@ -722,24 +556,13 @@
 		                            <input
 		                                type="radio"
 										value="1"
-		                                id="caso[demandas][problemaRelacionamentoAluno]Yep"
-		                                name="caso[demandas][problemaRelacionamentoAluno]"
-										ng-model="caso[demandas][problemaRelacionamentoAluno]"/>
+		                                id="casodemandasproblemaRelacionamentoAlunoYep"
+		                                name="[caso][demandas][problemaRelacionamentoAluno]"
+										ng-model="caso.demandas.problemaRelacionamentoAluno"/>
 		                            <label
-		                                for="caso[demandas][problemaRelacionamentoAluno]Yep"
+		                                for="casodemandasproblemaRelacionamentoAlunoYep"
 		                                class="inline">
 		                                Sim
-		                            </label>
-		                            <input
-		                                type="radio"
-										value="0" checked="checked"
-		                                id="caso[demandas][problemaRelacionamentoAluno]No"
-		                                name="caso[demandas][problemaRelacionamentoAluno]"
-										ng-model="caso[demandas][problemaRelacionamentoAluno]"/>
-		                            <label
-		                                for="caso[demandas][problemaRelacionamentoAluno]No"
-		                                class="inline">
-		                                Não
 		                            </label>
 		                        </div>
 		                        <div class="columns large-10 left no-padding ">
@@ -751,24 +574,13 @@
 		                            <input
 		                                type="radio"
 										value="1"
-		                                id="caso[demandas][problemaDisciplinarLeve]Yep"
-		                                name="caso[demandas][problemaDisciplinarLeve]"
-										ng-model="caso[demandas][problemaDisciplinarLeve]"/>
+		                                id="casodemandasproblemaDisciplinarLeveYep"
+		                                name="[caso][demandas][problemaDisciplinarLeve]"
+										ng-model="caso.demandas.problemaDisciplinarLeve"/>
 		                            <label
-		                                for="caso[demandas][problemaDisciplinarLeve]Yep"
+		                                for="casodemandasproblemaDisciplinarLeveYep"
 		                                class="inline">
 		                                Sim
-		                            </label>
-		                            <input
-		                                type="radio"
-										value="0" checked="checked"
-		                                id="caso[demandas][problemaDisciplinarLeve]No"
-		                                name="caso[demandas][problemaDisciplinarLeve]"
-										ng-model="caso[demandas][problemaDisciplinarLeve]"/>
-		                            <label
-		                                for="caso[demandas][problemaDisciplinarLeve]No"
-		                                class="inline">
-		                                Não
 		                            </label>
 		                        </div>
 		                        <div class="columns large-10 left no-padding ">
@@ -780,24 +592,13 @@
 		                            <input
 		                                type="radio"
 										value="1"
-		                                id="caso[demandas][problemaDisciplinarMedio]Yep"
-		                                name="caso[demandas][problemaDisciplinarMedio]"
-										ng-model="caso[demandas][problemaDisciplinarMedio]"/>
+		                                id="casodemandasproblemaDisciplinarMedioYep"
+		                                name="[caso][demandas][problemaDisciplinarMedio]"
+										ng-model="caso.demandas.problemaDisciplinarMedio"/>
 		                            <label
-		                                for="caso[demandas][problemaDisciplinarMedio]Yep"
+		                                for="casodemandasproblemaDisciplinarMedioYep"
 		                                class="inline">
 		                                Sim
-		                            </label>
-		                            <input
-		                                type="radio"
-										value="0" checked="checked"
-		                                id="caso[demandas][problemaDisciplinarMedio]No"
-		                                name="caso[demandas][problemaDisciplinarMedio]"
-										ng-model="caso[demandas][problemaDisciplinarMedio]"/>
-		                            <label
-		                                for="caso[demandas][problemaDisciplinarMedio]No"
-		                                class="inline">
-		                                Não
 		                            </label>
 		                        </div>
 		                        <div class="columns large-10 left no-padding ">
@@ -809,24 +610,13 @@
 		                            <input
 		                                type="radio"
 										value="1"
-		                                id="caso[demandas][problemaDisciplinarGrave]Yep"
-		                                name="caso[demandas][problemaDisciplinarGrave]"
-										ng-model="caso[demandas][problemaDisciplinarGrave]"/>
+		                                id="casodemandasproblemaDisciplinarGraveYep"
+		                                name="[caso][demandas][problemaDisciplinarGrave]"
+										ng-model="caso.demandas.problemaDisciplinarGrave"/>
 		                            <label
-		                                for="caso[demandas][problemaDisciplinarGrave]Yep"
+		                                for="casodemandasproblemaDisciplinarGraveYep"
 		                                class="inline">
 		                                Sim
-		                            </label>
-		                            <input
-		                                type="radio"
-										value="0" checked="checked"
-		                                id="caso[demandas][problemaDisciplinarGrave]No"
-		                                name="caso[demandas][problemaDisciplinarGrave]"
-										ng-model="caso[demandas][problemaDisciplinarGrave]"/>
-		                            <label
-		                                for="caso[demandas][problemaDisciplinarGrave]No"
-		                                class="inline">
-		                                Não
 		                            </label>
 		                        </div>
 		                        <div class="columns large-10 left no-padding ">
@@ -838,24 +628,13 @@
 		                            <input
 		                                type="radio"
 										value="1"
-		                                id="caso[demandas][problemaRelacionamentoPai]Yep"
-		                                name="caso[demandas][problemaRelacionamentoPai]"
-										ng-model="caso[demandas][problemaRelacionamentoPai]"/>
+		                                id="casodemandasproblemaRelacionamentoPaiYep"
+		                                name="[caso][demandas][problemaRelacionamentoPai]"
+										ng-model="caso.demandas.problemaRelacionamentoPai"/>
 		                            <label
-		                                for="caso[demandas][problemaRelacionamentoPai]Yep"
+		                                for="casodemandasproblemaRelacionamentoPaiYep"
 		                                class="inline">
 		                                Sim
-		                            </label>
-		                            <input
-		                                type="radio"
-										value="0" checked="checked"
-		                                id="caso[demandas][problemaRelacionamentoPai]No"
-		                                name="caso[demandas][problemaRelacionamentoPai]"
-										ng-model="caso[demandas][problemaRelacionamentoPai]"/>
-		                            <label
-		                                for="caso[demandas][problemaRelacionamentoPai]No"
-		                                class="inline">
-		                                Não
 		                            </label>
 		                        </div>
 		                        <div class="columns large-10 left no-padding ">
@@ -867,24 +646,13 @@
 		                            <input
 		                                type="radio"
 										value="1"
-		                                id="caso[demandas][problemaRelacionamentoMae]Yep"
-		                                name="caso[demandas][problemaRelacionamentoMae]"
-										ng-model="caso[demandas][problemaRelacionamentoMae]"/>
+		                                id="casodemandasproblemaRelacionamentoMaeYep"
+		                                name="[caso][demandas][problemaRelacionamentoMae]"
+										ng-model="caso.demandas.problemaRelacionamentoMae"/>
 		                            <label
-		                                for="caso[demandas][problemaRelacionamentoMae]Yep"
+		                                for="casodemandasproblemaRelacionamentoMaeYep"
 		                                class="inline">
 		                                Sim
-		                            </label>
-		                            <input
-		                                type="radio"
-										value="0" checked="checked"
-		                                id="caso[demandas][problemaRelacionamentoMae]No"
-		                                name="caso[demandas][problemaRelacionamentoMae]"
-										ng-model="caso[demandas][problemaRelacionamentoMae]"/>
-		                            <label
-		                                for="caso[demandas][problemaRelacionamentoMae]No"
-		                                class="inline">
-		                                Não
 		                            </label>
 		                        </div>
 		                        <div class="columns large-10 left no-padding ">
@@ -896,24 +664,13 @@
 		                            <input
 		                                type="radio"
 										value="1"
-		                                id="caso[demandas][problemaRelacionamentoCasa]Yep"
-		                                name="caso[demandas][problemaRelacionamentoCasa]"
-										ng-model="caso[demandas][problemaRelacionamentoCasa]"/>
+		                                id="casodemandasproblemaRelacionamentoCasaYep"
+		                                name="[caso][demandas][problemaRelacionamentoCasa]"
+										ng-model="caso.demandas.problemaRelacionamentoCasa"/>
 		                            <label
-		                                for="caso[demandas][problemaRelacionamentoCasa]Yep"
+		                                for="casodemandasproblemaRelacionamentoCasaYep"
 		                                class="inline">
 		                                Sim
-		                            </label>
-		                            <input
-		                                type="radio"
-										value="0" checked="checked"
-		                                id="caso[demandas][problemaRelacionamentoCasa]No"
-		                                name="caso[demandas][problemaRelacionamentoCasa]"
-										ng-model="caso[demandas][problemaRelacionamentoCasa]"/>
-		                            <label
-		                                for="caso[demandas][problemaRelacionamentoCasa]No"
-		                                class="inline">
-		                                Não
 		                            </label>
 		                        </div>
 		                        <div class="columns large-10 left no-padding ">
@@ -925,24 +682,13 @@
 		                            <input
 		                                type="radio"
 										value="1"
-		                                id="caso[demandas][separacaoPais]Yep"
-		                                name="caso[demandas][separacaoPais]"
-										ng-model="caso[demandas][separacaoPais]"/>
+		                                id="casodemandasseparacaoPaisYep"
+		                                name="[caso][demandas][separacaoPais]"
+										ng-model="caso.demandas.separacaoPais"/>
 		                            <label
-		                                for="caso[demandas][separacaoPais]Yep"
+		                                for="casodemandasseparacaoPaisYep"
 		                                class="inline">
 		                                Sim
-		                            </label>
-		                            <input
-		                                type="radio"
-										value="0" checked="checked"
-		                                id="caso[demandas][separacaoPais]No"
-		                                name="caso[demandas][separacaoPais]"
-										ng-model="caso[demandas][separacaoPais]"/>
-		                            <label
-		                                for="caso[demandas][separacaoPais]No"
-		                                class="inline">
-		                                Não
 		                            </label>
 		                        </div>
 		                        <div class="columns large-10 left no-padding ">
@@ -954,24 +700,13 @@
 		                            <input
 		                                type="radio"
 										value="1"
-		                                id="caso[demandas][conflitoFamiliar]Yep"
-		                                name="caso[demandas][conflitoFamiliar]"
-										ng-model="caso[demandas][conflitoFamiliar]"/>
+		                                id="casodemandasconflitoFamiliarYep"
+		                                name="[caso][demandas][conflitoFamiliar]"
+										ng-model="caso.demandas.conflitoFamiliar"/>
 		                            <label
-		                                for="caso[demandas][conflitoFamiliar]Yep"
+		                                for="casodemandasconflitoFamiliarYep"
 		                                class="inline">
 		                                Sim
-		                            </label>
-		                            <input
-		                                type="radio"
-										value="0" checked="checked"
-		                                id="caso[demandas][conflitoFamiliar]No"
-		                                name="caso[demandas][conflitoFamiliar]"
-										ng-model="caso[demandas][conflitoFamiliar]"/>
-		                            <label
-		                                for="caso[demandas][conflitoFamiliar]No"
-		                                class="inline">
-		                                Não
 		                            </label>
 		                        </div>
 		                        <div class="columns large-10 left no-padding ">
@@ -983,24 +718,13 @@
 		                            <input
 		                                type="radio"
 										value="1"
-		                                id="caso[demandas][problemaSocioEconomico]Yep"
-		                                name="caso[demandas][problemaSocioEconomico]"
-										ng-model="caso[demandas][problemaSocioEconomico]"/>
+		                                id="casodemandasproblemaSocioEconomicoYep"
+		                                name="[caso][demandas][problemaSocioEconomico]"
+										ng-model="caso.demandas.problemaSocioEconomico"/>
 		                            <label
-		                                for="caso[demandas][problemaSocioEconomico]Yep"
+		                                for="casodemandasproblemaSocioEconomicoYep"
 		                                class="inline">
 		                                Sim
-		                            </label>
-		                            <input
-		                                type="radio"
-										value="0" checked="checked"
-		                                id="caso[demandas][problemaSocioEconomico]No"
-		                                name="caso[demandas][problemaSocioEconomico]"
-										ng-model="caso[demandas][problemaSocioEconomico]"/>
-		                            <label
-		                                for="caso[demandas][problemaSocioEconomico]No"
-		                                class="inline">
-		                                Não
 		                            </label>
 		                        </div>
 		                        <div class="columns large-10 left no-padding ">
@@ -1013,15 +737,16 @@
 				            <div class="row collapse">
 				                <div class="small-2 columns">
 				                    <label class="prefix"
-				                        for="caso[contexto]">
+				                        for="casocontexto">
 				                        Contexto
 				                    </label>
 				                </div>
 				                <div class="small-10 columns end">
 				                    <textarea
 										required
-				                        id="caso[contexto]"
-				                        name="caso[contexto]"
+				                        id="casocontexto"
+				                        name="caso.contexto"
+										ng-model="caso.contexto"
 	                        			rows="8"
 										placeholder="Descreva o máximo de informações a respeito da situação do aluno. Evite colocar informações que o identifique ou a outras pessoas. Faça comentários ou observações relevantes sobre o atendimento."></textarea>
 				                </div>
@@ -1029,10 +754,9 @@
 							<div class="row">
 				                <div class="small-12 column centered">
 				                    <button
-				                        type="submit"
 				                        class="success button small">
 				                        ENCAMINHAMENTOS
-				                    </button>
+									</button>
 				                </div>
 				            </div>	
 				        </section>
