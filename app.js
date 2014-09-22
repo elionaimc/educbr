@@ -1,25 +1,25 @@
-var express = require('express'); //loads express module
-var app = express(); //to build an app
-var load = require('express-load'); //helps with the mvc structure
-var server = require('http').createServer(app); //create a server using express app
+var express = require('express'); // carrega módulo express
+var app = express(); // para montar uma app
+var load = require('express-load'); // facilita a estrutura mvc
+var server = require('http').createServer(app); // cria um servidor de aplicação express
 
 /*
- * database configs (mongoose lib for mongoDB)
+ * configurações do banco de dados (biblioteca mongoose para mongoDB)
  */
 var Mongoose = require('Mongoose');
 var db = Mongoose.connection;
 db.on('error', function(){
-	console.log('MongoDB: Vaso? que v...'); //if something goes wrong with database
+	console.log('MongoDB: Vaso? que v...'); // se alguma coisa der errado
 });
-db.on('error', console.error); //shows databases errors
-db.once('open', function() { //database conection is OK!
+db.on('error', console.error); // mostra os erros da base de dados
+db.once('open', function() { // conexão com mongoDB está OK!
   console.log('MongoDB: Não vou cair nessa de novo, Oráculo!');
 });
-// defines what database to connect
+// define em qual base de dados conectar
 Mongoose.connect('mongodb://localhost/test');
 
 /*
- * Sets main configs for express library
+ * Define as principais configurações para a biblioteca express
  */
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
@@ -35,7 +35,7 @@ res.render('404');
 });
 
 /*
- * loads the mvc structure
+ * carrega a estrutura mvc
  */
 load('models')
 .then('controllers')
@@ -43,7 +43,7 @@ load('models')
 .into(app);
 
 /*
- * starts the application server
+ * inicia o servidor de aplicação
  */
 server.listen(3000, function(){
   console.log("NodeJS: Bem vindo, Neo. Não se preocupe com o vaso.");

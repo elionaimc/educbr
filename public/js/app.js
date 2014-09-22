@@ -7,8 +7,11 @@ educase.controller('recuperarController', function($scope, $http, casoDefault) {
 	$scope.recuperarKNN = function() {
 		$http.post('/recuperar', $scope.caso.demandas)
 				.success(function(data) {
-					if(data.length > 0)
+					if(data.length > 0) {
+						$scope.passo = 3;
+						$scope.tab=1;
 						alert('SUCESSO: FOI' + JSON.stringify($scope.caso.demandas) + 'SUCESSO: VEIO' + JSON.stringify(data));
+					}
 					else
 						alert('Servidor retornou ZERO resultados');
 				})
@@ -17,9 +20,7 @@ educase.controller('recuperarController', function($scope, $http, casoDefault) {
 				});
 	}
 	
-	
 });
-
 
 educase.service('casoDefault', function() {
     var demandas = {

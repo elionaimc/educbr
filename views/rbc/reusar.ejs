@@ -1,0 +1,38 @@
+
+	
+	// define a classe do novo caso com base na demanda de maior peso
+	var classificar = function(novoCaso){
+		if (
+			novoCaso.demandas.atrasosConstantes == '1' || 
+			novoCaso.demandas.desequilibrioPsicologico == '1' || 
+			novoCaso.demandas.dificuldadeAprendizagem == '1' || 
+			novoCaso.demandas.muitasFaltas == '1' || 
+			novoCaso.demandas.orientacaoPedagogica == '1'
+			) {
+			novoCaso.classe = 'A';
+		} else if (
+			novoCaso.demandas.bulling == '1' || 
+			novoCaso.demandas.conflitoOpcaoSexual == '1' || 
+			novoCaso.demandas.conflitoRelacionalAfetivo == '1' || 
+			novoCaso.demandas.desmotivacaoCurso == '1' || 
+			novoCaso.demandas.desmotivacaoRendimento == '1' || 
+			novoCaso.demandas.orientacaoSecular == '1' || 
+			novoCaso.demandas.situacaoAbuso == '1' || 
+			novoCaso.demandas.situacaoExclusao == '1' || 
+			novoCaso.demandas.situacaoTimidez == '1'
+			) {
+			novoCaso.classe = 'B';
+		} else if (
+			novoCaso.demandas.problemaComportamento == '1' || 
+			novoCaso.demandas.problemaRelacionamentoAluno == '1' || 
+			novoCaso.demandas.problemaRelacionamentoProfessor == '1'
+			) {
+			novoCaso.classe = 'C';
+		} else if (
+			novoCaso.demandas.problemaDisciplinarGrave == '1' || 
+			novoCaso.demandas.problemaDisciplinarLeve == '1' || 
+			novoCaso.demandas.problemaDisciplinarMedio == '1'
+			) {
+			novoCaso.classe = 'D';
+		} else novoCaso.classe = 'E';
+	}

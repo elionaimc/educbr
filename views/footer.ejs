@@ -12,7 +12,8 @@
 		<script>
 			$(document).ready(function() {
 			      $(document).foundation();
-				  $('.buttonset').buttonset();//starts buttonsets plugin
+				  $('.buttonset').buttonset();
+				  $('input[type=ckeckbox]').on('change', $('.buttonset').buttonset('refresh'));
 				  $('#sexo').select2();
 				  $('#curso').select2();
 				  $('#periodo').select2();

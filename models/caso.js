@@ -60,11 +60,9 @@ module.exports = function(app) {
 			mudarTurno: Number,
 			conversar: Number
 		},
-		contexto: {type: String},
+		contexto: {type: String, required: true},
 		atendidoPor: {type: String, required: true},
-		classe: {type: String, required: true},
-		peso: Number,
-		coeficiente: Number
+		classe: {type: String, required: true}
 	});
 	
 	return Caso = Mongoose.model('Caso', casoSchema);

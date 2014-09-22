@@ -368,7 +368,7 @@
 .ui-widget-header .ui-state-default {
 	color:#fff;
 	font-weight: bold;
-	background-color: #81994d;
+	background-color: #bbb;
 }
 .ui-state-default a,
 .ui-state-default a:link,
@@ -385,7 +385,7 @@
 .ui-widget-header .ui-state-focus {
 	color:#fff;
 	font-weight: bold;
-	background-color: #508d1e;
+	background-color: #bbb;
 }
 .ui-state-hover a,
 .ui-state-hover a:hover,

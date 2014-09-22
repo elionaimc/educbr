@@ -6,760 +6,846 @@
 					<a href="/sair">sair</a>
 				</small>
 			</h1>
-				<div class="small-10 centered" id="form" ng-controller="recuperarController">
+				<div class="small-10 centered" id="form" ng-controller="recuperarController" ng-init="tab=1;passo=1">
 				    <form
 				        class="row"
-						ng-submit="recuperarKNN()"
+						ng-submit="cadastrarCaso()"
 				        method="post"
+						name="TCCRBC"
 	        			data-abide 
 	        			novalidate >
 				        <section class="large-12 panel no-border">
-							<fieldset>
-							<legend>Informações pessoais do aluno</legend>
-							<inpu type="hidden" ng-model="atendidoPor" value="<%- usuario.email %>" name="atendidoPor">
-				            <div class="row">
-					            <div class="columns small-12 large-6">
-						            <div class="row collapse">
-						                <div class="small-4 column">
-						                    <label class="prefix"
-						                        for="data">
-						                        Data
-						                    </label>
-						                </div>
-						                <div class="small-8 column">
-						                    <input
-						                        type="text"
-						                        id="data"
-						                        name="caso.data"
-												ng-model="caso.data"
-				                                maxlength="10"
-				                                placeholder="00/00/0000"
-												required />
-						                </div>
-						            </div>
-					            </div>
-					            <div class="columns small-12 large-6">
-						            <div class="row collapse">
-						                <div class="small-5 column">
-						                    <label
-												class="prefix"
-												for="matricula">
-						                        Matrícula
-						                    </label>
-						                </div>
-						                <div class="small-7 column">
-						                    <input
-						                        type="text"
-												id="matricula"
-				                                maxlength="128"
-						                        name="caso.matricula"
-												ng-model="caso.matricula"
-												required
-						                    />
-						                </div>
-						            </div>
-					            </div>
-				            </div>
-				            <div class="row collapse">
-				                <div class="small-2 columns">
-				                    <label class="prefix"
-				                        for="nome">
-				                        Nome
-				                    </label>
-				                </div>
-				                <div class="small-10 columns end">
-				                    <input
-				                        type="text"
-				                        id="nome"
-				                        name="caso.nome"
-										ng-model="caso.nome"
-				                        min="5"
-				                        maxlength="128"
-										placeholder="Nome Completo do Aluno"
-										required />
-				                </div>
-				            </div>
-				            <div class="row">
-					            <div class="columns small-12 large-6">
-						            <div class="row collapse">
-						                <div class="small-4 column">
-						                    <label
-												class="prefix"
-												for="curso">
-						                        Curso
-						                    </label>
-						                </div>
-						                <div class="small-8 column">
-						                    <select
-						                        id="curso"
-						                        name="caso.curso"
-												ng-model="caso.curso"
-												style="width:100%"
-												class="small-12 justifyed"
-												required >
-												<option value="">
-													Selecione
-												</option>
-												<option value="1">
-													Integrado em Administração
-												</option>
-												<option value="2">
-													Integrado em Informática para Internet
-												</option>
-												<option value="3">
-													Integrado em Manutenção e Suporte em Informática
-												</option>
-												<option value="4">
-													Integrado em Informática (generalista)
-												</option>
-												<option value="5">
-													Superior - TADS
-												</option>
-												<option value="6">
-													Superior - REDES
-												</option>
-												<option value="7">
-													Superior - GESTÃO PÚBLICA
-												</option>
-												<option value="8">
-													Superior - COMEX
-												</option>
-											</select>
-						                </div>
-						            </div>
-					            </div>
-					            <div class="columns small-12 large-6">
-						            <div class="row collapse">
-						                <div class="small-5 column">
-						                    <label
-												class="prefix"
-												for="periodo">
-						                        Período
-						                    </label>
-						                </div>
-						                <div class="small-7 column">
-						                    <select
-						                        id="periodo"
-						                        name="caso.periodo"
-												ng-model="caso.periodo"
-												style="width:100%"
-												class="small-12 justifyed"
-												required >
-												<option value="" >
-													Selecione
-												</option>
-												<option value="1">
-													1º Período/Ano
-												</option>
-												<option value="2">
-													2º Período/Ano
-												</option>
-												<option value="3">
-													3º Período/Ano
-												</option>
-												<option value="4">
-													4º Período/Ano
-												</option>
-												<option value="5">
-													5º Período/Ano
-												</option>
-												<option value="6">
-													6º Período/Ano
-												</option>
-											</select>
-						                </div>
-						            </div>
-					            </div>
-				            </div>
-							<div><br/></div>
-				            <div class="row">
-					            <div class="small-12 large-6 columns">
-						            <div class="row collapse">
-						                <div class="small-4 column">
-						                    <label
-						                        class="prefix"
-						                        for="sexo">
-						                        Sexo
-						                    </label>
-						                </div>
-						                <div class="small-8 column">
-						                    <select 
-						                        id="sexo"
-						                        name="caso.sexo"
-												ng-model="caso.sexo"
-						                        class="small-12 justifyed"
-												required >
-												<option value="">
-													Selecione
-												</option>
-												<option value="0" >
-													FEMININO
-												</option>
-												<option value="1">
-													MASCULINO
-												</option>
-											</select>
-						                </div>
-						            </div>
-					            </div>
-					            <div class="columns small-12 large-6">
-						            <div class="row collapse">
-						                <div class="small-5 column">
-						                    <label
-												class="prefix"
-												for="telefone">
-						                        Telefone
-						                    </label>
-						                </div>
-						                <div class="small-7 column">
-						                    <input
-						                        type="text"
-						                        maxlength="15"
-												id="telefone"
-						                        name="caso.telefone"
-												ng-model="caso.telefone"
-						                        placeholder="(84)0000-0000"
-						                    />
-						                </div>
-						            </div>
-					            </div>
-				            </div>
-				            <div class="row collapse">
-				                <div class="small-2 columns">
-				                    <label class="prefix"
-				                        for="email">
-				                        Email
-				                    </label>
-				                </div>
-				                <div class="small-10 columns end">
-				                    <input
-				                        type="email"
-				                        id="email"
-				                        name="caso.email"
-										ng-model="caso.email"
-				                        min="5"
-				                        maxlength="128"
-										placeholder="email@ifrn.edu.br" />
-				                </div>
-				            </div>
-				            <div class="row collapse">
-				                <div class="small-3 columns">
-				                    <label class="prefix"
-				                        for="observacoes">
-				                        Dados Seguros
-				                    </label>
-				                </div>
-				                <div class="small-9 columns end">
-				                    <textarea
-				                        id="observacoes"
-				                        name="caso.observacoes"
-										ng-model="caso.observacoes"
-	                        			rows="5"
-										placeholder="Aqui você pode inserir informações sigilosas, que tenham relação ao caso apresentado, tais como dados do responsável, grau de parentesco, contatos..."></textarea>
-				                </div>
-				            </div>
+							<fieldset ng-show="passo==3">
+								<legend>
+									Selecionar encaminhamentos
+								</legend>
+			                    <div>
+			                        <div class="buttonset left columns large-2 no-padding">
+			                            <input
+			                                type="checkbox"
+											ng-true-value="1"
+											ng-false-value="0"
+			                                id="casoencaminhamentosaconpanhamentoPsicopedagogico"
+			                                name="[caso][encaminhamentos][acompanhamentoPsicopedagogico]"
+											ng-model="caso.encaminhamentos.acompanhamentoPsicopedagogico"/>
+			                            <label
+			                                for="casoencaminhamentosaconpanhamentoPsicopedagogico"
+			                                class="inline">
+			                                Sim
+			                            </label>
+			                        </div>
+			                        <div class="columns large-10 left no-padding ">
+			                            <label class="left inline">Acompanhamento Psico-pedagógico</label>
+			                        </div>
+								</div>
 							</fieldset>
-							<fieldset>
-							<legend>
-								Demandas do atendimento
-							</legend>
-		                    <div>
-		                        <div class="buttonset left columns large-2 no-padding">
-		                            <input
-		                                type="radio"
-										value="1"
-		                                id="casodemandasdificuldadeAprendizagemYep"
-		                                name="[caso][demandas][dificuldadeAprendizagem]"
-										ng-model="caso.demandas.dificuldadeAprendizagem"/>
-		                            <label
-		                                for="casodemandasdificuldadeAprendizagemYep"
-		                                class="inline">
-		                                Sim
-		                            </label>
-		                        </div>
-		                        <div class="columns large-10 left no-padding ">
-		                            <label class="left inline">Dificuldade de aprendizagem em disciplina</label>
-		                        </div>
-							</div>
-		                    <div>
-		                        <div class="buttonset left columns large-2 no-padding">
-		                            <input
-		                                type="radio"
-										value="1"
-		                                id="casodemandasorientacaoPedagogicaYep"
-		                                name="[caso][demandas][orientacaoPedagogica]"
-										ng-model="caso.demandas.orientacaoPedagogica"/>
-		                            <label
-		                                for="casodemandasorientacaoPedagogicaYep"
-		                                class="inline">
-		                                Sim
-		                            </label>
-		                        </div>
-		                        <div class="columns large-10 left no-padding ">
-		                            <label class="left inline">Necessidade de orientação pedagógica</label>
-		                        </div>
-							</div>
-		                    <div>
-		                        <div class="buttonset left columns large-2 no-padding">
-		                            <input
-		                                type="radio"
-										value="1"
-		                                id="casodemandasmuitasFaltasYep"
-		                                name="[caso][demandas][muitasFaltas]"
-										ng-model="caso.demandas.muitasFaltas"/>
-		                            <label
-		                                for="casodemandasmuitasFaltasYep"
-		                                class="inline">
-		                                Sim
-		                            </label>
-		                        </div>
-		                        <div class="columns large-10 left no-padding ">
-		                            <label class="left inline">Muitas faltas</label>
-		                        </div>
-							</div>
-		                    <div>
-		                        <div class="buttonset left columns large-2 no-padding">
-		                            <input
-		                                type="radio"
-										value="1"
-		                                id="casodemandasatrasosConstantesYep"
-		                                name="[caso][demandas][atrasosConstantes]"
-										ng-model="caso.demandas.atrasosConstantes"/>
-		                            <label
-		                                for="casodemandasatrasosConstantesYep"
-		                                class="inline">
-		                                Sim
-		                            </label>
-		                        </div>
-		                        <div class="columns large-10 left no-padding ">
-		                            <label class="left inline">Atrasos constantes</label>
-		                        </div>
-							</div>
-		                    <div>
-		                        <div class="buttonset left columns large-2 no-padding">
-		                            <input
-		                                type="radio"
-										value="1"
-		                                id="casodemandasdesequilibrioPsicologicoYep"
-		                                name="[caso][demandas][desequilibrioPsicologico]"
-										ng-model="caso.demandas.desequilibrioPsicologico"/>
-		                            <label
-		                                for="casodemandasdesequilibrioPsicologicoYep"
-		                                class="inline">
-		                                Sim
-		                            </label>
-		                        </div>
-		                        <div class="columns large-10 left no-padding ">
-		                            <label class="left inline">Desequilíbrio ou problema de ordem psicológica</label>
-		                        </div>
-							</div>
-		                    <div>
-		                        <div class="buttonset left columns large-2 no-padding">
-		                            <input
-		                                type="radio"
-										value="1"
-		                                id="casodemandasdesmotivacaoRendimentoYep"
-		                                name="[caso][demandas][desmotivacaoRendimento]"
-										ng-model="caso.demandas.desmotivacaoRendimento"/>
-		                            <label
-		                                for="casodemandasdesmotivacaoRendimentoYep"
-		                                class="inline">
-		                                Sim
-		                            </label>
-		                        </div>
-		                        <div class="columns large-10 left no-padding ">
-		                            <label class="left inline">Desmotivação por baixo rendimento</label>
-		                        </div>
-							</div>
-		                    <div>
-		                        <div class="buttonset left columns large-2 no-padding">
-		                            <input
-		                                type="radio"
-										value="1"
-		                                id="casodemandasdesmotivacaoCursoYep"
-		                                name="[caso][demandas][desmotivacaoCurso]"
-										ng-model="caso.demandas.desmotivacaoCurso"/>
-		                            <label
-		                                for="casodemandasdesmotivacaoCursoYep"
-		                                class="inline">
-		                                Sim
-		                            </label>
-		                        </div>
-		                        <div class="columns large-10 left no-padding ">
-		                            <label class="left inline">Desmotivação pela opção do curso</label>
-		                        </div>
-							</div>
-		                    <div>
-		                        <div class="buttonset left columns large-2 no-padding">
-		                            <input
-		                                type="radio"
-										value="1"
-		                                id="casodemandasconflitoOpcaoSexualYep"
-		                                name="[caso][demandas][conflitoOpcaoSexual]"
-										ng-model="caso.demandas.conflitoOpcaoSexual"/>
-		                            <label
-		                                for="casodemandasconflitoOpcaoSexualYep"
-		                                class="inline">
-		                                Sim
-		                            </label>
-		                        </div>
-		                        <div class="columns large-10 left no-padding ">
-		                            <label class="left inline">Conflito com relação a opção sexual</label>
-		                        </div>
-							</div>
-		                    <div>
-		                        <div class="buttonset left columns large-2 no-padding">
-		                            <input
-		                                type="radio"
-										value="1"
-		                                id="casodemandasconflitoRelacionalAfetivoYep"
-		                                name="[caso][demandas][conflitoRelacionalAfetivo]"
-										ng-model="caso.demandas.conflitoRelacionalAfetivo"/>
-		                            <label
-		                                for="casodemandasconflitoRelacionalAfetivoYep"
-		                                class="inline">
-		                                Sim
-		                            </label>
-		                        </div>
-		                        <div class="columns large-10 left no-padding ">
-		                            <label class="left inline">Conflito relacionado a situações afetivas, sexuais ou de relacionamento</label>
-		                        </div>
-							</div>
-		                    <div>
-		                        <div class="buttonset left columns large-2 no-padding">
-		                            <input
-		                                type="radio"
-										value="1"
-		                                id="casodemandasbullingYep"
-		                                name="[caso][demandas][bulling]"
-										ng-model="caso.demandas.bulling"/>
-		                            <label
-		                                for="casodemandasbullingYep"
-		                                class="inline">
-		                                Sim
-		                            </label>
-		                        </div>
-		                        <div class="columns large-10 left no-padding ">
-		                            <label class="left inline">Bulling</label>
-		                        </div>
-							</div>
-		                    <div>
-		                        <div class="buttonset left columns large-2 no-padding">
-		                            <input
-		                                type="radio"
-										value="1"
-		                                id="casodemandassituacaoTimidezYep"
-		                                name="[caso][demandas][situacaoTimidez]"
-										ng-model="caso.demandas.situacaoTimidez"/>
-		                            <label
-		                                for="casodemandassituacaoTimidezYep"
-		                                class="inline">
-		                                Sim
-		                            </label>
-		                        </div>
-		                        <div class="columns large-10 left no-padding ">
-		                            <label class="left inline">Situações relacionadas à timidez</label>
-		                        </div>
-							</div>
-		                    <div>
-		                        <div class="buttonset left columns large-2 no-padding">
-		                            <input
-		                                type="radio"
-										value="1"
-		                                id="casodemandassituacaoExclusaoYep"
-		                                name="[caso][demandas][situacaoExclusao]"
-										ng-model="caso.demandas.situacaoExclusao"/>
-		                            <label
-		                                for="casodemandassituacaoExclusaoYep"
-		                                class="inline">
-		                                Sim
-		                            </label>
-		                        </div>
-		                        <div class="columns large-10 left no-padding ">
-		                            <label class="left inline">Situação de exclusão em sala de aula</label>
-		                        </div>
-							</div>
-		                    <div>
-		                        <div class="buttonset left columns large-2 no-padding">
-		                            <input
-		                                type="radio"
-										value="1"
-		                                id="casodemandassituacaoAbusoYep"
-		                                name="[caso][demandas][situacaoAbuso]"
-										ng-model="caso.demandas.situacaoAbuso"/>
-		                            <label
-		                                for="casodemandassituacaoAbusoYep"
-		                                class="inline">
-		                                Sim
-		                            </label>
-		                        </div>
-		                        <div class="columns large-10 left no-padding ">
-		                            <label class="left inline">Situação de abuso (sexual, moral etc)</label>
-		                        </div>
-							</div>
-		                    <div>
-		                        <div class="buttonset left columns large-2 no-padding">
-		                            <input
-		                                type="radio"
-										value="1"
-		                                id="casodemandasorientacaoSecularYep"
-		                                name="[caso][demandas][orientacaoSecular]"
-										ng-model="caso.demandas.orientacaoSecular"/>
-		                            <label
-		                                for="casodemandasorientacaoSecularYep"
-		                                class="inline">
-		                                Sim
-		                            </label>
-		                        </div>
-		                        <div class="columns large-10 left no-padding ">
-		                            <label class="left inline">Necessidade de orientação secular (não-relacionado à vida acadêmica)</label>
-		                        </div>
-							</div>
-		                    <div>
-		                        <div class="buttonset left columns large-2 no-padding">
-		                            <input
-		                                type="radio"
-										value="1"
-		                                id="casodemandasproblemaComportamentoYep"
-		                                name="[caso][demandas][problemaComportamento]"
-										ng-model="caso.demandas.problemaComportamento"/>
-		                            <label
-		                                for="casodemandasproblemaComportamentoYep"
-		                                class="inline">
-		                                Sim
-		                            </label>
-		                        </div>
-		                        <div class="columns large-10 left no-padding ">
-		                            <label class="left inline">Problema de comportamento</label>
-		                        </div>
-							</div>
-		                    <div>
-		                        <div class="buttonset left columns large-2 no-padding">
-		                            <input
-		                                type="radio"
-										value="1"
-		                                id="casodemandasproblemaRelacionamentoProfessorYep"
-		                                name="[caso][demandas][problemaRelacionamentoProfessor]"
-										ng-model="caso.demandas.problemaRelacionamentoProfessor"/>
-		                            <label
-		                                for="casodemandasproblemaRelacionamentoProfessorYep"
-		                                class="inline">
-		                                Sim
-		                            </label>
-		                        </div>
-		                        <div class="columns large-10 left no-padding ">
-		                            <label class="left inline">Problema de relacionamento aluno - professor</label>
-		                        </div>
-							</div>
-		                    <div>
-		                        <div class="buttonset left columns large-2 no-padding">
-		                            <input
-		                                type="radio"
-										value="1"
-		                                id="casodemandasproblemaRelacionamentoAlunoYep"
-		                                name="[caso][demandas][problemaRelacionamentoAluno]"
-										ng-model="caso.demandas.problemaRelacionamentoAluno"/>
-		                            <label
-		                                for="casodemandasproblemaRelacionamentoAlunoYep"
-		                                class="inline">
-		                                Sim
-		                            </label>
-		                        </div>
-		                        <div class="columns large-10 left no-padding ">
-		                            <label class="left inline">Problema de relacionamento aluno - aluno</label>
-		                        </div>
-							</div>
-		                    <div>
-		                        <div class="buttonset left columns large-2 no-padding">
-		                            <input
-		                                type="radio"
-										value="1"
-		                                id="casodemandasproblemaDisciplinarLeveYep"
-		                                name="[caso][demandas][problemaDisciplinarLeve]"
-										ng-model="caso.demandas.problemaDisciplinarLeve"/>
-		                            <label
-		                                for="casodemandasproblemaDisciplinarLeveYep"
-		                                class="inline">
-		                                Sim
-		                            </label>
-		                        </div>
-		                        <div class="columns large-10 left no-padding ">
-		                            <label class="left inline">Problema de ordem disciplinar leve</label>
-		                        </div>
-							</div>
-		                    <div>
-		                        <div class="buttonset left columns large-2 no-padding">
-		                            <input
-		                                type="radio"
-										value="1"
-		                                id="casodemandasproblemaDisciplinarMedioYep"
-		                                name="[caso][demandas][problemaDisciplinarMedio]"
-										ng-model="caso.demandas.problemaDisciplinarMedio"/>
-		                            <label
-		                                for="casodemandasproblemaDisciplinarMedioYep"
-		                                class="inline">
-		                                Sim
-		                            </label>
-		                        </div>
-		                        <div class="columns large-10 left no-padding ">
-		                            <label class="left inline">Problema de ordem disciplinar médio</label>
-		                        </div>
-							</div>
-		                    <div>
-		                        <div class="buttonset left columns large-2 no-padding">
-		                            <input
-		                                type="radio"
-										value="1"
-		                                id="casodemandasproblemaDisciplinarGraveYep"
-		                                name="[caso][demandas][problemaDisciplinarGrave]"
-										ng-model="caso.demandas.problemaDisciplinarGrave"/>
-		                            <label
-		                                for="casodemandasproblemaDisciplinarGraveYep"
-		                                class="inline">
-		                                Sim
-		                            </label>
-		                        </div>
-		                        <div class="columns large-10 left no-padding ">
-		                            <label class="left inline">Problema de ordem disciplinar grave</label>
-		                        </div>
-							</div>
-		                    <div>
-		                        <div class="buttonset left columns large-2 no-padding">
-		                            <input
-		                                type="radio"
-										value="1"
-		                                id="casodemandasproblemaRelacionamentoPaiYep"
-		                                name="[caso][demandas][problemaRelacionamentoPai]"
-										ng-model="caso.demandas.problemaRelacionamentoPai"/>
-		                            <label
-		                                for="casodemandasproblemaRelacionamentoPaiYep"
-		                                class="inline">
-		                                Sim
-		                            </label>
-		                        </div>
-		                        <div class="columns large-10 left no-padding ">
-		                            <label class="left inline">Problema de relacionamento com o pai</label>
-		                        </div>
-							</div>
-		                    <div>
-		                        <div class="buttonset left columns large-2 no-padding">
-		                            <input
-		                                type="radio"
-										value="1"
-		                                id="casodemandasproblemaRelacionamentoMaeYep"
-		                                name="[caso][demandas][problemaRelacionamentoMae]"
-										ng-model="caso.demandas.problemaRelacionamentoMae"/>
-		                            <label
-		                                for="casodemandasproblemaRelacionamentoMaeYep"
-		                                class="inline">
-		                                Sim
-		                            </label>
-		                        </div>
-		                        <div class="columns large-10 left no-padding ">
-		                            <label class="left inline">Problema de relacionamento com a mãe</label>
-		                        </div>
-							</div>
-		                    <div>
-		                        <div class="buttonset left columns large-2 no-padding">
-		                            <input
-		                                type="radio"
-										value="1"
-		                                id="casodemandasproblemaRelacionamentoCasaYep"
-		                                name="[caso][demandas][problemaRelacionamentoCasa]"
-										ng-model="caso.demandas.problemaRelacionamentoCasa"/>
-		                            <label
-		                                for="casodemandasproblemaRelacionamentoCasaYep"
-		                                class="inline">
-		                                Sim
-		                            </label>
-		                        </div>
-		                        <div class="columns large-10 left no-padding ">
-		                            <label class="left inline">Problema de relacionamento em casa</label>
-		                        </div>
-							</div>
-		                    <div>
-		                        <div class="buttonset left columns large-2 no-padding">
-		                            <input
-		                                type="radio"
-										value="1"
-		                                id="casodemandasseparacaoPaisYep"
-		                                name="[caso][demandas][separacaoPais]"
-										ng-model="caso.demandas.separacaoPais"/>
-		                            <label
-		                                for="casodemandasseparacaoPaisYep"
-		                                class="inline">
-		                                Sim
-		                            </label>
-		                        </div>
-		                        <div class="columns large-10 left no-padding ">
-		                            <label class="left inline">Pais em separação</label>
-		                        </div>
-							</div>
-		                    <div>
-		                        <div class="buttonset left columns large-2 no-padding">
-		                            <input
-		                                type="radio"
-										value="1"
-		                                id="casodemandasconflitoFamiliarYep"
-		                                name="[caso][demandas][conflitoFamiliar]"
-										ng-model="caso.demandas.conflitoFamiliar"/>
-		                            <label
-		                                for="casodemandasconflitoFamiliarYep"
-		                                class="inline">
-		                                Sim
-		                            </label>
-		                        </div>
-		                        <div class="columns large-10 left no-padding ">
-		                            <label class="left inline">Conflito familiar</label>
-		                        </div>
-							</div>
-		                    <div>
-		                        <div class="buttonset left columns large-2 no-padding">
-		                            <input
-		                                type="radio"
-										value="1"
-		                                id="casodemandasproblemaSocioEconomicoYep"
-		                                name="[caso][demandas][problemaSocioEconomico]"
-										ng-model="caso.demandas.problemaSocioEconomico"/>
-		                            <label
-		                                for="casodemandasproblemaSocioEconomicoYep"
-		                                class="inline">
-		                                Sim
-		                            </label>
-		                        </div>
-		                        <div class="columns large-10 left no-padding ">
-		                            <label class="left inline">
-										Problemas de ordem sócio-econômica do aluno ou família
-									</label>
-		                        </div>
-							</div>
-							<hr/>
-				            <div class="row collapse">
-				                <div class="small-2 columns">
-				                    <label class="prefix"
-				                        for="casocontexto">
-				                        Contexto
-				                    </label>
-				                </div>
-				                <div class="small-10 columns end">
-				                    <textarea
-										required
-				                        id="casocontexto"
-				                        name="caso.contexto"
-										ng-model="caso.contexto"
-	                        			rows="8"
-										placeholder="Descreva o máximo de informações a respeito da situação do aluno. Evite colocar informações que o identifique ou a outras pessoas. Faça comentários ou observações relevantes sobre o atendimento."></textarea>
-				                </div>
-				            </div>
-							<div class="row">
-				                <div class="small-12 column centered">
-				                    <button
-				                        class="success button small">
-				                        ENCAMINHAMENTOS
-									</button>
-				                </div>
-				            </div>	
-				        </section>
+							<fieldset ng-show="tab==1">
+								<legend ng-show="passo==1">Informações pessoais do aluno</legend>
+								<legend ng-show="passo==3">Confirmar Dados</legend>
+								<input type="hidden" ng-model="atendidoPor" value="<%- usuario.email %>" name="atendidoPor">
+					            <div class="row">
+						            <div class="columns small-12 large-6">
+							            <div class="row collapse">
+							                <div class="small-4 column">
+							                    <label class="prefix"
+							                        for="data">
+							                        Data *
+							                    </label>
+							                </div>
+							                <div class="small-8 column">
+							                    <input
+							                        type="text"
+							                        id="data"
+							                        name="caso.data"
+													ng-model="caso.data"
+					                                maxlength="10"
+					                                placeholder="00/00/0000"
+													required />
+							                </div>
+							            </div>
+						            </div>
+						            <div class="columns small-12 large-6">
+							            <div class="row collapse">
+							                <div class="small-5 column">
+							                    <label
+													class="prefix"
+													for="matricula">
+							                        Matrícula *
+							                    </label>
+							                </div>
+							                <div class="small-7 column">
+							                    <input
+							                        type="text"
+													id="matricula"
+					                                maxlength="128"
+							                        name="caso.matricula"
+													ng-model="caso.matricula"
+													required
+							                    />
+							                </div>
+							            </div>
+						            </div>
+					            </div>
+					            <div class="row collapse">
+					                <div class="small-2 columns">
+					                    <label class="prefix"
+					                        for="nome">
+					                        Nome *
+					                    </label>
+					                </div>
+					                <div class="small-10 columns end">
+					                    <input
+					                        type="text"
+					                        id="nome"
+					                        name="caso.nome"
+											ng-model="caso.nome"
+					                        min="5"
+					                        maxlength="128"
+											placeholder="Nome Completo do Aluno"
+											required />
+					                </div>
+					            </div>
+					            <div class="row">
+						            <div class="columns small-12 large-6">
+							            <div class="row collapse">
+							                <div class="small-4 column">
+							                    <label
+													class="prefix"
+													for="curso">
+							                        Curso *
+							                    </label>
+							                </div>
+							                <div class="small-8 column">
+							                    <select
+							                        id="curso"
+							                        name="caso.curso"
+													ng-model="caso.curso"
+													style="width:100%"
+													class="small-12 justifyed"
+													required >
+													<option value="">
+														Selecione
+													</option>
+													<option value="1">
+														Integrado em Administração
+													</option>
+													<option value="2">
+														Integrado em Informática para Internet
+													</option>
+													<option value="3">
+														Integrado em Manutenção e Suporte em Informática
+													</option>
+													<option value="4">
+														Integrado em Informática (generalista)
+													</option>
+													<option value="5">
+														Superior - TADS
+													</option>
+													<option value="6">
+														Superior - REDES
+													</option>
+													<option value="7">
+														Superior - GESTÃO PÚBLICA
+													</option>
+													<option value="8">
+														Superior - COMEX
+													</option>
+												</select>
+							                </div>
+							            </div>
+						            </div>
+						            <div class="columns small-12 large-6">
+							            <div class="row collapse">
+							                <div class="small-5 column">
+							                    <label
+													class="prefix"
+													for="periodo">
+							                        Período *
+							                    </label>
+							                </div>
+							                <div class="small-7 column">
+							                    <select
+							                        id="periodo"
+							                        name="caso.periodo"
+													ng-model="caso.periodo"
+													style="width:100%"
+													class="small-12 justifyed"
+													required >
+													<option value="" >
+														Selecione
+													</option>
+													<option value="1">
+														1º Período/Ano
+													</option>
+													<option value="2">
+														2º Período/Ano
+													</option>
+													<option value="3">
+														3º Período/Ano
+													</option>
+													<option value="4">
+														4º Período/Ano
+													</option>
+													<option value="5">
+														5º Período/Ano
+													</option>
+													<option value="6">
+														6º Período/Ano
+													</option>
+												</select>
+							                </div>
+							            </div>
+						            </div>
+					            </div>
+								<div><br/></div>
+					            <div class="row">
+						            <div class="small-12 large-6 columns">
+							            <div class="row collapse">
+							                <div class="small-4 column">
+							                    <label
+							                        class="prefix"
+							                        for="sexo">
+							                        Sexo *
+							                    </label>
+							                </div>
+							                <div class="small-8 column">
+							                    <select 
+							                        id="sexo"
+							                        name="caso.sexo"
+													ng-model="caso.sexo"
+							                        class="small-12 justifyed"
+													required >
+													<option value="">
+														Selecione
+													</option>
+													<option value="0" >
+														FEMININO
+													</option>
+													<option value="1">
+														MASCULINO
+													</option>
+												</select>
+							                </div>
+							            </div>
+						            </div>
+						            <div class="columns small-12 large-6">
+							            <div class="row collapse">
+							                <div class="small-5 column">
+							                    <label
+													class="prefix"
+													for="telefone">
+							                        Telefone
+							                    </label>
+							                </div>
+							                <div class="small-7 column">
+							                    <input
+							                        type="text"
+							                        maxlength="15"
+													id="telefone"
+							                        name="caso.telefone"
+													ng-model="caso.telefone"
+							                        placeholder="(84)0000-0000"
+							                    />
+							                </div>
+							            </div>
+						            </div>
+					            </div>
+					            <div class="row collapse">
+					                <div class="small-2 columns">
+					                    <label class="prefix"
+					                        for="email">
+					                        Email
+					                    </label>
+					                </div>
+					                <div class="small-10 columns end">
+					                    <input
+					                        type="email"
+					                        id="email"
+					                        name="caso.email"
+											ng-model="caso.email"
+					                        min="5"
+					                        maxlength="128"
+											placeholder="email@ifrn.edu.br" />
+					                </div>
+					            </div>
+					            <div class="row collapse">
+					                <div class="small-3 columns">
+					                    <label class="prefix"
+					                        for="observacoes">
+					                        Dados Seguros
+					                    </label>
+					                </div>
+					                <div class="small-9 columns end">
+					                    <textarea
+					                        id="observacoes"
+					                        name="caso.observacoes"
+											ng-model="caso.observacoes"
+		                        			rows="5"
+											placeholder="Aqui você pode inserir informações sigilosas, que tenham relação ao caso apresentado, tais como dados do responsável, grau de parentesco, contatos..."></textarea>
+					                </div>
+					            </div>
+					            <div class="row collapse">
+					                <div class="small-2 columns">
+					                    <label class="prefix"
+					                        for="casocontexto">
+					                        Contexto
+					                    </label>
+					                </div>
+					                <div class="small-10 columns end">
+					                    <textarea
+											required
+					                        id="casocontexto"
+					                        name="caso.contexto"
+											ng-model="caso.contexto"
+		                        			rows="8"
+											placeholder="Descreva o máximo de informações a respeito da situação do aluno. Evite colocar informações que o identifique ou a outras pessoas. Faça comentários ou observações relevantes sobre o atendimento."></textarea>
+					                </div>
+					            </div>
+								<div class="row" ng-show="passo==1">
+					                <div class="small-12 column centered">
+					                    <a
+											href="#"
+											ng-click="tab=2;passo=2"
+					                        class="success button small">
+					                        DEMANDAS
+										</a>
+					                </div>
+					            </div>
+								<div class="row" ng-show="passo==3">
+					                <div class="small-12 column centered">
+					                    <a
+											href="#"
+											ng-click="tab=2;passo=2"
+					                        class="info button small">
+					                        DEMANDAS
+										</a>
+					                    <button
+											ng-disabled="TCCRBC.$invalid"
+					                        class="success button small">
+					                        CADASTRAR
+										</button>
+					                </div>
+					            </div>
+							</fieldset>
+							<fieldset ng-show="tab==2">
+								<legend>
+									Demandas do atendimento
+								</legend>
+			                    <div>
+			                        <div class="buttonset left columns large-2 no-padding">
+			                            <input
+			                                type="checkbox"
+											ng-true-value="1"
+											ng-false-value="0"
+			                                id="casodemandasdificuldadeAprendizagemYep"
+			                                name="[caso][demandas][dificuldadeAprendizagem]"
+											ng-model="caso.demandas.dificuldadeAprendizagem"/>
+			                            <label
+			                                for="casodemandasdificuldadeAprendizagemYep"
+			                                class="inline">
+			                                Sim
+			                            </label>
+			                        </div>
+			                        <div class="columns large-10 left no-padding ">
+			                            <label class="left inline">Dificuldade de aprendizagem em disciplina</label>
+			                        </div>
+								</div>
+			                    <div>
+			                        <div class="buttonset left columns large-2 no-padding">
+			                            <input
+			                                type="checkbox"
+											ng-true-value="1"
+											ng-false-value="0"
+			                                id="casodemandasorientacaoPedagogicaYep"
+			                                name="[caso][demandas][orientacaoPedagogica]"
+											ng-model="caso.demandas.orientacaoPedagogica"/>
+			                            <label
+			                                for="casodemandasorientacaoPedagogicaYep"
+			                                class="inline">
+			                                Sim
+			                            </label>
+			                        </div>
+			                        <div class="columns large-10 left no-padding ">
+			                            <label class="left inline">Necessidade de orientação pedagógica</label>
+			                        </div>
+								</div>
+			                    <div>
+			                        <div class="buttonset left columns large-2 no-padding">
+			                            <input
+			                                type="checkbox"
+											ng-true-value="1"
+											ng-false-value="0"
+			                                id="casodemandasmuitasFaltasYep"
+			                                name="[caso][demandas][muitasFaltas]"
+											ng-model="caso.demandas.muitasFaltas"/>
+			                            <label
+			                                for="casodemandasmuitasFaltasYep"
+			                                class="inline">
+			                                Sim
+			                            </label>
+			                        </div>
+			                        <div class="columns large-10 left no-padding ">
+			                            <label class="left inline">Muitas faltas</label>
+			                        </div>
+								</div>
+			                    <div>
+			                        <div class="buttonset left columns large-2 no-padding">
+			                            <input
+			                                type="checkbox"
+											ng-true-value="1"
+											ng-false-value="0"
+			                                id="casodemandasatrasosConstantesYep"
+			                                name="[caso][demandas][atrasosConstantes]"
+											ng-model="caso.demandas.atrasosConstantes"/>
+			                            <label
+			                                for="casodemandasatrasosConstantesYep"
+			                                class="inline">
+			                                Sim
+			                            </label>
+			                        </div>
+			                        <div class="columns large-10 left no-padding ">
+			                            <label class="left inline">Atrasos constantes</label>
+			                        </div>
+								</div>
+			                    <div>
+			                        <div class="buttonset left columns large-2 no-padding">
+			                            <input
+			                                type="checkbox"
+											ng-true-value="1"
+											ng-false-value="0"
+			                                id="casodemandasdesequilibrioPsicologicoYep"
+			                                name="[caso][demandas][desequilibrioPsicologico]"
+											ng-model="caso.demandas.desequilibrioPsicologico"/>
+			                            <label
+			                                for="casodemandasdesequilibrioPsicologicoYep"
+			                                class="inline">
+			                                Sim
+			                            </label>
+			                        </div>
+			                        <div class="columns large-10 left no-padding ">
+			                            <label class="left inline">Desequilíbrio ou problema de ordem psicológica</label>
+			                        </div>
+								</div>
+			                    <div>
+			                        <div class="buttonset left columns large-2 no-padding">
+			                            <input
+			                                type="checkbox"
+											ng-true-value="1"
+											ng-false-value="0"
+			                                id="casodemandasdesmotivacaoRendimentoYep"
+			                                name="[caso][demandas][desmotivacaoRendimento]"
+											ng-model="caso.demandas.desmotivacaoRendimento"/>
+			                            <label
+			                                for="casodemandasdesmotivacaoRendimentoYep"
+			                                class="inline">
+			                                Sim
+			                            </label>
+			                        </div>
+			                        <div class="columns large-10 left no-padding ">
+			                            <label class="left inline">Desmotivação por baixo rendimento</label>
+			                        </div>
+								</div>
+			                    <div>
+			                        <div class="buttonset left columns large-2 no-padding">
+			                            <input
+			                                type="checkbox"
+											ng-true-value="1"
+											ng-false-value="0"
+			                                id="casodemandasdesmotivacaoCursoYep"
+			                                name="[caso][demandas][desmotivacaoCurso]"
+											ng-model="caso.demandas.desmotivacaoCurso"/>
+			                            <label
+			                                for="casodemandasdesmotivacaoCursoYep"
+			                                class="inline">
+			                                Sim
+			                            </label>
+			                        </div>
+			                        <div class="columns large-10 left no-padding ">
+			                            <label class="left inline">Desmotivação pela opção do curso</label>
+			                        </div>
+								</div>
+			                    <div>
+			                        <div class="buttonset left columns large-2 no-padding">
+			                            <input
+			                                type="checkbox"
+											ng-true-value="1"
+											ng-false-value="0"
+			                                id="casodemandasconflitoOpcaoSexualYep"
+			                                name="[caso][demandas][conflitoOpcaoSexual]"
+											ng-model="caso.demandas.conflitoOpcaoSexual"/>
+			                            <label
+			                                for="casodemandasconflitoOpcaoSexualYep"
+			                                class="inline">
+			                                Sim
+			                            </label>
+			                        </div>
+			                        <div class="columns large-10 left no-padding ">
+			                            <label class="left inline">Conflito com relação a opção sexual</label>
+			                        </div>
+								</div>
+			                    <div>
+			                        <div class="buttonset left columns large-2 no-padding">
+			                            <input
+			                                type="checkbox"
+											ng-true-value="1"
+											ng-false-value="0"
+			                                id="casodemandasconflitoRelacionalAfetivoYep"
+			                                name="[caso][demandas][conflitoRelacionalAfetivo]"
+											ng-model="caso.demandas.conflitoRelacionalAfetivo"/>
+			                            <label
+			                                for="casodemandasconflitoRelacionalAfetivoYep"
+			                                class="inline">
+			                                Sim
+			                            </label>
+			                        </div>
+			                        <div class="columns large-10 left no-padding ">
+			                            <label class="left inline">Conflito relacionado a situações afetivas, sexuais ou de relacionamento</label>
+			                        </div>
+								</div>
+			                    <div>
+			                        <div class="buttonset left columns large-2 no-padding">
+			                            <input
+			                                type="checkbox"
+											ng-true-value="1"
+											ng-false-value="0"
+			                                id="casodemandasbullingYep"
+			                                name="[caso][demandas][bulling]"
+											ng-model="caso.demandas.bulling"/>
+			                            <label
+			                                for="casodemandasbullingYep"
+			                                class="inline">
+			                                Sim
+			                            </label>
+			                        </div>
+			                        <div class="columns large-10 left no-padding ">
+			                            <label class="left inline">Bulling</label>
+			                        </div>
+								</div>
+			                    <div>
+			                        <div class="buttonset left columns large-2 no-padding">
+			                            <input
+			                                type="checkbox"
+											ng-true-value="1"
+											ng-false-value="0"
+			                                id="casodemandassituacaoTimidezYep"
+			                                name="[caso][demandas][situacaoTimidez]"
+											ng-model="caso.demandas.situacaoTimidez"/>
+			                            <label
+			                                for="casodemandassituacaoTimidezYep"
+			                                class="inline">
+			                                Sim
+			                            </label>
+			                        </div>
+			                        <div class="columns large-10 left no-padding ">
+			                            <label class="left inline">Situações relacionadas à timidez</label>
+			                        </div>
+								</div>
+			                    <div>
+			                        <div class="buttonset left columns large-2 no-padding">
+			                            <input
+			                                type="checkbox"
+											ng-true-value="1"
+											ng-false-value="0"
+			                                id="casodemandassituacaoExclusaoYep"
+			                                name="[caso][demandas][situacaoExclusao]"
+											ng-model="caso.demandas.situacaoExclusao"/>
+			                            <label
+			                                for="casodemandassituacaoExclusaoYep"
+			                                class="inline">
+			                                Sim
+			                            </label>
+			                        </div>
+			                        <div class="columns large-10 left no-padding ">
+			                            <label class="left inline">Situação de exclusão em sala de aula</label>
+			                        </div>
+								</div>
+			                    <div>
+			                        <div class="buttonset left columns large-2 no-padding">
+			                            <input
+			                                type="checkbox"
+											ng-true-value="1"
+											ng-false-value="0"
+			                                id="casodemandassituacaoAbusoYep"
+			                                name="[caso][demandas][situacaoAbuso]"
+											ng-model="caso.demandas.situacaoAbuso"/>
+			                            <label
+			                                for="casodemandassituacaoAbusoYep"
+			                                class="inline">
+			                                Sim
+			                            </label>
+			                        </div>
+			                        <div class="columns large-10 left no-padding ">
+			                            <label class="left inline">Situação de abuso (sexual, moral etc)</label>
+			                        </div>
+								</div>
+			                    <div>
+			                        <div class="buttonset left columns large-2 no-padding">
+			                            <input
+			                                type="checkbox"
+											ng-true-value="1"
+											ng-false-value="0"
+			                                id="casodemandasorientacaoSecularYep"
+			                                name="[caso][demandas][orientacaoSecular]"
+											ng-model="caso.demandas.orientacaoSecular"/>
+			                            <label
+			                                for="casodemandasorientacaoSecularYep"
+			                                class="inline">
+			                                Sim
+			                            </label>
+			                        </div>
+			                        <div class="columns large-10 left no-padding ">
+			                            <label class="left inline">Necessidade de orientação secular (não-relacionado à vida acadêmica)</label>
+			                        </div>
+								</div>
+			                    <div>
+			                        <div class="buttonset left columns large-2 no-padding">
+			                            <input
+			                                type="checkbox"
+											ng-true-value="1"
+											ng-false-value="0"
+			                                id="casodemandasproblemaComportamentoYep"
+			                                name="[caso][demandas][problemaComportamento]"
+											ng-model="caso.demandas.problemaComportamento"/>
+			                            <label
+			                                for="casodemandasproblemaComportamentoYep"
+			                                class="inline">
+			                                Sim
+			                            </label>
+			                        </div>
+			                        <div class="columns large-10 left no-padding ">
+			                            <label class="left inline">Problema de comportamento</label>
+			                        </div>
+								</div>
+			                    <div>
+			                        <div class="buttonset left columns large-2 no-padding">
+			                            <input
+			                                type="checkbox"
+											ng-true-value="1"
+											ng-false-value="0"
+			                                id="casodemandasproblemaRelacionamentoProfessorYep"
+			                                name="[caso][demandas][problemaRelacionamentoProfessor]"
+											ng-model="caso.demandas.problemaRelacionamentoProfessor"/>
+			                            <label
+			                                for="casodemandasproblemaRelacionamentoProfessorYep"
+			                                class="inline">
+			                                Sim
+			                            </label>
+			                        </div>
+			                        <div class="columns large-10 left no-padding ">
+			                            <label class="left inline">Problema de relacionamento aluno - professor</label>
+			                        </div>
+								</div>
+			                    <div>
+			                        <div class="buttonset left columns large-2 no-padding">
+			                            <input
+			                                type="checkbox"
+											ng-true-value="1"
+											ng-false-value="0"
+			                                id="casodemandasproblemaRelacionamentoAlunoYep"
+			                                name="[caso][demandas][problemaRelacionamentoAluno]"
+											ng-model="caso.demandas.problemaRelacionamentoAluno"/>
+			                            <label
+			                                for="casodemandasproblemaRelacionamentoAlunoYep"
+			                                class="inline">
+			                                Sim
+			                            </label>
+			                        </div>
+			                        <div class="columns large-10 left no-padding ">
+			                            <label class="left inline">Problema de relacionamento aluno - aluno</label>
+			                        </div>
+								</div>
+			                    <div>
+			                        <div class="buttonset left columns large-2 no-padding">
+			                            <input
+			                                type="checkbox"
+											ng-true-value="1"
+											ng-false-value="0"
+			                                id="casodemandasproblemaDisciplinarLeveYep"
+			                                name="[caso][demandas][problemaDisciplinarLeve]"
+											ng-model="caso.demandas.problemaDisciplinarLeve"/>
+			                            <label
+			                                for="casodemandasproblemaDisciplinarLeveYep"
+			                                class="inline">
+			                                Sim
+			                            </label>
+			                        </div>
+			                        <div class="columns large-10 left no-padding ">
+			                            <label class="left inline">Problema de ordem disciplinar leve</label>
+			                        </div>
+								</div>
+			                    <div>
+			                        <div class="buttonset left columns large-2 no-padding">
+			                            <input
+			                                type="checkbox"
+											ng-true-value="1"
+											ng-false-value="0"
+			                                id="casodemandasproblemaDisciplinarMedioYep"
+			                                name="[caso][demandas][problemaDisciplinarMedio]"
+											ng-model="caso.demandas.problemaDisciplinarMedio"/>
+			                            <label
+			                                for="casodemandasproblemaDisciplinarMedioYep"
+			                                class="inline">
+			                                Sim
+			                            </label>
+			                        </div>
+			                        <div class="columns large-10 left no-padding ">
+			                            <label class="left inline">Problema de ordem disciplinar médio</label>
+			                        </div>
+								</div>
+			                    <div>
+			                        <div class="buttonset left columns large-2 no-padding">
+			                            <input
+			                                type="checkbox"
+											ng-true-value="1"
+											ng-false-value="0"
+			                                id="casodemandasproblemaDisciplinarGraveYep"
+			                                name="[caso][demandas][problemaDisciplinarGrave]"
+											ng-model="caso.demandas.problemaDisciplinarGrave"/>
+			                            <label
+			                                for="casodemandasproblemaDisciplinarGraveYep"
+			                                class="inline">
+			                                Sim
+			                            </label>
+			                        </div>
+			                        <div class="columns large-10 left no-padding ">
+			                            <label class="left inline">Problema de ordem disciplinar grave</label>
+			                        </div>
+								</div>
+			                    <div>
+			                        <div class="buttonset left columns large-2 no-padding">
+			                            <input
+			                                type="checkbox"
+											ng-true-value="1"
+											ng-false-value="0"
+			                                id="casodemandasproblemaRelacionamentoPaiYep"
+			                                name="[caso][demandas][problemaRelacionamentoPai]"
+											ng-model="caso.demandas.problemaRelacionamentoPai"/>
+			                            <label
+			                                for="casodemandasproblemaRelacionamentoPaiYep"
+			                                class="inline">
+			                                Sim
+			                            </label>
+			                        </div>
+			                        <div class="columns large-10 left no-padding ">
+			                            <label class="left inline">Problema de relacionamento com o pai</label>
+			                        </div>
+								</div>
+			                    <div>
+			                        <div class="buttonset left columns large-2 no-padding">
+			                            <input
+			                                type="checkbox"
+											ng-true-value="1"
+											ng-false-value="0"
+			                                id="casodemandasproblemaRelacionamentoMaeYep"
+			                                name="[caso][demandas][problemaRelacionamentoMae]"
+											ng-model="caso.demandas.problemaRelacionamentoMae"/>
+			                            <label
+			                                for="casodemandasproblemaRelacionamentoMaeYep"
+			                                class="inline">
+			                                Sim
+			                            </label>
+			                        </div>
+			                        <div class="columns large-10 left no-padding ">
+			                            <label class="left inline">Problema de relacionamento com a mãe</label>
+			                        </div>
+								</div>
+			                    <div>
+			                        <div class="buttonset left columns large-2 no-padding">
+			                            <input
+			                                type="checkbox"
+											ng-true-value="1"
+											ng-false-value="0"
+			                                id="casodemandasproblemaRelacionamentoCasaYep"
+			                                name="[caso][demandas][problemaRelacionamentoCasa]"
+											ng-model="caso.demandas.problemaRelacionamentoCasa"/>
+			                            <label
+			                                for="casodemandasproblemaRelacionamentoCasaYep"
+			                                class="inline">
+			                                Sim
+			                            </label>
+			                        </div>
+			                        <div class="columns large-10 left no-padding ">
+			                            <label class="left inline">Problema de relacionamento em casa</label>
+			                        </div>
+								</div>
+			                    <div>
+			                        <div class="buttonset left columns large-2 no-padding">
+			                            <input
+			                                type="checkbox"
+											ng-true-value="1"
+											ng-false-value="0"
+			                                id="casodemandasseparacaoPaisYep"
+			                                name="[caso][demandas][separacaoPais]"
+											ng-model="caso.demandas.separacaoPais"/>
+			                            <label
+			                                for="casodemandasseparacaoPaisYep"
+			                                class="inline">
+			                                Sim
+			                            </label>
+			                        </div>
+			                        <div class="columns large-10 left no-padding ">
+			                            <label class="left inline">Pais em separação</label>
+			                        </div>
+								</div>
+			                    <div>
+			                        <div class="buttonset left columns large-2 no-padding">
+			                            <input
+			                                type="checkbox"
+											ng-true-value="1"
+											ng-false-value="0"
+			                                id="casodemandasconflitoFamiliarYep"
+			                                name="[caso][demandas][conflitoFamiliar]"
+											ng-model="caso.demandas.conflitoFamiliar"/>
+			                            <label
+			                                for="casodemandasconflitoFamiliarYep"
+			                                class="inline">
+			                                Sim
+			                            </label>
+			                        </div>
+			                        <div class="columns large-10 left no-padding ">
+			                            <label class="left inline">Conflito familiar</label>
+			                        </div>
+								</div>
+			                    <div>
+			                        <div class="buttonset left columns large-2 no-padding">
+			                            <input
+			                                type="checkbox"
+											ng-true-value="1"
+											ng-false-value="0"
+			                                id="casodemandasproblemaSocioEconomicoYep"
+			                                name="[caso][demandas][problemaSocioEconomico]"
+											ng-model="caso.demandas.problemaSocioEconomico"/>
+			                            <label
+			                                for="casodemandasproblemaSocioEconomicoYep"
+			                                class="inline">
+			                                Sim
+			                            </label>
+			                        </div>
+			                        <div class="columns large-10 left no-padding ">
+			                            <label class="left inline">
+											Problemas de ordem sócio-econômica do aluno ou família
+										</label>
+			                        </div>
+								</div>
+								<hr/>
+								<div class="row">
+					                <div class="small-12 column centered">
+					                    <a
+											href="#"
+											ng-click="tab=1;passo=1"
+					                        class="info button small">
+					                        DADOS PESSOAIS
+										</a>
+					                    <a
+											href="#"
+											ng-click="recuperarKNN()"
+					                        class="success button small">
+					                        ENCAMINHAMENTOS
+										</a>
+					                </div>
+					            </div>
+							</fieldset>	
+						</section>
 				    </form>
 				</div>
             </div>	            
