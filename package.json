@@ -1,12 +1,12 @@
 {
-    "name": "educase",
-    "description": "Psycho-pedagogical advising system using CBR AI",
-    "private": false,
-    "version": "0.0.1",
-    "author": {
-        "name": "Elionai Moura",
-        "email": "eli.embits@gmail.com"
-    },
+  "name": "educase",
+  "description": "Psycho-pedagogical advising system using CBR AI",
+  "private": false,
+  "version": "0.0.1",
+  "author": {
+    "name": "Elionai Moura",
+    "email": "eli.embits@gmail.com"
+  },
   "contributors": [
     {
       "name": "José Antonio da Cunha",
@@ -32,13 +32,14 @@
     "type": "git",
     "url": "https://github.com/embits/edu-case"
   },
-    "scripts": {
-        "start": "node app.js"
-    },
-    "dependencies": {
-        "express": "3.4.7",
-		"express-load": "1.1.8",
-        "ejs": "0.8.5",
-		"mongoose": "3.8.4"
-    }
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "alike": "^1.2.0",
+    "ejs": "0.8.5",
+    "express": "3.4.7",
+    "express-load": "1.1.8",
+    "mongoose": "3.8.4"
+  }
 }

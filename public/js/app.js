@@ -8,7 +8,7 @@ educase.controller('recuperarController', function($scope, $http, casoDefault) {
 		$http.post('/recuperar', $scope.caso.demandas)
 				.success(function(data) {
 					if(data.length > 0)
-						alert('SUCESSO: ' + JSON.stringify(data));
+						alert('SUCESSO: FOI' + JSON.stringify($scope.caso.demandas) + 'SUCESSO: VEIO' + JSON.stringify(data));
 					else
 						alert('Servidor retornou ZERO resultados');
 				})

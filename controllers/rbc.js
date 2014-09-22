@@ -14,25 +14,10 @@ module.exports = function(app) {
 		 */
 		recuperar: function(req, res) {
 			var usuario = req.session.usuario;
-			var novoCaso = {};
-			novoCaso.demandas = req.body;
-			var vizinhos = [];
+			var novo = req.body;
 			Caso.find().lean().exec(function(err, casos) {
-				// mapeamento da vizinhança utilizando kNN
-				for(var i in casos) {
-					var distanciaV = calcularDistancia(casos[i], novoCaso);
-					vizinhos[i] = {id: casos[i]._id, distancia: distanciaV, encaminhamentos: casos[i].encaminhamentos, classe: casos[i].classe};
-				}
-			
-				// Ordena os vizinhos por distância em ordem crescente
-				vizinhos.sort(function (a, b) {
-					return a.distancia - b.distancia;
-				});
-			
-				// descobrir qual a classe da demanda mais relevante do novo caso
-				classificar(novoCaso);
-				//var caso = new Caso(novoCaso);
-				var params = {usuario: usuario, vizinhos: vizinhos};
+				var encaminhamentos = calcularKNN(novo, casos);
+				var params = {usuario: usuario, vizinhos: encaminhamentos};
 				res.send(JSON.stringify(params.vizinhos));
 			});
 		} // fim recuperar
@@ -79,127 +64,49 @@ module.exports = function(app) {
 	
 	/*
 	 * Realiza o cálculo euclidiano para distâncias
-	 * d(x,y) = raiz(
-	 *               ((x1-y1) * (x1-y1)) + 
-	 *               ((x2 - y2) * (x2 - y2)) +
-	 *               ...
-	 *               ((xN - yN) * (xN - yN))
-	 *           );
 	 */
-	var calcularDistancia = function(vizinho, novoCaso){
+	var calcularKNN = function(teste, alvo){
+		var knn = require('alike');
+		opcoes = {
+		  k: 10,
+		  key: function(c){return c.demandas},
+		  weights: {
+  			atrasosConstantes: 5,
+  			desequilibrioPsicologico: 5,
+  			dificuldadeAprendizagem: 5,
+  			muitasFaltas: 5,
+  			orientacaoPedagogica: 5,
+			bulling: 4, 
+			conflitoOpcaoSexual: 4, 
+			conflitoRelacionalAfetivo: 4, 
+			desmotivacaoCurso: 4, 
+			desmotivacaoRendimento: 4, 
+			orientacaoSecular: 4, 
+			situacaoAbuso: 4, 
+			situacaoExclusao: 4, 
+			situacaoTimidez: 4,
+			problemaComportamento: 3,
+			problemaRelacionamentoAluno: 3, 
+			problemaRelacionamentoProfessor: 3,
+			problemaDisciplinarGrave: 2, 
+			problemaDisciplinarLeve: 2, 
+			problemaDisciplinarMedio: 2,
+			conflitoFamiliar: 1,
+			separacaoPais: 1,
+			problemaRelacionamentoMae: 1,
+			problemaRelacionamentoPai: 1,
+			problemaRelacionamentoCasa: 1,
+			problemaSocioEconomico: 1
+		    }
+		}
 		
-		// Essas demandas tem peso = 5
-		var DaC = parseInt(vizinho.demandas.atrasosConstantes) - parseInt(novoCaso.demandas.atrasosConstantes);
-		DaC = (DaC * DaC);
-		DaC = DaC * 5;
+		var vizinhos = knn(teste, alvo, opcoes);
+		var listE = [];
+		for (var i in vizinhos){
+			listE.push(vizinhos[i].demandas);
+		}
 		
-		var DdP = parseInt(vizinho.demandas.desequilibrioPsicologico) - parseInt(novoCaso.demandas.desequilibrioPsicologico);
-		DdP = (DdP * DdP);
-		DdP = DdP * 5;
-		
-		var DdA = parseInt(vizinho.demandas.dificuldadeAprendizagem) - parseInt(novoCaso.demandas.dificuldadeAprendizagem);
-		DdA = (DdA * DdA);
-		DdA = DdA * 5;
-		
-		var DmF = parseInt(vizinho.demandas.muitasFaltas) - parseInt(novoCaso.demandas.muitasFaltas);
-		DmF = (DmF * DmF);
-		DmF = DmF * 5;
-		
-		var DoP = parseInt(vizinho.demandas.orientacaoPedagogica) - (novoCaso.demandas.orientacaoPedagogica);
-		DoP = (DoP * DoP);
-		DoP = DoP * 5;
-		
-		// Essas demandas tem peso = 4
-		var DB = parseInt(vizinho.demandas.bulling) - parseInt(novoCaso.demandas.bulling);
-		DB = (DB * DB);
-		DB = DB * 4;
-		
-		var DoS = parseInt(vizinho.demandas.conflitoOpcaoSexual) - parseInt(novoCaso.demandas.conflitoOpcaoSexual);
-		DoS = (DoS * DoS);
-		DoS = DoS * 4;
-		
-		var DrA = parseInt(vizinho.demandas.conflitoRelacionalAfetivo) - parseInt(novoCaso.demandas.conflitoRelacionalAfetivo);
-		DrA = (DrA * DrA);
-		DrA = DrA * 4;
-		
-		var DoC = parseInt(vizinho.demandas.desmotivacaoCurso) - parseInt(novoCaso.demandas.desmotivacaoCurso);
-		DoC = (DoC * DoC);
-		DoC = DoC * 4;
-		
-		var DR = parseInt(vizinho.demandas.desmotivacaoRendimento) - parseInt(novoCaso.demandas.desmotivacaoRendimento);
-		DR = (DR * DR);
-		DR = DR * 4;
-		
-		var DSe = parseInt(vizinho.demandas.orientacaoSecular) - parseInt(novoCaso.demandas.orientacaoSecular);
-		DSe = (DSe * DSe);
-		DSe = DSe * 4;
-		
-		var DsA = parseInt(vizinho.demandas.situacaoAbuso) - parseInt(novoCaso.demandas.situacaoAbuso);
-		DsA = (DsA * DsA);
-		DsA = DsA * 4;
-		
-		var DeX = parseInt(vizinho.demandas.situacaoExclusao) - parseInt(novoCaso.demandas.situacaoExclusao);
-		DeX = (DeX * DeX);
-		DeX = DeX * 4;
-		
-		var DtI = parseInt(vizinho.demandas.situacaoTimidez) - parseInt(novoCaso.demandas.situacaoTimidez);
-		DtI = (DtI * DtI);
-		DtI = DtI * 4;
-		
-		// Essas demandas tem peso = 3
-		var pCo = parseInt(vizinho.demandas.problemaComportamento) - parseInt(novoCaso.demandas.problemaComportamento);
-		pCo = (pCo * pCo);
-		pCo = pCo * 3;
-		
-		var PrA = parseInt(vizinho.demandas.problemaRelacionamentoAluno) - parseInt(novoCaso.demandas.problemaRelacionamentoAluno);
-		PrA = (PrA * PrA);
-		PrA = PrA * 3;
-		
-		var PPr = parseInt(vizinho.demandas.problemaRelacionamentoProfessor) - parseInt(novoCaso.demandas.problemaRelacionamentoProfessor);
-		PPr = (PPr * PPr);
-		PPr = PPr * 3;
-		
-		// Essas demandas tem peso = 2
-		var PdG = parseInt(vizinho.demandas.problemaDisciplinarGrave) - parseInt(novoCaso.demandas.problemaDisciplinarGrave);
-		PdG = (PdG * PdG);
-		PdG = PdG * 2;
-		
-		var PdM = parseInt(vizinho.demandas.problemaDisciplinarMedio) - parseInt(novoCaso.demandas.problemaDisciplinarMedio);
-		PdM = (PdM * PdM);
-		PdM = PdM * 2;
-		
-		var PdL = parseInt(vizinho.demandas.problemaDisciplinarLeve) - parseInt(novoCaso.demandas.problemaDisciplinarLeve);
-		PdL = (PdL * PdL);
-		PdL = PdL * 2;
-		
-		
-		// Essas demandas tem peso = 1
-		var DcF = parseInt(vizinho.demandas.conflitoFamiliar) - parseInt(novoCaso.demandas.conflitoFamiliar);
-		DcF = (DcF * DcF);
-		
-		var SeP = parseInt(vizinho.demandas.separacaoPais) - parseInt(novoCaso.demandas.separacaoPais);
-		SeP = (SeP * SeP);
-		
-		var SeM = parseInt(vizinho.demandas.problemaRelacionamentoMae) - parseInt(novoCaso.demandas.problemaRelacionamentoMae);
-		SeM = (SeM * SeM);
-		
-		var PrP = parseInt(vizinho.demandas.problemaRelacionamentoPai) - parseInt(novoCaso.demandas.problemaRelacionamentoPai);
-		PrP = (PrP * PrP);
-		
-		var RC = parseInt(vizinho.demandas.problemaRelacionamentoCasa) - parseInt(novoCaso.demandas.problemaRelacionamentoCasa);
-		RC = (RC * RC);
-		
-		var Se = parseInt(vizinho.demandas.problemaSocioEconomico) - parseInt(novoCaso.demandas.problemaSocioEconomico);
-		Se = (Se * Se);
-		
-		// raiz quadrada da soma das distâncias individuais
-		distancia = Math.sqrt(
-			DaC + DdP + DdA + DmF + DoP + DB + DoS + DrA + DoC + DR 
-			+ DSe + DsA + DeX + DtI + DeX + pCo + PrA + PPr + PdG + PdM + PdL
-			+ DcF + SeP + SeM + PrP + RC + Se
-			); // dividir pelo intervalo dos pesos normaliza o resultado (menor = 0, maior = 1)
-		
-		return distancia;
+		return listE;
 	}
 	
 return RBCController;
