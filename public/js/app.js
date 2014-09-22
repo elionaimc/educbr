@@ -4,6 +4,8 @@ educase.controller('recuperarController', function($scope, $http, casoDefault) {
 	$scope.caso = {};
 	$scope.caso.demandas = casoDefault.caso();
 	$scope.vizinhos = [];
+	
+	// envia a lista de demandas selecionadas para servidor
 	$scope.recuperarKNN = function() {
 		$http.post('/recuperar', $scope.caso.demandas)
 				.success(function(data) {
@@ -14,6 +16,22 @@ educase.controller('recuperarController', function($scope, $http, casoDefault) {
 					}
 					else
 						alert('Servidor retornou ZERO resultados');
+				})
+				.error(function(data) {
+					alert('ERRO: ' + data);
+				});
+	}
+	
+	$scope.cadastrarCaso = function() {
+		$http.post('/reter', $scope.caso)
+				.success(function(data) {
+					if(data.length > 0) {
+						$scope.passo = 3;
+						$scope.tab=1;
+						alert('SUCESSO: FOI' + JSON.stringify($scope.caso) + 'SUCESSO: VEIO' + JSON.stringify(data));
+					}
+					else
+						alert('Servidor NÃO retornou informações');
 				})
 				.error(function(data) {
 					alert('ERRO: ' + data);
