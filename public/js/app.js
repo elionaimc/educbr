@@ -2,36 +2,45 @@ var educase = angular.module('educase', []);// RBC AngularJS App
 
 educase.controller('recuperarController', function($scope, $http, casoDefault) {
 	$scope.caso = {};
-	$scope.caso.demandas = casoDefault.caso();
+	
 	$scope.vizinhos = [];
+	$scope.solucoes = [];
 	
 	// envia a lista de demandas selecionadas para servidor
 	$scope.recuperarKNN = function() {
 		$http.post('/recuperar', $scope.caso.demandas)
 				.success(function(data) {
 					if(data.length > 0) {
-						$scope.passo = 3;
-						$scope.tab=1;
-						alert('SUCESSO: FOI' + JSON.stringify($scope.caso.demandas) + 'SUCESSO: VEIO' + JSON.stringify(data));
+						$scope.solucoes = data;
+						$scope.caso.encaminhamentos = data[0].encaminhamentos;
 					}
-					else
+					else 
 						alert('Servidor retornou ZERO resultados');
+					$scope.passo = 3;
+					$scope.tab=1;
 				})
 				.error(function(data) {
 					alert('ERRO: ' + data);
 				});
 	}
 	
+	$scope.propor = function(proposta) {
+		$scope.caso.encaminhamentos = proposta;
+		$('.buttonset').buttonset('refresh');
+		console.log(proposta);
+		console.log($scope.caso.encaminhamentos)
+	}
+	
 	$scope.cadastrarCaso = function() {
 		$http.post('/reter', $scope.caso)
 				.success(function(data) {
-					if(data.length > 0) {
-						$scope.passo = 3;
-						$scope.tab=1;
 						alert('SUCESSO: FOI' + JSON.stringify($scope.caso) + 'SUCESSO: VEIO' + JSON.stringify(data));
-					}
-					else
-						alert('Servidor NÃO retornou informações');
+					$scope.passo = 1;
+					$scope.tab = 1;
+					$scope.caso = {};
+					$("#sexo").select2();
+					$("#curso").select2();
+					$("#periodo").select2();
 				})
 				.error(function(data) {
 					alert('ERRO: ' + data);

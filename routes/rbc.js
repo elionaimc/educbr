@@ -3,4 +3,5 @@ module.exports = function(app) {
 	var rbc = app.controllers.rbc;
 	app.get('/rbc', autenticar, rbc.index);
 	app.post('/recuperar', autenticar, rbc.recuperar);
+	app.post('/reter', autenticar, rbc.reter);
 };

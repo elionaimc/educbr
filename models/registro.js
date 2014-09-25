@@ -1,6 +1,6 @@
 module.exports = function(app) {
 	var Mongoose = require('mongoose');
-	var casoSchema = new Mongoose.Schema({
+	var registroSchema = new Mongoose.Schema({
 		nome: {type: String, required: true},
 		sexo: Number,
 		telefone: {type: String},
@@ -65,5 +65,5 @@ module.exports = function(app) {
 		classe: {type: String, required: true}
 	});
 	
-	return Caso = Mongoose.model('Caso', casoSchema);
+	return Registro = Mongoose.model('Registro', registroSchema);
 };

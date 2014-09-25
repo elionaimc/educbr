@@ -36,7 +36,6 @@
     "start": "node app.js"
   },
   "dependencies": {
-    "alike": "^1.2.0",
     "ejs": "0.8.5",
     "express": "3.4.7",
     "express-load": "1.1.8",

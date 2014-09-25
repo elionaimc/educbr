@@ -6,7 +6,7 @@ var server = require('http').createServer(app); // cria um servidor de aplicaç�
 /*
  * configurações do banco de dados (biblioteca mongoose para mongoDB)
  */
-var Mongoose = require('Mongoose');
+var Mongoose = require('mongoose');
 var db = Mongoose.connection;
 db.on('error', function(){
 	console.log('MongoDB: Vaso? que v...'); // se alguma coisa der errado
@@ -16,7 +16,7 @@ db.once('open', function() { // conexão com mongoDB está OK!
   console.log('MongoDB: Não vou cair nessa de novo, Oráculo!');
 });
 // define em qual base de dados conectar
-Mongoose.connect('mongodb://localhost/test');
+Mongoose.connect('mongodb://localhost/basedecasos');
 
 /*
  * Define as principais configurações para a biblioteca express

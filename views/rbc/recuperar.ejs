@@ -19,6 +19,17 @@
 								<legend>
 									Selecionar encaminhamentos
 								</legend>
+								<div>
+									<div class="pagination-centered row">
+									  <ul class="pagination">
+									    <li ng-repeat="proposta in solucoes">
+											<a href="" ng-click="propor(proposta.encaminhamentos);">
+												<img src="/public/img/caso.png" alt="CASO">
+											</a>
+										</li>
+									  </ul>
+									</div>
+								</div>
 			                    <div>
 			                        <div class="buttonset left columns large-2 no-padding">
 			                            <input
@@ -31,7 +42,7 @@
 			                            <label
 			                                for="casoencaminhamentospsicologiaEscolar"
 			                                class="inline">
-			                                Sim
+			                                {{ caso.encaminhamentos.psicologiaEscolar ? "SIM" : "NÃO" }}
 			                            </label>
 			                        </div>
 			                        <div class="columns large-10 left no-padding ">
@@ -50,7 +61,7 @@
 			                            <label
 			                                for="casoencaminhamentosservicoSocial"
 			                                class="inline">
-			                                Sim
+			                                {{ caso.encaminhamentos.servicoSocial ? "SIM" : "NÃO" }}
 			                            </label>
 			                        </div>
 			                        <div class="columns large-10 left no-padding ">
@@ -69,7 +80,7 @@
 			                            <label
 			                                for="casoencaminhamentossetorMedico"
 			                                class="inline">
-			                                Sim
+			                                {{ caso.encaminhamentos.setorMedico ? "SIM" : "NÃO" }}
 			                            </label>
 			                        </div>
 			                        <div class="columns large-10 left no-padding ">
@@ -88,7 +99,7 @@
 			                            <label
 			                                for="casoencaminhamentoschamarPais"
 			                                class="inline">
-			                                Sim
+			                                {{ caso.encaminhamentos.chamarPais ? "SIM" : "NÃO" }}
 			                            </label>
 			                        </div>
 			                        <div class="columns large-10 left no-padding ">
@@ -107,7 +118,7 @@
 			                            <label
 			                                for="casoencaminhamentoschamarProfessores"
 			                                class="inline">
-			                                Sim
+			                                {{ caso.encaminhamentos.chamarProfessores ? "SIM" : "NÃO" }}
 			                            </label>
 			                        </div>
 			                        <div class="columns large-10 left no-padding ">
@@ -126,7 +137,7 @@
 			                            <label
 			                                for="casoencaminhamentosacionarCoordenacao"
 			                                class="inline">
-			                                Sim
+			                                {{ caso.encaminhamentos.acionarCoordenacao ? "SIM" : "NÃO" }}
 			                            </label>
 			                        </div>
 			                        <div class="columns large-10 left no-padding ">
@@ -145,7 +156,7 @@
 			                            <label
 			                                for="casoencaminhamentosadvertencia"
 			                                class="inline">
-			                                Sim
+			                                {{ caso.encaminhamentos.advertencia ? "SIM" : "NÃO" }}
 			                            </label>
 			                        </div>
 			                        <div class="columns large-10 left no-padding ">
@@ -164,7 +175,7 @@
 			                            <label
 			                                for="casoencaminhamentosrepreensao"
 			                                class="inline">
-			                                Sim
+			                                {{ caso.encaminhamentos.repreensao ? "SIM" : "NÃO" }}
 			                            </label>
 			                        </div>
 			                        <div class="columns large-10 left no-padding ">
@@ -183,7 +194,7 @@
 			                            <label
 			                                for="casoencaminhamentossuspensaoEscolar"
 			                                class="inline">
-			                                Sim
+			                                {{ caso.encaminhamentos.suspensaoEscolar ? "SIM" : "NÃO" }}
 			                            </label>
 			                        </div>
 			                        <div class="columns large-10 left no-padding ">
@@ -202,7 +213,7 @@
 			                            <label
 			                                for="casoencaminhamentoscumprimentoMSE"
 			                                class="inline">
-			                                Sim
+			                                {{ caso.encaminhamentos.cumprimentoMSE ? "SIM" : "NÃO" }}
 			                            </label>
 			                        </div>
 			                        <div class="columns large-10 left no-padding ">
@@ -221,7 +232,7 @@
 			                            <label
 			                                for="casoencaminhamentoscancelarMatricula"
 			                                class="inline">
-			                                Sim
+			                                {{ caso.encaminhamentos.cancelarMatricula ? "SIM" : "NÃO" }}
 			                            </label>
 			                        </div>
 			                        <div class="columns large-10 left no-padding ">
@@ -240,7 +251,7 @@
 			                            <label
 			                                for="casoencaminhamentostrancarDisciplina"
 			                                class="inline">
-			                                Sim
+			                                {{ caso.encaminhamentos.trancarDisciplina ? "SIM" : "NÃO" }}
 			                            </label>
 			                        </div>
 			                        <div class="columns large-10 left no-padding ">
@@ -259,7 +270,7 @@
 			                            <label
 			                                for="casoencaminhamentostrancarPeriodoCompulsorio"
 			                                class="inline">
-			                                Sim
+			                                {{ caso.encaminhamentos.trancarPeriodoCompulsorio ? "SIM" : "NÃO" }}
 			                            </label>
 			                        </div>
 			                        <div class="columns large-10 left no-padding ">
@@ -278,7 +289,7 @@
 			                            <label
 			                                for="casoencaminhamentostrancarPeriodoVoluntario"
 			                                class="inline">
-			                                Sim
+			                               {{ caso.encaminhamentos.trancarPeriodoVoluntario ? "SIM" : "NÃO" }}
 			                            </label>
 			                        </div>
 			                        <div class="columns large-10 left no-padding ">
@@ -297,7 +308,7 @@
 			                            <label
 			                                for="casoencaminhamentosvisitaDomiciliar"
 			                                class="inline">
-			                                Sim
+			                                {{ caso.encaminhamentos.visitaDomiciliar ? "SIM" : "NÃO" }}
 			                            </label>
 			                        </div>
 			                        <div class="columns large-10 left no-padding ">
@@ -316,7 +327,7 @@
 			                            <label
 			                                for="casoencaminhamentosatendimentoDomiciliar"
 			                                class="inline">
-			                                Sim
+			                                {{ caso.encaminhamentos.atendimentoDomiciliar ? "SIM" : "NÃO" }}
 			                            </label>
 			                        </div>
 			                        <div class="columns large-10 left no-padding ">
@@ -335,7 +346,7 @@
 			                            <label
 			                                for="casoencaminhamentosrotinaEstudo"
 			                                class="inline">
-			                                Sim
+			                                {{ caso.encaminhamentos.rotinaEstudo ? "SIM" : "NÃO" }}
 			                            </label>
 			                        </div>
 			                        <div class="columns large-10 left no-padding ">
@@ -354,7 +365,7 @@
 			                            <label
 			                                for="casoencaminhamentoscentroAprendizagem"
 			                                class="inline">
-			                                Sim
+			                                {{ caso.encaminhamentos.centroAprendizagem ? "SIM" : "NÃO" }}
 			                            </label>
 			                        </div>
 			                        <div class="columns large-10 left no-padding ">
@@ -373,7 +384,7 @@
 			                            <label
 			                                for="casoencaminhamentosmudarTurno"
 			                                class="inline">
-			                                Sim
+			                                {{ caso.encaminhamentos.mudarTurno ? "SIM" : "NÃO" }}
 			                            </label>
 			                        </div>
 			                        <div class="columns large-10 left no-padding ">
@@ -392,7 +403,7 @@
 			                            <label
 			                                for="casoencaminhamentosconversar"
 			                                class="inline">
-			                                Sim
+			                                {{ caso.encaminhamentos.conversar ? "SIM" : "NÃO" }}
 			                            </label>
 			                        </div>
 			                        <div class="columns large-10 left no-padding ">
@@ -483,6 +494,7 @@
 													ng-model="caso.curso"
 													style="width:100%"
 													class="small-12 justifyed"
+													placeholder="Selecione"
 													required >
 													<option value="">
 														Selecione
@@ -531,6 +543,7 @@
 													ng-model="caso.periodo"
 													style="width:100%"
 													class="small-12 justifyed"
+													placeholder="Selecione"
 													required >
 													<option value="" >
 														Selecione
@@ -575,6 +588,7 @@
 							                        name="caso.sexo"
 													ng-model="caso.sexo"
 							                        class="small-12 justifyed"
+													placeholder="Selecione"
 													required >
 													<option value="">
 														Selecione
@@ -633,7 +647,7 @@
 					                <div class="small-3 columns">
 					                    <label class="prefix"
 					                        for="observacoes">
-					                        Dados Seguros
+					                        Dados Sigilosos
 					                    </label>
 					                </div>
 					                <div class="small-9 columns end">
@@ -704,7 +718,7 @@
 			                            <label
 			                                for="casodemandasdificuldadeAprendizagemYep"
 			                                class="inline">
-			                                Sim
+			                                {{ caso.demandas.dificuldadeAprendizagem ? "SIM" : "NÃO" }}
 			                            </label>
 			                        </div>
 			                        <div class="columns large-10 left no-padding ">
@@ -723,7 +737,7 @@
 			                            <label
 			                                for="casodemandasorientacaoPedagogicaYep"
 			                                class="inline">
-			                                Sim
+			                                {{ caso.demandas.orientacaoPedagogica ? "SIM" : "NÃO" }}
 			                            </label>
 			                        </div>
 			                        <div class="columns large-10 left no-padding ">
@@ -742,7 +756,7 @@
 			                            <label
 			                                for="casodemandasmuitasFaltasYep"
 			                                class="inline">
-			                                Sim
+			                                {{ caso.demandas.muitasFaltas ? "SIM" : "NÃO" }}
 			                            </label>
 			                        </div>
 			                        <div class="columns large-10 left no-padding ">
@@ -761,7 +775,7 @@
 			                            <label
 			                                for="casodemandasatrasosConstantesYep"
 			                                class="inline">
-			                                Sim
+			                                {{ caso.demandas.atrasosConstantes ? "SIM" : "NÃO" }}
 			                            </label>
 			                        </div>
 			                        <div class="columns large-10 left no-padding ">
@@ -780,7 +794,7 @@
 			                            <label
 			                                for="casodemandasdesequilibrioPsicologicoYep"
 			                                class="inline">
-			                                Sim
+			                                {{ caso.demandas.desequilibrioPsicologico ? "SIM" : "NÃO" }}
 			                            </label>
 			                        </div>
 			                        <div class="columns large-10 left no-padding ">
@@ -799,7 +813,7 @@
 			                            <label
 			                                for="casodemandasdesmotivacaoRendimentoYep"
 			                                class="inline">
-			                                Sim
+			                                {{ caso.demandas.desmotivacaoRendimento ? "SIM" : "NÃO" }}
 			                            </label>
 			                        </div>
 			                        <div class="columns large-10 left no-padding ">
@@ -818,7 +832,7 @@
 			                            <label
 			                                for="casodemandasdesmotivacaoCursoYep"
 			                                class="inline">
-			                                Sim
+			                                {{ caso.demandas.desmotivacaoCurso ? "SIM" : "NÃO" }}
 			                            </label>
 			                        </div>
 			                        <div class="columns large-10 left no-padding ">
@@ -837,7 +851,7 @@
 			                            <label
 			                                for="casodemandasconflitoOpcaoSexualYep"
 			                                class="inline">
-			                                Sim
+			                                {{ caso.demandas.conflitoOpcaoSexual ? "SIM" : "NÃO" }}
 			                            </label>
 			                        </div>
 			                        <div class="columns large-10 left no-padding ">
@@ -856,7 +870,7 @@
 			                            <label
 			                                for="casodemandasconflitoRelacionalAfetivoYep"
 			                                class="inline">
-			                                Sim
+			                                {{ caso.demandas.conflitoRelacionalAfetivo ? "SIM" : "NÃO" }}
 			                            </label>
 			                        </div>
 			                        <div class="columns large-10 left no-padding ">
@@ -875,7 +889,7 @@
 			                            <label
 			                                for="casodemandasbullingYep"
 			                                class="inline">
-			                                Sim
+			                                {{ caso.demandas.bulling ? "SIM" : "NÃO" }}
 			                            </label>
 			                        </div>
 			                        <div class="columns large-10 left no-padding ">
@@ -894,7 +908,7 @@
 			                            <label
 			                                for="casodemandassituacaoTimidezYep"
 			                                class="inline">
-			                                Sim
+			                                {{ caso.demandas.situacaoTimidez ? "SIM" : "NÃO" }}
 			                            </label>
 			                        </div>
 			                        <div class="columns large-10 left no-padding ">
@@ -913,7 +927,7 @@
 			                            <label
 			                                for="casodemandassituacaoExclusaoYep"
 			                                class="inline">
-			                                Sim
+			                                {{ caso.demandas.situacaoExclusao ? "SIM" : "NÃO" }}
 			                            </label>
 			                        </div>
 			                        <div class="columns large-10 left no-padding ">
@@ -932,7 +946,7 @@
 			                            <label
 			                                for="casodemandassituacaoAbusoYep"
 			                                class="inline">
-			                                Sim
+			                                {{ caso.demandas.situacaoAbuso ? "SIM" : "NÃO" }}
 			                            </label>
 			                        </div>
 			                        <div class="columns large-10 left no-padding ">
@@ -951,7 +965,7 @@
 			                            <label
 			                                for="casodemandasorientacaoSecularYep"
 			                                class="inline">
-			                                Sim
+			                                {{ caso.demandas.orientacaoSecular ? "SIM" : "NÃO" }}
 			                            </label>
 			                        </div>
 			                        <div class="columns large-10 left no-padding ">
@@ -970,7 +984,7 @@
 			                            <label
 			                                for="casodemandasproblemaComportamentoYep"
 			                                class="inline">
-			                                Sim
+			                                {{ caso.demandas.problemaComportamento ? "SIM" : "NÃO" }}
 			                            </label>
 			                        </div>
 			                        <div class="columns large-10 left no-padding ">
@@ -989,7 +1003,7 @@
 			                            <label
 			                                for="casodemandasproblemaRelacionamentoProfessorYep"
 			                                class="inline">
-			                                Sim
+			                                {{ caso.demandas.problemaRelacionamentoProfessor ? "SIM" : "NÃO" }}
 			                            </label>
 			                        </div>
 			                        <div class="columns large-10 left no-padding ">
@@ -1008,7 +1022,7 @@
 			                            <label
 			                                for="casodemandasproblemaRelacionamentoAlunoYep"
 			                                class="inline">
-			                                Sim
+			                                {{ caso.demandas.problemaRelacionamentoAluno ? "SIM" : "NÃO" }}
 			                            </label>
 			                        </div>
 			                        <div class="columns large-10 left no-padding ">
@@ -1027,7 +1041,7 @@
 			                            <label
 			                                for="casodemandasproblemaDisciplinarLeveYep"
 			                                class="inline">
-			                                Sim
+			                                {{ caso.demandas.problemaDisciplinarLeve ? "SIM" : "NÃO" }}
 			                            </label>
 			                        </div>
 			                        <div class="columns large-10 left no-padding ">
@@ -1046,7 +1060,7 @@
 			                            <label
 			                                for="casodemandasproblemaDisciplinarMedioYep"
 			                                class="inline">
-			                                Sim
+			                                {{ caso.demandas.problemaDisciplinarMedio ? "SIM" : "NÃO" }}
 			                            </label>
 			                        </div>
 			                        <div class="columns large-10 left no-padding ">
@@ -1065,7 +1079,7 @@
 			                            <label
 			                                for="casodemandasproblemaDisciplinarGraveYep"
 			                                class="inline">
-			                                Sim
+			                                {{ caso.demandas.problemaDisciplinarGrave ? "SIM" : "NÃO" }}
 			                            </label>
 			                        </div>
 			                        <div class="columns large-10 left no-padding ">
@@ -1084,7 +1098,7 @@
 			                            <label
 			                                for="casodemandasproblemaRelacionamentoPaiYep"
 			                                class="inline">
-			                                Sim
+			                                {{ caso.demandas.problemaRelacionamentoPai ? "SIM" : "NÃO" }}
 			                            </label>
 			                        </div>
 			                        <div class="columns large-10 left no-padding ">
@@ -1103,7 +1117,7 @@
 			                            <label
 			                                for="casodemandasproblemaRelacionamentoMaeYep"
 			                                class="inline">
-			                                Sim
+			                                {{ caso.demandas.problemaRelacionamentoMae ? "SIM" : "NÃO" }}
 			                            </label>
 			                        </div>
 			                        <div class="columns large-10 left no-padding ">
@@ -1122,7 +1136,7 @@
 			                            <label
 			                                for="casodemandasproblemaRelacionamentoCasaYep"
 			                                class="inline">
-			                                Sim
+			                                {{ caso.demandas.problemaRelacionamentoCasa ? "SIM" : "NÃO" }}
 			                            </label>
 			                        </div>
 			                        <div class="columns large-10 left no-padding ">
@@ -1141,7 +1155,7 @@
 			                            <label
 			                                for="casodemandasseparacaoPaisYep"
 			                                class="inline">
-			                                Sim
+			                                {{ caso.demandas.separacaoPais ? "SIM" : "NÃO" }}
 			                            </label>
 			                        </div>
 			                        <div class="columns large-10 left no-padding ">
@@ -1160,7 +1174,7 @@
 			                            <label
 			                                for="casodemandasconflitoFamiliarYep"
 			                                class="inline">
-			                                Sim
+			                                {{ caso.demandas.conflitoFamiliar ? "SIM" : "NÃO" }}
 			                            </label>
 			                        </div>
 			                        <div class="columns large-10 left no-padding ">
@@ -1179,7 +1193,7 @@
 			                            <label
 			                                for="casodemandasproblemaSocioEconomicoYep"
 			                                class="inline">
-			                                Sim
+			                                {{ caso.demandas.problemaSocioEconomico ? "SIM" : "NÃO" }}
 			                            </label>
 			                        </div>
 			                        <div class="columns large-10 left no-padding ">
