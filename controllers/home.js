@@ -4,6 +4,9 @@ module.exports = function(app) {
 		index: function(req, res) {
 			res.render('index');
 		},
+		relatorio: function(req, res) {
+			res.render('relatorio');
+		},
 		login: function(req, res) {
 			var email = req.body.usuario.email
 			, senha = req.body.usuario.senha;

@@ -1,0 +1,33 @@
+<% include header %>
+            <div id="principal"  class="row bg">
+				<h1 class="title"> Relatório de demandas mais atendidas</h1>
+				<div class="small-12 centered" id="form">
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Demandas', 'média'],
+          ['Desequilíbrio/problema de ordem psicológica',      5],
+          ['Muitas faltas',  7],
+          ['Necessidade de orientação secular',     10],
+          ['Atrasos constantes', 4],
+          ['Conflito familiar',    3],
+		  ['Conflito relacionado à opção sexual', 2]
+        ]);
+
+        var options = {
+          pieHole: 0.4,
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
+        chart.draw(data, options);
+      }
+    </script>
+    <div id="donutchart" class="small-12 centralized" style="min-height:500px;"></div>
+				</div>
+            </div>	            
+            <% include footer %>
+    </body>
+</html>

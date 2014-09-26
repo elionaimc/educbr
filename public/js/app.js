@@ -2,7 +2,7 @@ var educase = angular.module('educase', []);// RBC AngularJS App
 
 educase.controller('recuperarController', function($scope, $http, casoDefault) {
 	$scope.caso = {};
-	
+	$scope.caso.demandas = {};
 	$scope.vizinhos = [];
 	$scope.solucoes = [];
 	
@@ -13,6 +13,10 @@ educase.controller('recuperarController', function($scope, $http, casoDefault) {
 					if(data.length > 0) {
 						$scope.solucoes = data;
 						$scope.caso.encaminhamentos = data[0].encaminhamentos;
+						setTimeout(function(){
+							$('.buttonset').buttonset('refresh');
+				  	  		$('.has-tip').tooltipsy();
+						}, 100);
 					}
 					else 
 						alert('Servidor retornou ZERO resultados');
@@ -26,9 +30,9 @@ educase.controller('recuperarController', function($scope, $http, casoDefault) {
 	
 	$scope.propor = function(proposta) {
 		$scope.caso.encaminhamentos = proposta;
-		$('.buttonset').buttonset('refresh');
-		console.log(proposta);
-		console.log($scope.caso.encaminhamentos)
+		setTimeout(function(){
+			$('.buttonset').buttonset('refresh')
+		}, 100);
 	}
 	
 	$scope.cadastrarCaso = function() {
@@ -37,10 +41,8 @@ educase.controller('recuperarController', function($scope, $http, casoDefault) {
 						alert('SUCESSO: FOI' + JSON.stringify($scope.caso) + 'SUCESSO: VEIO' + JSON.stringify(data));
 					$scope.passo = 1;
 					$scope.tab = 1;
+					delete $scope.caso;
 					$scope.caso = {};
-					$("#sexo").select2();
-					$("#curso").select2();
-					$("#periodo").select2();
 				})
 				.error(function(data) {
 					alert('ERRO: ' + data);

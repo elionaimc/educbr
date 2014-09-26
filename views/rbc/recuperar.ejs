@@ -19,17 +19,26 @@
 								<legend>
 									Selecionar encaminhamentos
 								</legend>
-								<div>
-									<div class="pagination-centered row">
+								<div class="panel" ng-show="solucoes.length > 0">
+									<div id="propostas" class="pagination-centered">
 									  <ul class="pagination">
 									    <li ng-repeat="proposta in solucoes">
-											<a href="" ng-click="propor(proposta.encaminhamentos);">
-												<img src="/public/img/caso.png" alt="CASO">
+											<a href=""
+												ng-click="propor(proposta.encaminhamentos);"
+												class="tip-top has-tip"
+												title="{{proposta.contexto}}">
+												<img
+													src="/public/img/caso.png"
+													alt="CASO">
 											</a>
 										</li>
 									  </ul>
+									<p class="justifyed">
+									  &rarr; Escolha entre os ícones acima para visualizar uma solução proposta. Os encaminhamentos já selecionados representam a  melhor solução indicada com base no caso mais similar encontrado.
+									</p>
 									</div>
 								</div>
+								<br/>
 			                    <div>
 			                        <div class="buttonset left columns large-2 no-padding">
 			                            <input

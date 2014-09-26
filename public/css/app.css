@@ -247,6 +247,13 @@ label.error{
 	padding:0 15px;
 }
 
+#propostas p {
+	padding:10px 10px 0;
+	font-size:0.9rem;
+	font-style:italic;
+	color:#666;
+}
+
 #container footer{
     background:#68b92c;
 	border-top:3px solid #232323;
@@ -422,7 +429,6 @@ input[type="checkbox"] + label, input[type="radio"] + label {
     font-weight:400;
     font-size:0.85rem;
 }
-
 /*----------------------------------------------------------------------------*/
 
 /*******************************************************************************
@@ -437,17 +443,8 @@ input[type="checkbox"] + label, input[type="radio"] + label {
     letter-spacing: 1px;
     margin-bottom:-5px;
 }
-
-.tooltipsy:after {
-	content: '';
-	position: absolute;
-	border: 10px solid transparent;
-	border-left-color: #333;
-	bottom: -15px;
-	right: 40px;
-	z-index: -1;
-}
 /*----------------------------------------------------------------------------*/
+
 /*******************************************************************************
                       Pagination Styles
 *******************************************************************************/
@@ -457,16 +454,13 @@ ul.pagination li.unavailable a {
 }
 
 ul.pagination li a {
-    border-radius: 3px;
-    color: #232323;
+    border-radius: 38px;
     display: block;
-    padding: 0.0625rem 0.625rem;
-    font-family: 'Roboto';
-    font-weight: 300;
+    padding:5px 12px;
 }
 
 ul.pagination li a:hover {
-    background:#9d0b00;
+    background:#dadada;
 }
 
 .ng-table-counts{

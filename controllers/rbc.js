@@ -12,11 +12,15 @@ module.exports = function(app) {
 			var novo = req.body;
 			Caso.find().lean().exec(function(err, casos) {
 				var vizinhos = [];
-				
-				// calcula a distância euclidiana e add à lista
+				// calcula a distância euclidiana e adiciona à lista
 				for(var i in casos) {
 					var distanciaV = calcularDistancias(novo, casos[i].demandas);
-					vizinhos[i] = {distancia: distanciaV, encaminhamentos: casos[i].encaminhamentos, classe: casos[i].classe};
+					vizinhos[i] = {
+						distancia: distanciaV,
+						encaminhamentos: casos[i].encaminhamentos,
+						classe: casos[i].classe,
+						contexto: casos[i].contexto
+					};
 				}
 				// Ordena os vizinhos por distância em ordem crescente
 				vizinhos.sort(function (a, b) {
@@ -27,29 +31,43 @@ module.exports = function(app) {
 			});
 		}, // fim recuperar
 		
-		// exibe o formulário inicial
+		// persiste o novo caso em duas coleções distintas
+		// caso seja uma nova unidade de conhecimento relevante será adcionda à base de casos
+		// independentemente disto, será adcionada à base de dados administrativa
 		reter: function(req, res) {
 			Caso.find().lean().exec(function(err, casos) {
 				var vizinhos = [];
 				var usuario = req.session.usuario;
-				var novo = new Caso(req.body);
-				novo.atendidoPor = usuario.email;
-				novo.classe = classificar(novo);
-				var atendimento = new Registro(novo);
-				
+				var novo = new Caso(req.body);// cria um novo caso
+				novo.atendidoPor = usuario.email;// identifica usuario que realizou o atendimento
+				novo.classe = classificar(novo);// classificamos o caso
+				var atendimento = new Atendimento(novo);// cria um novo registro administrativo do caso
 				for(var i in casos) {
-					var distanciaV = calcularDistancias(novo, casos[i].demandas);
-					vizinhos[i] = {distancia: distanciaV, encaminhamentos: casos[i].encaminhamentos, demandas: casos[i].demandas};
+					var distanciaV = calcularDistancias(req.body.demandas, casos[i].demandas);
+					vizinhos[i] = {
+						distancia: distanciaV
+					};
 				}
 				// Ordena os vizinhos por distância em ordem crescente
 				vizinhos.sort(function (a, b) {
 					return a.distancia - b.distancia;
 				});
-				novo.save();
-				atendimento.save(function (err) {
+				
+				var flag = false;
+				if (vizinhos.length > 0) {
+					if (vizinhos[0].distancia > 0) {// se existe um conhecimento novo, mesmo entre outros similares
+						novo.save();// o novo caso é adcionado à base de conhecimentos
+						flag = true;// indicamos que um novo conhecimento foi adquirido
+					}
+				} else {// caso não exista casos similares, será adcionado à base de casos
+					novo.save();
+					flag = true;
+				} 
+				
+				atendimento.save(function (err) {// incondicionalmente o novo caso é adcionado à base de dados administrativa
 		  			if (err) res.status(500).send("Não foi possível completar sua solicitação: "+ err);
 		  			else {
-						var mensagem = (flag) ? 'Novo CASO salvo com sucesso!' : 'Registro realizado com sucesso!';
+						var mensagem = (flag) ? 'Novo registro adcionado à Base de Casos!' : 'Registro realizado com sucesso!';
 						res.status(200).send(mensagem);
 					}
 				});
@@ -58,7 +76,7 @@ module.exports = function(app) {
 	}
 	
 	// Realiza o cálculo euclidiano para distâncias
-	var calcularDistancias = function (caso, vizinho) {
+	var calcularDistancias = function (casoD, vizinho) {
 	  var pesos = {
 			atrasosConstantes: 5,
 			desequilibrioPsicologico: 5,
@@ -90,16 +108,33 @@ module.exports = function(app) {
 		// insere o peso nas demandas
 		var c = [];
 		var v = [];
-		for (demanda in caso) {
-			c[demanda] = caso[demanda] * pesos[demanda];
-			v[demanda] = (vizinho[demanda] != undefined) ? (vizinho[demanda] * pesos[demanda]) : 0;
+		if (typeof(casoD) == 'object' && Object.getOwnPropertyNames(casoD).length > 0) {
+			for (demanda in casoD) {
+				c[demanda] = casoD[demanda] * pesos[demanda];
+			}
+		} else {
+			for (demanda in pesos) {
+				c[demanda] = 0;
+			}
 		}
+		if (Object.getOwnPropertyNames(vizinho).length > 0) {
+			for (demanda in casoD) {
+				v[demanda] = (vizinho[demanda] != undefined) ? (vizinho[demanda] * pesos[demanda]) : 0;
+			}
+		} else {
+			for (demanda in pesos) {
+				v[demanda] = 0;
+			}
+		}
+		
 		// calcula a soma dos quadrados das diferenças
 		var soma = 0;
 		for (demanda in c) {
 			soma += Math.pow(c[demanda] - v[demanda], 2);
 		}
-		return Math.sqrt(soma / 26);// retorna a raiz quadrada da média aritmética
+		console.log('Math.sqrt distancia');
+		console.log(Math.sqrt(soma / 26));
+		return Math.sqrt(soma / 26);// retorna a raiz quadrada
 	}
 	
 	// define a classe com base na demanda de maior peso
