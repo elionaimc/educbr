@@ -440,8 +440,9 @@ input[type="checkbox"] + label, input[type="radio"] + label {
     color: white;
     border-radius: 20px;
     box-shadow: 0 0 7px #333;
-    letter-spacing: 1px;
     margin-bottom:-5px;
+	max-width:900px;
+	font-size:1rem;
 }
 /*----------------------------------------------------------------------------*/
 

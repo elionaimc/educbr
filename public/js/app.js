@@ -38,14 +38,17 @@ educase.controller('recuperarController', function($scope, $http, casoDefault) {
 	$scope.cadastrarCaso = function() {
 		$http.post('/reter', $scope.caso)
 				.success(function(data) {
-						alert('SUCESSO: FOI' + JSON.stringify($scope.caso) + 'SUCESSO: VEIO' + JSON.stringify(data));
+						alert(JSON.stringify(data));
 					$scope.passo = 1;
 					$scope.tab = 1;
 					delete $scope.caso;
 					$scope.caso = {};
+					setTimeout(function(){
+						location.href = '/rbc'
+					}, 100);
 				})
 				.error(function(data) {
-					alert('ERRO: ' + data);
+					alert('ERRO: ' + JSON.stringify(data));
 				});
 	}
 	
