@@ -2,11 +2,18 @@ eduCase
 ========
 Aplicando Raciocínio Baseado em Casos no Aconselhamento Psicopedagógico.
 
+O objetivo deste projeto é aplicar o Raciocínio Baseado em Casos (RBC) como técnica de Inteligência Artificial, no desenvolvimento de um sistema especialista que auxilie uma equipe de acompanhamento pedagógico na tarefa de aconselhamento de alunos, através da proposição de soluções aos problemas atuais baseando-se no conhecimento adquirido com os casos anteriores que por sua vez foram inseridos na Base de Casos.
+
 Este projeto utiliza as seguintes tecnologias:
+
 [NodeJS](nodejs.org)
+
 [MongoDB](www.mongodb.org)
+
 [AngularJS](https://angularjs.org)
+
 [jQuery](http://jquery.com)
+
 [Foundation Framework](http://foundation.zurb.com)
 
 *Copyright 2014 ELIONAI MOURA CORDEIRO* - @Author: **[Elionai Moura](mailto:eli.embits@gmail.com)**
