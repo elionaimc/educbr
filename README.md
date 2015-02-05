@@ -1,4 +1,4 @@
-eduCase
+eduCBR
 ========
 Aplicando Raciocínio Baseado em Casos no Aconselhamento Psicopedagógico.
 
