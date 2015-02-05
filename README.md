@@ -22,6 +22,22 @@ Este projeto utiliza as seguintes tecnologias:
 
 [Foundation Framework](http://foundation.zurb.com)
 
+# Build Status
+
+[![Build Status](https://travis-ci.org/embits/educbr.svg?branch=master)](https://travis-ci.org/embits/educbr.svg)
+
+# Version
+
+0.1.0
+
+# Install
+
+Clone the latest version from Github directly
+
+* 'git clone git://github.com/embits/educbr.git'
+
+# License
+
 *Copyright 2014 ELIONAI MOURA CORDEIRO* - @Author: **[Elionai Moura](mailto:eli.embits@gmail.com)**
 
 The MIT License (MIT)
