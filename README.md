@@ -30,7 +30,9 @@ Este projeto utiliza as seguintes tecnologias:
 
 Clone the latest version from Github directly
 
-* 'git clone git://github.com/embits/educbr.git'
+* `git clone git://github.com/embits/educbr.git`
+* `node install`
+* `node app.js`
 
 # License
 
